@@ -1,0 +1,22 @@
+body{font-family: sans-serif;}
+details{
+	overflow: hidden;
+	background: #e3e3e3;
+	width: 800px;
+	margin-bottom: 10px;
+	display: block;
+}
+details summary{
+	cursor: pointer;
+	padding: 10px;
+}
+details div{
+	float: left;
+	width: 65%;
+}
+details div h3 {margin-top: 0;}
+details img{
+	float: top;
+	width: 700px;
+	padding: 0 30px 10px 10px;
+}

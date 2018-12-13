@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>MITE服务器相关</title>
+	</head>
+	<body>
+		<br/>
+		一：如何开服<br/>
+			在https://pan.baidu.com/s/1jIAABA2下载到服务端的jar文件后<br/>
+			放在一个文件夹内，新建一个文本文档，在其中输入<br/>
+			<blockquote>
+			@ECHO OFF<br/>
+			java -Xms1g -Xmx1g -jar AABBCCDD.jar<br/>
+			pause<br/>
+			</blockquote>
+			<br/>
+			将其中AABBCCDD.jar改为你下载的服务端jar文件名。最好改为全英文。<br/>
+			将文本文档改名为 run.bat,运行run.bat即可开服。<br/>
+			开服完成后立即关闭run.bat，关闭服务器<br/>
+			用记事本打开文件夹下server.properties<br/>
+			找到online-mode=true，<br/>
+			把它改为online-mode=false，保存<br/>
+			这一步的目的是去除服务器的正版验证，<br/>
+			否则你是进不去的。<br/>
+			之后再打开服务器，就可以用对应r195、r196的客户端进入了。<br />
+			<br/>
+			<br/>
+		二：如何在把服务器玩成Miteith<br/>
+			算了吧，服务器刷物品是不现实的，<br/>
+			不过改方块硬度倒是可以，需要服务器和客户端修改成相同的数值。<br/>
+			<br/>
+			此外，主世界地图是无法用区块覆盖法直接拥有一堆物品的。<br/>
+			不过地下世界倒是可以考虑，前提是你单机的存档种子和<br/>
+			服务器的一致，而且你需要将搬运的东西放到地下世界去。<br/>
+			如果想修改服务器地图种子，可以将种子值填到<br/>
+			server.properties文件中的level-seed= 一项<br/>
+			除了run.bat、服务器.jar和server.properties，<br/>
+			其他文件都删除，重新运行服务器，关闭服务器。然后将你单机存档里的<br/>
+			DIM-2和region里的文件覆盖到服务器的对应文件夹下，重新开服即可。<br/>
+			现在进入服务器，直接找路可以到地下世界，看看你放的东西在不在？<br/>
+			<br/>
+			
+			<br/><br/>
+	</body>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<br/><span id="busuanzi_container_page_pv">雪花量<span id="busuanzi_value_page_pv"></span>片</span>
+	<br/>
+	<footer>© 2018   本网站由 <a href="http://melodycos.tk" target="_blank">月煮雪</a> 强力驱动  </footer>
+</html>

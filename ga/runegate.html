@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>符文门补完计划</title>
+		<link rel="stylesheet" href="../css/style.css" />
+		<style>
+        	p2{
+        		color:royalblue;
+        	}
+        	p3{
+        		color:green;
+        	}
+        </style>
+	</head>
+	<body>
+		本计划已经完成!<br/>
+		数据穷举作者：<a href="https://weibo.com/nyaplusmiao" target="_blank">_喵Plus_</a>。<br/>
+		<br/>
+		<br/>
+		<img src="img/runegate.jpg">
+		<br/>
+		<img src="img/runeback.jpg">
+		<br/>
+		<br/>
+		<font color="#FF8877" size="5">符文门计算器</font><a href="dl/符文门计算器v1.0.zip" target="_blank">下载地址一</a><br/>
+		<font color="deeppink" size="5">符文门反向计算器</font><a href="dl/符文门反向计算器.zip" target="_blank">下载地址二</a><br/>
+		<br/>
+		<br/>
+		<p2>Q1:为什么符文门反向计算器限制在地下世界和地狱？<br/></p2>
+		<p3>A1:由于主世界传送算法是<br/>
+		按顺序在坐标1、2、3、4里挑一个不是海洋地形的<br/>
+		如果都是海，那就把你送到4那边，<br/>
+		因此假设你算出坐标3是最近的，<br/>
+		他把你传送到坐标2，你也没辙<br/>
+		而地下世界没海，必定传坐标1<br/>
+		地下世界的坐标1和主世界坐标1一一对应<br/>
+		地狱世界现已添加！<br/></p3>
+		<br/>
+		<p2>Q2:摆法显示的那些字母数字啥意思啊？<br/></p2>
+		<p3>A2:请通读下文的“规定”<br/></p3>
+		<br/>
+		<p2>Q3:地下世界没有太阳怎么辨认方向？<br/></p2>
+		<p3>A3:本站的材质包，圆石放在地上<br/>
+		上表面有个黑点，那个边方向是北<br/>
+		或者使用坐标获取软件，x增大的方向为东<br/></p3>
+		<br/>
+		<p2>Q4:三个世界的坐标有关系吗？<br/></p2>
+		<p3>A4:主世界=地下世界=地狱*8<br/></p3>
+		<br/>
+		<p2>Q5:地下世界传送过去没有门，怎么回去？<br/></p2>
+		<p3>A5:请带铁镐、打火石与10个黑曜石，靴靴<br/></p3>
+		<br/>
+		<p2>Q6:为什么一直强调脸朝东？<br/></p2>
+		<p3>A6:相反的方向，左右会反啊!（四角符号一样的除外<br/>
+		事实上，东=北，西=南<br/>
+		面朝四个方向的门，只会去两个地方（四角符号一样的除外<br/></p3>
+		<br/>
+		<p2>Q7:怎样建一个从出生点到末地要塞的快速通道？<br/></p2>
+		<p3>A7:首先获取末地要塞坐标，没去过的也可以估算<br/>
+		用符文门反向计算器得到目标点最近的符文门摆法<br/>
+		带上稿子、打火石、10个黑曜石去地下世界<br/>
+		脸朝东摆符文门，传送过去，建普通门到主世界<br/>
+		拆主世界的门装回去，可回出生点<br/>
+		当然末地可以从末影龙的门回去<br/></p3>
+		<br/>
+		<p2>Q8:看了坐标分布图，我要去的在圆里，附近没有门怎么办？<br/></p2>
+		<p3>A8:你忘了主世界坐标=地狱坐标*8吗<br/>
+		利用地狱秘银符文门系统可以覆盖到32768的主世界范围<br/>
+		利用地狱艾德曼符文门系统最远可以传送到262144的主世界范围<br/>
+		大胆的测试吧，反正可以Save Load<br/></p3>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		
+		<details>
+			<summary>
+				核心算法摘要<br/>
+			</summary>
+				int seed = getRunegateSeed(world, x, y, z);//调用上面获取种子的函数<br/>
+				...<br/>
+				Random random = new Random(seed);//使用seed初始化随机数种子<br/>
+				...<br/>
+				if (attempts >= 4)            //尝试到4次跳出循环<br/>
+				break;<br/>
+				do{<br/>
+				x = random.nextInt(runegate_domain_radius * 2) - runegate_domain_radius;<br/>
+				z = random.nextInt(runegate_domain_radius * 2) - runegate_domain_radius;<br/>
+				<br/>
+				if (world.a(x, z) != acq.b)//如果区块类型不是acq.b则跳出<br/>
+					break;<br/>
+				attempts++;<br/>
+				}while(true);<br/>
+		
+		<br/>
+		</details>
+		
+		为了统一，现规定：<br/>
+		①所有的符文门是玩家面朝东（即太阳升起的方向，x轴增大的方向）所建立的。<br/>
+		②符文门四角材料需相同<br/>
+		③使用十六进制标注符文石16个符号<br/>
+		0="Nul"<br/>
+		1="Quas"<br/>
+		2="Por"<br/>
+		3="An"<br/>
+		4="Nox"<br/>
+		5="Flam"<br/>
+		6="Vas"<br/>
+		7="Des"<br/>
+		8="Ort"<br/>
+		9="Tym"<br/>
+		A="Corp"<br/>
+		B="Lor"<br/>
+		C="Mani"<br/>
+		D="Jux"<br/>
+		E="Ylem"<br/>
+		F="Sanct"<br/>
+		④坐标获取软件获取的坐标X,Z值，小数部分：正数去尾，负数进一<br/>
+		⑤记录顺序更为左下、右下、左上、右上、X坐标、Z坐标<br/>
+		⑥为方便测试，建议使用修改后的材质包，详情<a href="resource.html" target="_blank">点击这里</a><br/>
+		效果如下，<br/>
+		<img src="img/runestoneshow.jpg">
+		
+		
+	</body>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br /><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<br /><span id="busuanzi_container_page_pv">雪花量<span id="busuanzi_value_page_pv"></span>片</span>
+	<br />
+	<footer>© 2018   本网站由 <a href="http://melodycos.tk" target="_blank">月煮雪</a> 强力驱动  </footer>
+</html>
