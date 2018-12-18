@@ -12,15 +12,18 @@
         		color:green;
         	}
         </style>
+        <script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../js/anglecalc.js"></script>
 	</head>
 	<body>
 		本计划已经完成!<br/>
 		数据穷举作者：<a href="https://weibo.com/nyaplusmiao" target="_blank">_喵Plus_</a>。<br/>
 		<br/>
 		<br/>
-		<img src="img/runegate.jpg">
+		<img src="http://wx3.sinaimg.cn/mw690/4e4932ffgy1fyasquypysj20eu0a6mzc.jpg">
 		<br/>
-		<img src="img/runeback.jpg">
+		<img src="http://wx4.sinaimg.cn/mw690/4e4932ffgy1fyasqpu9uvj20eu0a676z.jpg">
 		<br/>
 		<br/>
 		<font color="#FF8877" size="5">符文门计算器</font><a href="dl/符文门计算器v1.0.zip" target="_blank">下载地址一</a><br/>
@@ -56,13 +59,9 @@
 		面朝四个方向的门，只会去两个地方（四角符号一样的除外<br/></p3>
 		<br/>
 		<p2>Q7:怎样建一个从出生点到末地要塞的快速通道？<br/></p2>
-		<p3>A7:首先获取末地要塞坐标，没去过的也可以估算<br/>
-		用符文门反向计算器得到目标点最近的符文门摆法<br/>
-		带上稿子、打火石、10个黑曜石去地下世界<br/>
-		（当然你可以尝试在主世界做门，说不定就传的是坐标1呢）<br/>
-		脸朝东摆符文门，传送过去，建普通门到主世界<br/>
-		拆主世界的门装回去，可回出生点<br/>
-		当然末地可以从末影龙的门回去<br/></p3>
+		<p3>A7:末地要塞分布在距离坐标（0,0）约12000~13000的圆上<br/>
+			用下面的方法可以估算，快速通道同见下文<br/></p3>
+		
 		<br/>
 		<p2>Q8:看了坐标分布图，我要去的坐标在圆里，附近没有门怎么办？<br/></p2>
 		<p3>A8:你忘了主世界坐标=地狱坐标*8吗<br/>
@@ -77,9 +76,66 @@
 		传到主世界（-10000,5000）<br/>
 		不出意外是在矿洞里，需要挖出去<br/>
 		大胆的测试吧，反正可以Save Load<br/>
+		这里是一个验证视频<a href="https://www.bilibili.com/video/av38379275" target="_blank">https://www.bilibili.com/video/av38379275</a><br/>
 		利用地狱秘银符文门系统可以覆盖到32768的主世界范围<br/>
 		利用地狱艾德曼符文门系统最远可以传送到262144的主世界范围<br/></p3>
 		<br/>
+		<p2>Q8:如何估算末影传送门的位置？<br/></p2>
+		<p3>Q8:①首先扔末影之眼获得<font color="red">a</font>,<font color="red">b</font>值（就是格数）<br/>
+		②填入a,b计算得到∠A的度数，<br/>
+		③按清除， 填入c≈12000,∠A的度数<br/>
+		得到X和Z的坐标（a,b)<br/></p3>
+		<br/>
+	<form name="righttriangle">
+    <table id="table1" cellspacing="0" cellpadding="2" border="0" width="379">
+        <tbody>
+            <tr>
+                <td rowspan="7" align="right" width="140"><img alt="直角三角形" src="img/angle.jpg" height="126" width="138" /></td>
+                <td colspan="2" align="right">
+                <p align="center">输入数值然后点计算</p>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">a垂直边</td>
+                <td><font size="5">
+                	<input onBlur="righttriangleblur(1)" onKeyUp="righttrianglecal(1)" autocomplete="off" name="lengthX" style="width:85px" type="number" /></font></td>
+            </tr>
+            <tr>
+                <td align="right">b底边长</td>
+                <td><font size="5">
+                	<input onBlur="righttriangleblur(2)" onKeyUp="righttrianglecal(2)" autocomplete="off" name="lengthY" style="width:85px" type="number" /></font></td>
+            </tr>
+            <tr>
+                <td align="right">c斜边长</td>
+                <td><font size="5">
+                	<input onBlur="righttriangleblur(3)" onKeyUp="righttrianglecal(3)" autocomplete="off" name="lengthZ" style="width:85px" type="number" /></font></td>
+            </tr>
+            <tr>
+                <td align="right">A角度</td>
+                <td><font size="5">
+                	<input onBlur="righttriangleblur(4)" onKeyUp="righttrianglecal(4)" autocomplete="off" name="lengthA" style="width:85px" type="number" /></font></td>
+            </tr>
+            <tr>
+                <td align="right">B角度</td>
+                <td><font size="5">
+                	<input onBlur="righttriangleblur(5)" onKeyUp="righttrianglecal(5)" autocomplete="off" name="lengthB" style="width:85px" type="number" /></font></td>
+            </tr>
+            <tr>
+                <td align="right">C角度</td>
+                <td><font size="5">
+                	<input size="5" style="background: #000000; color: #00ff00; font-weight: bold" name="lengthC" value=" 90.0" type="text" /></font></td>
+            </tr>
+        </tbody>
+    </table>
+    <p align="left">
+    	<input onClick="calcs()" name="Calculate" value=" 计算 " type="button" />
+    	<input onClick="clearrighttriangle()" name="clear" value=" 清除 " type="button" />
+    <table id="table2" cellspacing="0" cellpadding="3" border="0" width="382">
+    </table>
+    </p>
+</form>
+
+
 		<br/>
 		<br/>
 		<br/>
