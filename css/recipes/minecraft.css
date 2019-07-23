@@ -1,0 +1,107 @@
+.crafting_layout{
+	position:absolute;
+	top:22px;
+	left:48px;
+	width:108px
+	}
+.crafting_output{
+	position:absolute;
+	top:50px;
+	left:228px;
+	background-position:center;
+	text-align:right;
+	vertical-align:middle;padding:8px;
+	color:#FFF!important;
+	text-shadow:2px 2px 0 #3f3f3f
+	}
+.crafting{
+	border:10px solid transparent;
+	background-color:#C3C3C3;
+	background-clip:content-box;
+	border-image:url(https://ae01.alicdn.com/kf/H001440de10d34a73b041076449710b022.png) 10;
+	position:relative
+	}
+.item{
+	width:32px;
+	height:32px;
+	border:2px solid transparent;
+	border-image:url(https://ae01.alicdn.com/kf/H584042db9d864a19a111eb3f5639fb20m.png) 2;
+	background:#8b8b8b;
+	float:left;
+	text-align:right;
+	vertical-align:middle;
+	font-size:1.375rem;
+	color:#FFF!important;
+	text-shadow:2px 2px 0 #3F3F3F;
+	box-sizing:content-box
+	}
+.recipe p{text-align:center;font-weight:700}
+.filter-bar{margin-bottom:2rem;font-weight:700;text-align:center}
+.filter-bar label{margin-right:2rem;font-size:1.25rem}
+.filter-bar input{border-radius:.5rem;width:20rem;padding:0 .5rem}
+div .item div{width:32px;height:32px}
+div .item_sinew{background:url(https://ae01.alicdn.com/kf/Hcc218035e0844c0c8760dcd8ec6b37ec2.png)}
+div .item_irondagger{background:url(https://ae01.alicdn.com/kf/H9ddd55447e7944e7bc9272b00460e2745.png)}
+div .item_ironbattleaxe{background:url(https://ae01.alicdn.com/kf/Hd397d2099cc2451fa670de67cc483725Y.png)}
+div .item_ironwarhammer{background:url(https://ae01.alicdn.com/kf/H66c989e0b2114ab2a8ccbb4c784988c1I.png)}
+div .item_ironmattock{background:url(https://ae01.alicdn.com/kf/HTB1LWaLbXT7gK0jSZFp761TkpXaa.png)}
+div .item_ironscythe{background:url(https://ae01.alicdn.com/kf/HTB1lTKNboH1gK0jSZSy760tlpXaz.png)}
+div .item_chain{background:url(https://ae01.alicdn.com/kf/HTB1A09Qbbj1gK0jSZFO7637GpXa2.png)}
+div .item_chainmail{background:url(https://ae01.alicdn.com/kf/HTB13veObhn1gK0jSZKP760vUXXam.png)}
+div .item_mithrilingot{background:url(https://ae01.alicdn.com/kf/HTB1DcGMbXP7gK0jSZFj7635aXXa1.png)}
+div .item_obsidianshard{background:url(https://ae01.alicdn.com/kf/HTB1usSOboT1gK0jSZFr763NCXXam.png)}
+div .item_clayoven{background:url(https://ae01.alicdn.com/kf/H47dde036f12a4effa84f46fc79b7787cE.png)}
+div .item_hardenedclay{background:url(https://ae01.alicdn.com/kf/HTB1Ak1Nbmf2gK0jSZFP760sopXa9.png)}
+div .item_mithrilbow{background:url(https://ae01.alicdn.com/kf/H70d9a40341914b658267c3b7a549b217b.png)}
+div .item_cudgel{background:url(https://ae01.alicdn.com/kf/Hd2b4191b6102441880af232741093150d.png)}
+div .item_club{background:url(https://ae01.alicdn.com/kf/HTB1OAaPbkL0gK0jSZFx760WHVXaa.png)}
+div .item_flintaxe{background:url(https://ae01.alicdn.com/kf/H317b9e11488e425e912181ec3a375268a.png)}
+div .item_flinthatchet{background:url(https://ae01.alicdn.com/kf/H621cc808e5f1425c9865d47dc2592869x.png)}
+div .item_flintknife{background:url(https://ae01.alicdn.com/kf/H53455565575f4ec2a5eadc918f5ead52l.png)}
+div .item_flintchip{background:url(https://ae01.alicdn.com/kf/HTB1z2WQbhD1gK0jSZFy763iOVXaU.png)}
+div .item_largeclayoven{background:url(https://ae01.alicdn.com/kf/HTB1DZqPbkT2gK0jSZPc763KkpXaW.png)}
+div .item_sandstoneoven{background:url(https://ae01.alicdn.com/kf/HTB1LPePbbr1gK0jSZR0762P8XXa0.png)}
+div .item_obsidianfurnace{background:url(https://ae01.alicdn.com/kf/H8acfb9f4f5ae4f93a998ce2bf787ece2m.png)}
+div .item_netherrackfurnace{background:url(https://ae01.alicdn.com/kf/HTB1jJKPbkT2gK0jSZPc763KkpXaw.png)}
+div .item_glassshard{background:url(https://ae01.alicdn.com/kf/HTB1v85KbaL7gK0jSZFB760ZZpXaP.png)}
+div .item_emeraldshard{background:url(https://ae01.alicdn.com/kf/HTB1EGSPbeL2gK0jSZFm7637iXXaR.png)}
+div .item_flour{background:url(https://ae01.alicdn.com/kf/H69876badfc4840bdbb39df623d220dc2W.png)}
+div .item_milkbowl{background:url(https://ae01.alicdn.com/kf/HTB1aI5Obmf2gK0jSZFP760sopXav.png)}
+div .item_cheese{background:url(https://ae01.alicdn.com/kf/HTB1LU9Obbr1gK0jSZFD7629yVXaT.png)}
+div .item_dough{background:url(https://ae01.alicdn.com/kf/HTB1Y9qPbbr1gK0jSZR0762P8XXa2.png)}
+div .item_waterbowl{background:url(https://ae01.alicdn.com/kf/HTB1H3yMba67gK0jSZFH7619jVXab.png)}
+div .item_chocolate{background:url(https://ae01.alicdn.com/kf/HTB1mrGPbkL0gK0jSZFt760QCXXa4.png)}
+div .item_orange{background:url(https://ae01.alicdn.com/kf/H739ec1b7d6e14745bf2400ab6b4b745b5.png)}
+div .item_onion{background:url(https://ae01.alicdn.com/kf/HTB1C.9MbXP7gK0jSZFj7635aXXaN.png)}
+div .item_sorbet{background:url(https://ae01.alicdn.com/kf/HTB1OP5QbkH0gK0jSZPi761vapXae.png)}
+div .item_icecream{background:url(https://ae01.alicdn.com/kf/Hb8720a0d15b24e128970f2b37bfec521f.png)}
+div .item_mashedpotato{background:url(https://ae01.alicdn.com/kf/H9d6992e24e3a4538b22b02753c1e6ca5q.png)}
+div .item_beefstew{background:url(https://ae01.alicdn.com/kf/HTB1obGMbX67gK0jSZPf761hhFXaZ.png)}
+div .item_chickensoup{background:url(https://ae01.alicdn.com/kf/HTB1Kp5Pbhz1gK0jSZSg761vwpXat.png)}
+div .item_vegetablesoup{background:url(https://ae01.alicdn.com/kf/H04d2aaf91e274ee79022b38f262fe72dg.png)}
+div .item_creamofvegetablesoup{background:url(https://ae01.alicdn.com/kf/H6ef1c9f93bad41c1b9afff211b7ff9e6i.png)}
+div .item_pumpkinsoup{background:url(https://ae01.alicdn.com/kf/HTB1TyuQbbj1gK0jSZFu763rHpXaP.png)}
+div .item_cereal{background:url(https://ae01.alicdn.com/kf/HTB1lqSPboD1gK0jSZFG762d3FXaj.png)}
+div .item_creamofmushroomsoup{background:url(https://ae01.alicdn.com/kf/H4b50501fb7d043c4b77c137eec24eeb5K.png)}
+div .item_salad{background:url(https://ae01.alicdn.com/kf/HTB16.uQbkH0gK0jSZPi761vapXaj.png)}
+div .item_porridge{background:url(https://ae01.alicdn.com/kf/HTB1MRKObkP2gK0jSZPx761cQpXab.png)}
+div .item_bottleodisenchanting{background:url(https://ae01.alicdn.com/kf/HTB1.z9QboY1gK0jSZFC763wqXXaZ.png)}
+div .item_blueberry{background:url(https://ae01.alicdn.com/kf/HTB1UdWPbhz1gK0jSZSg761vwpXak.png)}
+div .item_strongbox{background:url(https://ae01.alicdn.com/kf/Hf6497b8ddb704ae8bf3cda0f28fef40be.png)}
+div .item_thinsnow{background:url(https://ae01.alicdn.com/kf/H486673e9f5b84f5981873a18bda92920n.png)}
+div .item_snowslab{background:url(https://ae01.alicdn.com/kf/HTB1zH5QbkT2gK0jSZFk763IQFXag.png)}
+div .item_coppercoin{background:url(https://ae01.alicdn.com/kf/H0bebb56082434aa7825dea50ef38befac.png)}
+div .item_coppernugget{background:url(https://ae01.alicdn.com/kf/HTB1S8qRbbj1gK0jSZFO7637GpXak.png)}
+div .item_goldnugget{background:url(https://ae01.alicdn.com/kf/HTB1t7GPbbr1gK0jSZFD7629yVXaa.png)}
+div .item_mithrilnugget{background:url(https://ae01.alicdn.com/kf/HTB1U9mPbkL0gK0jSZFt760QCXXal.png)}
+div .item_mithrilrunestone{background:url(https://ae01.alicdn.com/kf/HTB1FVGPbmf2gK0jSZFP760sopXaA.png)}
+div .item_adamantiumnugget{background:url(https://ae01.alicdn.com/kf/H25a5e159e62b4fe8880aa9ebffd6ff816.png)}
+div .item_adamantiumrunestone{background:url(https://ae01.alicdn.com/kf/HTB1qwiRba61gK0jSZFl760DKFXaM.png)}
+div .item_flintarrow{background:url(https://ae01.alicdn.com/kf/H18b2bbf9d0e2464296b0286ebe212ccbL.png)}
+div .item_ironfishingrod{background:url(https://ae01.alicdn.com/kf/H4af2cee035b14c8ca71a38f30deb56c3k.png)}
+div .item_obsidianknife{background:url(https://ae01.alicdn.com/kf/H5a99079793dd4782a6f9005d89a71ef4l.png)}
+div .item_obsidiantoolbench{background:url(https://ae01.alicdn.com/kf/Hcf733978c0d44fb189ca95fc967e7098S.png)}
+div .item_flinttoolbench{background:url(https://ae01.alicdn.com/kf/HTB13meLbaL7gK0jSZFB760ZZpXaz.png)}
+div .item_coppertoolbench{background:url(https://ae01.alicdn.com/kf/H4d895159122f4732bb0690b67f4c80709.png)}
+div .item_copperingot{background:url(https://ae01.alicdn.com/kf/HTB1IZeRbbj1gK0jSZFu763rHpXaU.png)}
+div .item_cobblestone{background:url(https://ae01.alicdn.com/kf/H677c7d93fbdc4a6e92e631b741a08e288.png) -352px -256px no-repeat}
