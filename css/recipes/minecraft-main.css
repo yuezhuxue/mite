@@ -5117,3 +5117,9 @@ div.item_zombiepigmanegg {
     height: 32px;
     background: url('https://ae01.alicdn.com/kf/H677c7d93fbdc4a6e92e631b741a08e288.png') -928px -384px no-repeat
 }
+
+div.item_fire {
+    width: 32px;
+    height: 32px;
+    background: url('https://ae01.alicdn.com/kf/H677c7d93fbdc4a6e92e631b741a08e288.png') -96px -512px no-repeat
+}

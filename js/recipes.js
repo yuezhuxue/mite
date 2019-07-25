@@ -1,4 +1,4 @@
-initRecipes = function() {
+﻿initRecipes = function() {
     createRecipeList([
         {
             'name':'燧石粒 &rarr; 燧石',
@@ -57,7 +57,7 @@ initRecipes = function() {
                 'item_stick','','item_sinew',
                 '','item_stick','item_sinew'
             ],
-            'keywords':'短棍 线 皮革绳'
+            'keywords':'木棍 线 皮革绳'
         },
         {
             'name':'栓绳',
@@ -78,7 +78,7 @@ initRecipes = function() {
                 'item_stick','','',
                 '','',''
             ],
-            'keywords':'短棍 线'
+            'keywords':'木棍 线'
         },
         {
             'name':'燧石短斧',
@@ -215,7 +215,7 @@ initRecipes = function() {
                 'item_stick','item_mithrilingot','item_string',
                 '','item_stick','item_string'
             ],
-            'keywords':'短棍 线'
+            'keywords':'木棍 线'
         },
         {
             'name':'黑曜石粒 &rarr; 黑曜石',
@@ -298,6 +298,17 @@ initRecipes = function() {
                 'item_glassshard','item_glassshard','item_glassshard',
                 'item_glassshard','item_glassshard','item_glassshard'
             ]
+        },
+        {
+            'name':'玻璃 &rarr; 玻璃板',
+            'output':'item_glasspane',
+            'outamt':'6',
+            'items':[
+                '','','',
+                '','item_glass','',
+                '','',''
+            ],
+            'keywords':'玻璃'
         },
         {
             'name':'绿宝石碎片 &rarr; 绿宝石',
@@ -600,7 +611,7 @@ initRecipes = function() {
                 '','item_stick','',
                 '','item_feather',''
             ],
-            'keywords':'短棍 羽毛 燧石'
+            'keywords':'木棍 羽毛 燧石'
         },
         {
             'name':'金属鱼钩',
@@ -610,7 +621,7 @@ initRecipes = function() {
                 '','item_stick','item_string',
                 'item_stick','item_ironnugget','item_string'
             ],
-            'keywords':'短棍 线 nugget'
+            'keywords':'木棍 线 nugget'
         },
         {
             'name':'圆石墙',
@@ -702,7 +713,7 @@ initRecipes = function() {
                 '','item_waterbowl','',
                 '','',''
             ],
-            'keywords':'water'
+            'keywords':'蘑菇 水'
         },
         {
             'name':'蛋糕',
@@ -790,6 +801,68 @@ initRecipes = function() {
                 '','item_snowslab','',
                 '','',''
             ]
+        },
+        {
+            'name':'栅栏',
+            'output':'item_oakfence',
+            'outamt':'2',
+            'items':[
+                '','','',
+                'item_stick','item_stick','item_stick',
+                'item_stick','item_stick','item_stick'
+            ],
+            'keywords':'木棍'
+        },
+        {
+            'name':'栅栏门',
+            'output':'item_oakfencegate',
+            'items':[
+                '','','',
+                'item_stick','item_oakwoodplanks','item_stick',
+                'item_stick','item_oakwoodplanks','item_stick'
+            ],
+            'keywords':'木棍 木板'
+        },
+        {
+            'name':'梯子',
+            'output':'item_ladder',
+            'outamt':'2',
+            'items':[
+                'item_stick','','item_stick',
+                'item_stick','item_stick','item_stick',
+                'item_stick','','item_stick'
+            ],
+            'keywords':'木棍'
+        },
+        {
+            'name':'绿宝石附魔台',
+            'output':'item_enchantmenttable',
+            'items':[
+                '','item_book','',
+                'item_emerald','item_obsidian','item_emerald',
+                'item_obsidian','item_obsidian','item_obsidian'
+            ],
+            'keywords':'书 黑曜石'
+        },
+        {
+            'name':'钻石附魔台',
+            'output':'item_enchantmenttable',
+            'items':[
+                '','item_book','',
+                'item_diamond','item_obsidian','item_diamond',
+                'item_obsidian','item_obsidian','item_obsidian'
+            ],
+            'keywords':'书 黑曜石'
+        },
+        {
+            'name':'面包',
+            'output':'item_bread',
+            'items':[
+                '','item_dough','',
+                '','item_fire','',
+                '','',''
+            ],
+            'keywords':'面团'
         }
     ]);
 };
