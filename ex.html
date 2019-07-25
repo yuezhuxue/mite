@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN"> 
+    <head> 
+        <title>在线进制转换-IEE754浮点数16进制转换</title> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf8" /> 
+        <meta http-equiv="Content-Language" content="zh-CN" /> 
+        <meta name="keywords" content="浮点数在线进制转换,在线进制转换,浮点数,IEE754浮点数转换"/>
+        <meta name="description" content="浮点数在线进制转换,在线进制转换,浮点数,IEE754浮点数转换" />
+
+        <link rel="stylesheet" href="skin/basic.css" type="text/css"/> 
+        <script type="text/javascript" src='skin/jquery-1.7.2.js'></script>
+        <script type="text/javascript" src='skin/jquery.cookies.2.2.0.min.js'></script>
+        <link rel="stylesheet" href='skin/bootstrap.min.css'/>
+        <script src='skin/bootstrap.min.js'></script>
+        <script src='skin/HexToSingle.js'></script>
+
+
+        <style>
+            .go_search {width: 300px;}
+            .go_search .gsc-input td,.go_search .gsc-input tddiv {padding:0 0 0 0;margin:0 0 0 0;height:23px;}
+            .go_search .gsc-input input:focus{ 
+                border:none;
+
+            }
+            .go_search .gsc-input input {
+                border:none;
+                height:23px;
+                width: 100%;
+                padding: 0px;
+                border: none;
+                margin: 0px;
+                height: auto;
+                outline: none;
+                -webkit-box-shadow:none;
+                -moz-box-shadow:none;
+                box-shadow:none;
+
+                background-color: rgb(255, 255, 255);
+                background-position: 0% 50%;
+                background-repeat: no-repeat no-repeat;
+            }
+            .tool_content{
+                /*width:1024px;*/
+                margin-left:auto;
+                margin-right:auto;
+                margin-top:15px;
+                margin-bottom:25px;
+            }
+            .tool_content h1 {margin:10px 0 30px 0; font-size:12pt;}
+            .tool_content ul li{width:80px;height:30px;display:inline-block;}
+            .hex_num{width:24px;}
+            .num_value{width:550px;}
+            .content_area{margin:20px 0 20px 0;}
+        </style>
+    </head>
+    <body>
+
+        <div id="header">
+            <div class="wrapper">
+
+                <div id="logo" class="texthidden">
+                    <h1>略略略~</h1>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="mainContent" class="tool_content wrapper">
+            <div class="toolName">在线进制转换</div>
+            <div style="margin:10px 0 10px 0;">支持在2~36进制之间进行任意转换
+            </div>
+            <table>
+                <tr><td>
+                        <div class="content_area" id="input_area">
+                            <ul>
+                                <li><label class="radio"><input type="radio" name='input_' value="2"/>2进制</label></li>
+                                <li><label class="radio"><input type="radio" name='input_' value="4"/>4进制</label></li>
+                                <li><label class="radio"><input type="radio" name='input_' value="8"/>8进制</label></li>
+                                <li><label class="radio"><input type="radio" name='input_' value="10" checked="checked"/>10进制</label></li>
+                                <li><label class="radio"><input type="radio" name='input_' value="16"/>16进制</label></li>
+                                <li><label class="radio"><input type="radio" name='input_' value="32"/>32进制</label></li>
+                                <li><select id="input_num" class="input-small">
+                                        <option value="2">2进制</option>
+                                        <option value="3">3进制</option>
+                                        <option value="4">4进制</option>
+                                        <option value="5">5进制</option>
+                                        <option value="6">6进制</option>
+                                        <option value="7">7进制</option>
+                                        <option value="8">8进制</option>
+                                        <option value="9">9进制</option>
+                                        <option value="10" selected>10进制</option>
+                                        <option value="11">11进制</option>
+                                        <option value="12">12进制</option>
+                                        <option value="13">13进制</option>
+                                        <option value="14">14进制</option>
+                                        <option value="15">15进制</option>
+                                        <option value="16">16进制</option>
+                                        <option value="17">17进制</option>
+                                        <option value="18">18进制</option>
+                                        <option value="19">19进制</option>
+                                        <option value="20">20进制</option>
+                                        <option value="21">21进制</option>
+                                        <option value="22">22进制</option>
+                                        <option value="23">23进制</option>
+                                        <option value="24">24进制</option>
+                                        <option value="25">25进制</option>
+                                        <option value="26">26进制</option>
+                                        <option value="27">27进制</option>
+                                        <option value="28">28进制</option>
+                                        <option value="29">29进制</option>
+                                        <option value="30">30进制</option>
+                                        <option value="31">31进制</option>
+                                        <option value="32">32进制</option>
+                                        <option value="33">33进制</option>
+                                        <option value="34">34进制</option>
+                                        <option value="35">35进制</option>
+                                        <option value="36">36进制</option>
+                                    </select></li>
+                            </ul>
+                            <div class="input-prepend">
+                                <span class="add-on">转换数字</span>
+                                <input id="input_value" type="text" value="" onpropertychange="px()" onchange="px()" oninput="px()" class="toolInput num_value" placeholder="在此输入待转换数字"/>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr><td>
+                        <div class="content_area" id="output_area">
+                            <ul>
+                                <li><label class="radio"><input type="radio" name='output_' value="2"/>2进制</label></li>
+                                <li><label class="radio"><input type="radio" name='output_' value="4"/>4进制</label></li>
+                                <li><label class="radio"><input type="radio" name='output_' value="8"/>8进制</label></li>
+                                <li><label class="radio"><input type="radio" name='output_' value="10"/>10进制</label></li>
+                                <li><label class="radio"><input type="radio" name='output_' value="16" checked="checked"/>16进制</label></li>
+                                <li><label class="radio"><input type="radio" name='output_' value="32"/>32进制</label></li>
+                                <li><select id="output_num" onchange="px(1);" class="input-small">
+                                        <option value="2">2进制</option>
+                                        <option value="3">3进制</option>
+                                        <option value="4">4进制</option>
+                                        <option value="5">5进制</option>
+                                        <option value="6">6进制</option>
+                                        <option value="7">7进制</option>
+                                        <option value="8">8进制</option>
+                                        <option value="9">9进制</option>
+                                        <option value="10">10进制</option>
+                                        <option value="11">11进制</option>
+                                        <option value="12">12进制</option>
+                                        <option value="13">13进制</option>
+                                        <option value="14">14进制</option>
+                                        <option value="15">15进制</option>
+                                        <option value="16" selected>16进制</option>
+                                        <option value="17">17进制</option>
+                                        <option value="18">18进制</option>
+                                        <option value="19">19进制</option>
+                                        <option value="20">20进制</option>
+                                        <option value="21">21进制</option>
+                                        <option value="22">22进制</option>
+                                        <option value="23">23进制</option>
+                                        <option value="24">24进制</option>
+                                        <option value="25">25进制</option>
+                                        <option value="26">26进制</option>
+                                        <option value="27">27进制</option>
+                                        <option value="28">28进制</option>
+                                        <option value="29">29进制</option>
+                                        <option value="30">30进制</option>
+                                        <option value="31">31进制</option>
+                                        <option value="32">32进制</option>
+                                        <option value="33">33进制</option>
+                                        <option value="34">34进制</option>
+                                        <option value="35">35进制</option>
+                                        <option value="36">36进制</option>
+                                    </select></li>
+                            </ul>
+                            <div class="input-prepend">
+                                <span class="add-on">转换结果</span><input type="text" id="output_value" class="toolInput num_value" placeholder="转换结果">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div style="margin:10px 0 10px 0;">IEEE 754浮点数十六进制相互转换(32位,四字节,单精度)</div>
+            <div class="input-prepend">
+                <span class="add-on">10进制</span>
+                <input type="text" id="input_valuef" class="toolInput num_value" placeholder="输入10进制数">      
+            </div>
+            <div class="input-prepend">
+                <span class="add-on">16进制</span>
+                <input type="text" id="output_valuef" class="toolInput num_value" placeholder="输入16进制数">      
+            </div>
+
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+
+                $("#input_valuef").change(function (){
+                    var inputf_val = $(this).val();
+                    if(inputf_val == ''){
+                        $("#output_valuef").val('');
+                    }
+                    var outputf_val = SingleToHex(inputf_val);
+                    $("#output_valuef").val(outputf_val);
+                });
+                $("#output_valuef").change(function (){
+                    var outputf_val = $(this).val();
+                    if(outputf_val == ''){
+                        $("#input_valuef").val('');
+                    }
+                    var inputf_val = HexToSingle(outputf_val);
+                    $("#input_valuef").val(inputf_val);
+                });
+
+                $('[name="input_"]').click(function () {
+                    $('#input_num').val($(this).val());
+                    $('#input_value').val("");
+                    $('#output_value').val("");
+                });
+                $('[name="output_"]').click(function () {
+                    $('#output_num').val($(this).val());
+                    px(1);
+                });
+                $("#input_num").change(function () {
+                    $("#input_area input").removeAttr("checked");
+                    var val = $(this).val();
+                    $("#input_area input[value=" + val + "]").attr("checked", "checked");
+                    $('#input_value').val("");
+                    $('#output_value').val("");
+                });
+                $("#output_num").change(function () {
+                    $("#output_area input").removeAttr("checked");
+                    var val = $(this).val();
+                    $("#output_area input[value=" + val + "]").attr("checked", "checked");
+                    px(1);
+                });
+            });
+            function pxparseFloat(x, y) {
+                x = x.toString();
+                var num = x;
+                var data = num.split(".");
+                var you = data[1].split(""); //将右边转换为数组 得到类似 [1,0,1]
+                var sum = 0;  //小数部分的和
+                for (var i = 0; i < data[1].length; i++) {
+                    sum += you[i] * Math.pow(y, -1 * (i + 1))
+                }
+                return parseInt(data[0], y) + sum;
+            }
+            function zhengze(x) {
+                var str;
+                x = parseInt(x);
+                if (x <= 10) {
+                    str = new RegExp("^[+\\-]?[0-" + (x - 1) + "]*[.]?[0-" + (x - 1) + "]*$", "gi");
+                } else {
+                    var letter = "";
+                    switch (x) {
+                        case 11:
+                            letter = "a";
+                            break;
+                        case 12:
+                            letter = "b";
+                            break;
+                        case 13:
+                            letter = "c";
+                            break;
+                        case 14:
+                            letter = "d";
+                            break;
+                        case 15:
+                            letter = "e";
+                            break;
+                        case 16:
+                            letter = "f";
+                            break;
+                        case 17:
+                            letter = "g";
+                            break;
+                        case 18:
+                            letter = "h";
+                            break;
+                        case 19:
+                            letter = "i";
+                            break;
+                        case 20:
+                            letter = "j";
+                            break;
+                        case 21:
+                            letter = "k";
+                            break;
+                        case 22:
+                            letter = "l";
+                            break;
+                        case 23:
+                            letter = "m";
+                            break;
+                        case 24:
+                            letter = "n";
+                            break;
+                        case 25:
+                            letter = "o";
+                            break;
+                        case 26:
+                            letter = "p";
+                            break;
+                        case 27:
+                            letter = "q";
+                            break;
+                        case 28:
+                            letter = "r";
+                            break;
+                        case 29:
+                            letter = "s";
+                            break;
+                        case 30:
+                            letter = "t";
+                            break;
+                        case 31:
+                            letter = "u";
+                            break;
+                        case 32:
+                            letter = "v";
+                            break;
+                        case 33:
+                            letter = "w";
+                            break;
+                        case 34:
+                            letter = "x";
+                            break;
+                        case 35:
+                            letter = "y";
+                            break;
+                        case 36:
+                            letter = "z";
+                            break;
+                    }
+                    str = new RegExp("^[+\\-]?[0-9a-" + letter + "]*[.]?[0-9a-" + letter + "]*$", "gi");
+                }
+                return str;
+            }
+            var n = 50;
+            var shurukuang = "";
+            var flag = "";
+            function px(y) {
+
+                if ($("#input_value").val() != flag || y) {
+
+                    if ($("#input_num").val() == 10) {
+                        if (String($("#input_value").val()).indexOf(".") > -1) {
+                            alert('小数，请用浮点数操作');
+                        }
+                        if (String($("#input_value").val()).indexOf("-") > -1) {
+                            alert('负数，请用浮点数操作');
+                        }
+                    }
+
+
+                    flag = $("#input_value").val();
+                    if ($("#input_num").selectedIndex < n) {
+                        $("#input_value").val("");
+                        $("#output_value").val("");
+                    } else {
+                        var px00 = $("#input_value").val();
+                        var px0 = px00.match(zhengze($("#input_num").val()));
+                        if (px0) {
+                            if (px0[0].indexOf(".") == -1) {
+                                var px1 = parseInt(px0, $('#input_num').val());
+                            } else {
+                                var px1 = pxparseFloat(px0, $('#input_num').val());
+                            }
+                            px1 = px1.toString($('#output_num').val());
+                            $("#output_value").val(px1);
+                            shurukuang = px00;
+                        } else {
+                            $("#input_value").val(shurukuang);
+                        }
+                    }
+                    n = $("#input_num").selectedIndex;
+                }
+                if ($("#input_value").val() == "") {
+                    $("#output_value").val("");
+                }
+
+
+
+            }
+        </script>
+
+
+
+    </body>
+</html>
