@@ -42,7 +42,7 @@
 			<br/>
 			<br/>
 		<font color="red">
-		三：在服务端输入<br/>
+		三：在服务端控制台输入<br/></font>
 			1：服务端传送指令/spreadplayers<br/>
 			<blockquote>示例：<br/>
 			/spreadplayers X坐标 Z坐标 1 5 true 玩家名<br/>
@@ -54,8 +54,65 @@
 			/spawnpoint 玩家名  X坐标 Y坐标 Z坐标<br/>
 			/spawnpoint akarin_sama<br/>
 			</blockquote>
-		</font>
+		
 			<br/><br/>
+			<font color="red">
+		四：服务器关闭队友伤害和显示队友血量<br/></font>
+			1：关闭队友伤害<br/>
+			<blockquote>
+				在服务器中控制台依次输入<br/>
+				/scoreboard teams add team<br/>
+				/scoreboard teams join team @a<br/>
+				/scoreboard teams option team color <font color=blue>blue</font><br/>
+				/scoreboard teams option team friendlyFire false<br/>
+				</blockquote><br/>
+			2：显示队友血量<br/>
+			<blockquote>
+				在服务器中控制台依次输入<br/>
+				/scoreboard objectives add <font color="#DC3545">血量 health</font><br/>
+				/scoreboard objectives setdisplay <font color="green">sidebar</font> 血量<br/>
+				玩家血量退出重进就可以在界面右边显示<br/>
+				</blockquote><br/>
+			3：如果有新的小伙伴加入
+			<blockquote>
+				在服务器中控制台再次输入<br/>
+				/scoreboard teams join team @a<br/>
+				即可<br/>
+				</blockquote><br/>
+			4：上面的“<font color=blue>blue</font>”可以替换为以下颜色<br/>
+			<blockquote>
+				black, dark_blue, dark_green, dark_aqua, dark_red, <br/>
+				dark_purple, gold, gray, dark_gray, blue, <br/>
+				green, aqua, red, light_purple, yellow, <br/>
+				white, brown, light_gray, reset<br/>
+				</blockquote><br/>
+			5：上面的“<font color="green">sidebar</font>”可以替换为
+			<blockquote>
+				list：不建议，会覆盖“~”键的等级显示<br/>
+				sidebar：推荐，右边侧边栏<br/>
+				belowname：名字下面，有点吃藕，shift下蹲将隐藏<br/>
+				</blockquote><br/>
+			6：上面的“<font color="#DC3545">health</font>”可以替换为
+			<blockquote>
+				dummy：测试值<br/>
+				playerKillCount：玩家击杀<br/>
+				totalKillCount：生物击杀<br/>
+				health：当前生命<br/>
+				deathCount：死亡次数<br/>
+				<br/>
+				如果修改，请同步把“<font color="#DC3545">血量</font>”也改掉。<br/>
+				
+				</blockquote>
+			7：注意点
+			<blockquote>
+				所有值都需要在变化后更新。<br/>
+				服务器重启设置依然会保留。<br/>
+				不会的话，只做1,2两步就完全够了。<br/>
+				<br/>
+				不想要显示或重置设置，可以删除服务器下的<br/>
+				\world\data\scoreboard.dat<br/>
+				重启服务器即可。<br/>
+				</blockquote>
 	</body>
 	<br/>
 	<br/>
