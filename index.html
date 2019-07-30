@@ -77,12 +77,32 @@
 	<br/>
 	<footer>
 		<div id="indexfooter" align="center">
+			<script type="text/javascript">
+			    function show_site_runtime(){
+				window.setTimeout("show_site_runtime()",1000); 
+				X=new Date("09/01/2018 00:00:00"); 
+				Y=new Date();
+				T=(Y.getTime()-X.getTime());
+				i=24*60*60*1000;
+				d=T/i;
+				D=Math.floor(d); 
+				h=(d-D)*24;
+				H=Math.floor(h); 
+				m=(h-H)*60;
+				M=Math.floor(m); 
+				s=(m-M)*60
+				S=Math.floor(s); 
+				site_runtime.innerHTML= D + " 天 " + H + " 时 " + M + " 分 " + S + " 秒 "
+			    }
+				show_site_runtime();
+			</script>
 		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     	<span id="busuanzi_container_site_pv">雪花量<span id="busuanzi_value_site_pv"></span>片</span>
     	 | 
 		<span id="busuanzi_container_site_uv">雪球数<span id="busuanzi_value_site_uv"></span>颗</span>
 		<br/>
 		© 2019   本网站由 <a href="http://melodycos.tk" target="_blank">月煮雪</a> 强力驱动  <br/>
+		<span id="site_runtime" style="color: #24a0f0;"></span><br/>
 		<font size=1 color=bisque>请于2019.9.1日之前续期</font>
 		</div>
 	</footer>
