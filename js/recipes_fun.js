@@ -280,6 +280,70 @@
                 '','item_creeperbaby','item_creeperbaby'
             ],
             'keywords': '苦力怕 宝宝 魂 苦力'
+        },
+        {
+            'name':'羊毛 &rarr; 线',
+            'output':'item_string',
+            'items':[
+                '','','',
+                '','item_whitewool','',
+                '','',''
+            ],
+            'keywords': '羊毛 线'
+        },
+        {
+            'name':'石粒 &rarr; 圆石',
+            'output':'item_cobblestone',
+            'items':[
+                '','','',
+                '','item_stones','',
+                '','',''
+            ],
+            'keywords': '石粒 圆石 石头'
+        },
+        {
+            'name':'蓝宝石 &rarr; 灵石',
+            'output':'item_gotcha',
+            'outamt': '64',
+            'items':[
+                '','','',
+                '','item_gem_blue','',
+                '','',''
+            ],
+            'keywords': '蓝宝石 灵石'
+        },
+        {
+            'name':' &rarr; 辟谷丹',
+            'output':'item_drug_bg',
+            'outamt': '6',
+            'items':[
+                'item_flower1','item_flower2','item_flower3',
+                'item_flower4','item_ironnugget','item_flower5',
+                'item_flower6','item_redstone','item_flower7'
+            ],
+            'keywords': '红石 花 铁粒'
+        },
+        {
+            'name':' &rarr; 筑基丹',
+            'output':'item_drug_zj',
+            'outamt': '2',
+            'items':[
+                '','','',
+                '','item_emerald','item_emerald',
+                '','item_egg','item_flower7'
+            ],
+            'keywords': '筑基丹'
+        },
+        {
+            'name':' &rarr; 史莱姆沙',
+            'output':'item_slimesand',
+            'outamt': '8',
+            'items':[
+                'item_sand','item_sand','item_sand',
+                'item_sand','item_slimeball','item_sand',
+                'item_sand','item_sand','item_sand'
+            ],
+            'keywords': '沙子 粘液球 史莱姆 史莱姆沙'
         }
     ]);
 };
