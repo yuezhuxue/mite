@@ -775,7 +775,7 @@
             'keywords':'苹果 金粒'
         },
         {
-            'name':'附魔金苹果（附魔台100经验）',
+            'name':'附魔金苹果（附魔台200经验）',
             'output':'item_goldenapple',
             'items':[
                 '','','',

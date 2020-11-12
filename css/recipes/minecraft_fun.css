@@ -106,31 +106,32 @@ div .item_coppertoolbench{background:url(https://ae01.alicdn.com/kf/H4d895159122
 div .item_copperingot{background:url(https://ae01.alicdn.com/kf/HTB1IZeRbbj1gK0jSZFu763rHpXaU.png)}
 div .item_cobblestone{background:url(https://ae01.alicdn.com/kf/H677c7d93fbdc4a6e92e631b741a08e288.png) -352px -256px no-repeat}
 
-div .item_manure{background:url(https://ae04.alicdn.com/kf/H848fa8b822b74d71add4577ca36405e6n.jpg)}
-div .item_eight_hamburger{background:url(https://sc04.alicdn.com/kf/H383c38be7d8e46ddac43f2e2c30b98715.jpg)}
-div .item_ironorebag{background:url(https://ae03.alicdn.com/kf/H9651fe18193140febbf32c61a25666eca.jpg)}
-div .item_obsidianstick{background:url(https://ae04.alicdn.com/kf/H55b635347eff46eeab24d2652cc5b511F.jpg)}
-div .item_stacktorch{background:url(https://ae03.alicdn.com/kf/H886859e16cf1445b95daee067b7983deO.jpg)}
-div .item_stacktorchon{background:url(https://ae04.alicdn.com/kf/H4b3b5ba178c5434b817711094cbc3ee4k.jpg)}
-div .item_stacklog{background:url(https://ae03.alicdn.com/kf/H09f85f82144f47c894531b036497b03ay.jpg)}
-div .item_zombiebrain{background:url(https://sc03.alicdn.com/kf/H577f7926978e4270be3558ef10d1b554w.jpg)}
-div .item_zombiedrug{background:url(https://ae02.alicdn.com/kf/H8f95dc8c8ec1460b9e0dc70f3512edb92.jpg)}
-div .item_creeperbaby{background:url(https://sc03.alicdn.com/kf/H7c8c695f450a40f7919f00e7e586aef4L.jpg)}
-div .item_creepersoul{background:url(https://ae04.alicdn.com/kf/Hdd86dd62129b4b4a9bf7c001fa19d40ep.jpg)}
-div .item_stones{background:url(https://ae04.alicdn.com/kf/H7cd1de986e454d28806bc86abc53cd1cZ.jpg)}
-div .item_gem_blue{background:url(https://ae02.alicdn.com/kf/H5278d89ee14c4c93aacd85624da42b57d.jpg)}
-div .item_gotcha{background:url(https://ae04.alicdn.com/kf/H0a334bf128214a6eae5c2cdef487481e6.jpg)}
-div .item_drug_bg{background:url(https://sc03.alicdn.com/kf/Hcbd714ee8d7b44d8b9732dae9ed1ee36z.jpg)}
-div .item_drug_zj{background:url(https://ae03.alicdn.com/kf/Hec10c003dd2446eea26264eebc2e5109p.jpg)}
-div .item_flower1{background:url(https://ae02.alicdn.com/kf/Hccbcbce2fb5848f08e4068fa7d18d8b4u.jpg)}
-div .item_flower2{background:url(https://ae04.alicdn.com/kf/H1bea767419fe43c2b4e8fa8b6f7eeb0da.jpg)}
-div .item_flower3{background:url(https://sc01.alicdn.com/kf/Hbb05caa69ed44a3ca04276ac1e288619L.jpg)}
-div .item_flower4{background:url(https://sc04.alicdn.com/kf/Hbc53383638ed42c4bd67b58e3bd6870f8.jpg)}
-div .item_flower5{background:url(https://sc01.alicdn.com/kf/H3c6fe6447f094f6d88a426d710667c1b1.jpg)}
-div .item_flower6{background:url(https://ae03.alicdn.com/kf/H699090576b7d46b983b6c6d36df3f32aS.jpg)}
-div .item_flower7{background:url(https://ae03.alicdn.com/kf/Hec7b47a1b434479baea1e621c4e9a509Z.jpg)}
-div .item_slimesand{background:url(https://ae03.alicdn.com/kf/H630555e69a834a4b903d61fae8403bfb8.jpg)}
+div .item_manure{background:url(../../ga/img/recipes/manure.png)}
+div .item_eight_hamburger{background:url(../../ga/img/recipes/eight_hamburger.png)}
+div .item_ironorebag{background:url(../../ga/img/recipes/ironorebag.png)}
+div .item_obsidianstick{background:url(../../ga/img/recipes/obsidianstick.png)}
+div .item_stacktorch{background:url(../../ga/img/recipes/stacktorch.png)}
+div .item_stacktorchon{background:url(../../ga/img/recipes/stacktorchon.png)}
+div .item_stacklog{background:url(../../ga/img/recipes/stacklog.png)}
+div .item_zombiebrain{background:url(../../ga/img/recipes/zombiebrain.png)}
+div .item_zombiedrug{background:url(../../ga/img/recipes/zombiedrug.png)}
+div .item_creeperbaby{background:url(../../ga/img/recipes/zombiedrug.png)}
+div .item_creepersoul{background:url(../../ga/img/recipes/creepersoul.png)}
+div .item_stones{background:url(../../ga/img/recipes/stones.png)}
+div .item_gem_blue{background:url(../../ga/img/recipes/gem_blue.png)}
+div .item_gotcha{background:url(../../ga/img/recipes/gotcha.png)}
+div .item_drug_bg{background:url(../../ga/img/recipes/drug_bg.png)}
+div .item_drug_zj{background:url(../../ga/img/recipes/drug_zj.png)}
+div .item_flower1{background:url(../../ga/img/recipes/flower1.png)}
+div .item_flower2{background:url(../../ga/img/recipes/flower2.png)}
+div .item_flower3{background:url(../../ga/img/recipes/flower3.png)}
+div .item_flower4{background:url(../../ga/img/recipes/flower4.png)}
+div .item_flower5{background:url(../../ga/img/recipes/flower5.png)}
+div .item_flower6{background:url(../../ga/img/recipes/flower6.png)}
+div .item_flower7{background:url(../../ga/img/recipes/flower7.png)}
+div .item_slimesand{background:url(../../ga/img/recipes/slimesand.png)}
 
 
 
 
+../../ga/img/recipes/.png

@@ -94,7 +94,7 @@
         }
         ,
         {
-            'name':'迷之炖菜（回血）',
+            'name':'腐肉汤（回血）',
             'output':'item_rabbitstew',
             'items':[
                 '','','',
