@@ -284,7 +284,7 @@
         {
             'name':'羊毛 &rarr; 线',
             'output':'item_string',
-            'outamt': '64',
+            'outamt': '4',
             'items':[
                 '','','',
                 '','item_whitewool','',
