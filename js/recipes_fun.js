@@ -314,13 +314,23 @@
             'keywords': '蓝宝石 灵石'
         },
         {
-            'name':' &rarr; 辟谷丹',
+            'name':'七种花 &rarr; 辟谷丹x64',
             'output':'item_drug_bg',
-            'outamt': '6',
+            'outamt': '64',
             'items':[
                 'item_flower1','item_flower2','item_flower3',
                 'item_flower4','item_ironnugget','item_flower5',
                 'item_flower6','item_redstone','item_flower7'
+            ],
+            'keywords': '红石 花 铁粒'
+        },
+        {
+            'name':'单种花 &rarr; 辟谷丹x1',
+            'output':'item_drug_bg',
+            'items':[
+                'item_flower1','item_flower1','item_flower1',
+                'item_flower1','item_ironnugget','item_flower1',
+                'item_flower1','item_redstone','item_flower1'
             ],
             'keywords': '红石 花 铁粒'
         },
@@ -345,6 +355,16 @@
                 'item_sand','item_sand','item_sand'
             ],
             'keywords': '沙子 粘液球 史莱姆 史莱姆沙'
+        },
+        {
+            'name':'远古金属稿+灵石 &rarr; 古宝稿',
+            'output':'item_gubaogao',
+            'items':[
+                'item_gotcha','item_gotcha','item_gotcha',
+                'item_gotcha','item_ironpickaxe','item_gotcha',
+                'item_gotcha','item_gotcha','item_gotcha'
+            ],
+            'keywords': '稿 灵石'
         }
     ]);
 };
