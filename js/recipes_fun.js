@@ -358,13 +358,83 @@
         },
         {
             'name':'远古金属稿+灵石 &rarr; 古宝稿',
-            'output':'item_gubaogao',
+            'output':'item_a_pickaxe',
             'items':[
                 'item_gotcha','item_gotcha','item_gotcha',
                 'item_gotcha','item_ironpickaxe','item_gotcha',
                 'item_gotcha','item_gotcha','item_gotcha'
             ],
             'keywords': '稿 灵石'
+        },
+        {
+            'name':'西红柿  &rarr; 西红柿炒鸡蛋',
+            'output':'item_tomato_omelette',
+            'items':[
+                '','','',
+                '','item_tomato','item_egg',
+                '','',''
+            ],
+            'keywords': '西红柿 番茄 鸡蛋'
+        },
+        {
+            'name':'  &rarr; 西红柿扦枝',
+            'output':'item_tomato_picked',
+            'items':[
+                'item_tomato','item_manure','',
+                'item_bonemeal','item_dirt','',
+                '','',''
+            ],
+            'keywords': '西红柿 肥料 骨粉 泥土'
+        },
+        {
+            'name':'古宝稿  &rarr; 新宝稿（类推',
+            'output':'item_b_pickaxe',
+            'items':[
+                'item_guilt1','item_blockoldmetal','item_guilt7',
+                'item_guilt2','item_a_pickaxe','item_guilt6',
+                'item_guilt3','item_guilt4','item_guilt5'
+            ],
+            'keywords': ''
+        },
+        {
+            'name':'  &rarr; 地精工具台',
+            'output':'item_coppertoolbench',
+            'items':[
+                'item_mitega','item_leather','',
+                'item_stick','item_oakwoodplanks','',
+                '','',''
+            ],
+            'keywords': '木棍 皮革 地精锭 工具台 木板'
+        },
+        {
+            'name':'  &rarr; 世界崩解之稿（暂定',
+            'output':'item_ga_pickaxe',
+            'items':[
+                'item_mitega','item_mitega','item_mitega',
+                '','item_blazerod','',
+                '','item_blazerod',''
+            ],
+            'keywords': '地精锭 烈焰棒'
+        },
+        {
+            'name':'  &rarr; 材料其三',
+            'output':'item_guilt3',
+            'items':[
+                'item_blockofgold','item_blockofgold','',
+                'item_blockofgold','item_blockofgold','',
+                '','',''
+            ],
+            'keywords': '材料'
+        },
+        {
+            'name':'  &rarr; 材料其三',
+            'output':'item_guilt3',
+            'items':[
+                'item_blockofemerald','item_blockofemerald','',
+                'item_blockofemerald','item_blockofemerald','',
+                '','',''
+            ],
+            'keywords': ''
         }
     ]);
 };
