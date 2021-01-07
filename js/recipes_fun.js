@@ -367,6 +367,16 @@
             'keywords': '稿 灵石'
         },
         {
+            'name':'所有金属粒  &rarr; 打火石',
+            'output':'item_flintandsteel',
+            'items':[
+                'item_coppernugget','','',
+                '','item_flint','',
+                '','',''
+            ],
+            'keywords': '打火石 金属粒'
+        },
+        {
             'name':'西红柿  &rarr; 西红柿炒鸡蛋',
             'output':'item_tomato_omelette',
             'items':[
