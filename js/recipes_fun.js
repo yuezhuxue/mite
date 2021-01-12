@@ -417,7 +417,7 @@
             'keywords': '木棍 皮革 地精锭 工具台 木板'
         },
         {
-            'name':'  &rarr; 世界崩解之稿（暂定',
+            'name':'  &rarr; 世界崩解之稿（别做，当前版本无效',
             'output':'item_ga_pickaxe',
             'items':[
                 'item_mitega','item_mitega','item_mitega',
