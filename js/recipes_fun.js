@@ -357,14 +357,14 @@
             'keywords': '沙子 粘液球 史莱姆 史莱姆沙'
         },
         {
-            'name':'远古金属稿+灵石 &rarr; 古宝稿',
+            'name':'远古金属镐+灵石 &rarr; 古宝镐',
             'output':'item_a_pickaxe',
             'items':[
                 'item_gotcha','item_gotcha','item_gotcha',
                 'item_gotcha','item_ironpickaxe','item_gotcha',
                 'item_gotcha','item_gotcha','item_gotcha'
             ],
-            'keywords': '稿 灵石'
+            'keywords': '镐 灵石'
         },
         {
             'name':'所有金属粒  &rarr; 打火石',
@@ -397,7 +397,7 @@
             'keywords': '西红柿 肥料 骨粉 泥土'
         },
         {
-            'name':'古宝稿  &rarr; 新宝稿（类推',
+            'name':'古宝镐  &rarr; 新宝镐（类推',
             'output':'item_b_pickaxe',
             'items':[
                 'item_guilt1','item_blockoldmetal','item_guilt7',
@@ -417,7 +417,7 @@
             'keywords': '木棍 皮革 地精锭 工具台 木板'
         },
         {
-            'name':'  &rarr; 世界崩解之稿（别做，当前版本无效',
+            'name':'  &rarr; 地精镐',
             'output':'item_ga_pickaxe',
             'items':[
                 'item_mitega','item_mitega','item_mitega',
