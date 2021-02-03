@@ -445,6 +445,17 @@
                 '','',''
             ],
             'keywords': ''
+        },
+        {
+            'name':'金胡萝卜  &rarr;  三尸脑神丹x3',
+            'output':'item_zombiedrug',
+            'outamt': '3',
+            'items':[
+                '','','',
+                '','item_zombiebrain','item_zombiebrain',
+                '','item_zombiebrain','item_goldencarrot'
+            ],
+            'keywords': '三尸脑神丹 花'
         }
     ]);
 };

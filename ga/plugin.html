@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<title>地精插件</title>
 		<link rel="stylesheet" href="../css/style.css" />
+		<script type="text/javascript" src="../js/unicode16.js"></script>
 	</head>
 	<body>
 		<br/>
@@ -15,32 +16,52 @@
 		<summary>
 		地精传送MITETPA
 		</summary>
-		<font color="red">更新v1.1 所有的修改均不需要重启生效</font><br/>
 		<br/>
 		写了一个服务器传送插件。（单机可用）<br/>
 		支持玩家间跨界（维度）传送。<br/>
 		客户端放到.minecraft\coremods\<br/>
 		服务器放到coremods\<br/>
 		运行时会在coremods\TPA\文件夹下生成配置文件。<br/>
+		<font color="red">注意：</font>
+		<ul>
+			<li>装新版本插件请删掉TPA文件夹</li><br/>
+			<li>开新档时建议删掉coremods\TPA\ 下的所有.ga文件</li><br/>
+		</ul>
+<br/>
+		<font color="red">更新v1.1 </font><br/>
+		<blockquote>
+		①所有的修改均不需要重启生效</blockquote><br/>
+		<font color="red">更新v1.2 </font><br/>
+		<blockquote>
+		①使服主（管理员）可以在游戏内添加白名单<br/>
+		②可以关闭白名单模式</blockquote><br/>
 		<br/>
 		可用指令<br/>
+		<blockquote>
 		/sethome（设置当前位置为家）<br/>
 		/home（传送到家，默认禁用）<br/>
 		/back（传送到上个位置，默认禁用）<br/>
 		/tpayes（自动接受所有tpa请求）<br/>
 		/tpano（自动拒绝所有tpa请求，默认拒绝）<br/>
 		/tpa 玩家名（传送到玩家位置）<br/>
+		<font color="coral">/tpaadd 玩家名</font>（管理员可用，@a=全体在线玩家）
+		</blockquote>
 		<br/>
 		初次运行服主需要手动修改两个ini文件，<br/>
 		①tpaConfig.ini是配置文件<br/>
 		（0=关闭，1=打开）<br/>
+		<blockquote>
 		home=1时允许/home<br/>
 		back=1时允许/back<br/>
 		time=30（传送冷却，3-3000，单位：秒）<br/>
+		whitelist=1时开启白名单<br/>
+		admin=管理员名（<font color="coral">注意，不能为中文，可以用本网页下面的转码工具转成mc编码）</font>
+		</blockquote>
 		<br/>
 		②tpaList.ini是传送白名单，<br/>
 		将玩家名依次填入，每行一个。<br/>
 		不在名单上的无法传送。<br/>
+		<font color="coral">中文名</font>需要转成mc编码，或者让管理员直接游戏内添加<br/>
 		<br/>
 		<br/>
 		举例说明一<br/>
@@ -59,7 +80,8 @@
 		/home /tpa 都会自动记录back点<br/>
 		玩家死亡不会自动记录back点<br/>
 		<br/>
-		<font color="red">注意：开新档时建议删掉coremods\TPA\ 下的所有.ga文件。</font>
+		
+		
 		</details>
 		
 
@@ -68,8 +90,22 @@
 		度娘盘【插件】目录<br/>
 		<br/>
 		<br/>
+		<details>
+		<summary>
+		中文玩家名 ←转→ mc编码（unicode）
+		</summary>
+		在这里输入中文玩家名或者mc编码<br/>
+		<textarea id="txt1" style="height:75px;">玩家名</textarea>
+		<!--
 
-
+        -->
+		<p><input type="button" class="btn" onclick="uz();" value="从mc编码还原" />
+			<input type="button" class="btn" onclick="zu();" value="转换成mc编码" /><br/>
+		 <label><input type="checkbox" id="onlyzw" checked />不转换字母、数字等,只转换中文。</label>
+		</p>
+		<textarea id="txt2" style="height:75px;">这里显示转换后的结果。</textarea><br/>
+		<br/>
+		</details>
 		<br/>
 		<br/>
 		<br/>
