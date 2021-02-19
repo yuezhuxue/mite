@@ -525,6 +525,106 @@
 		
 		</details>
 		
+		<details>
+			<summary>
+		<font color="#007BFF">B0.4.0 pre8-pre10更新日志</font>
+		</summary>
+		
+		<font color="#007BFF">B0.4.0 pre8更新日志</font><br/>
+		<blockquote>
+		方块
+		<ol>
+		增加了<b>锻造台!</b><br/>
+		<blockquote>
+		    右键打开,用于强化装备<br/>
+		    锻造时需要战锤和斧子(放入右方的格子中,越高挖掘等级的战锤和斧子将缩短锻造时间)<br/>
+		    将你的武器或装备放入中间的格子来获取强化所需的信息<br/>
+		    右侧将显示强化用时,强化失败几率,战锤及斧子消耗的耐久,还有强化失败的惩罚<br/>
+		    点击"开始锻造"可以开始锻造进程或显示锻造所需的物品(所需物品放入工具周围5格)<br/>
+		    关闭界面将中止锻造!<br/>
+		    锻造成功或失败都有音效提示(失败:铁砧损坏,成功:玩家升级),以及在界面上方提示<br/>
+		    注意,在锻造过程中任意一刻都可能失败,不一定是在最后才会失败<br/>
+		    </blockquote>
+		</ol>
+		物品
+		<ol>
+		增加了<b>强化石</b>,用于装备强化<br/>
+		更改了振金砧,振金熔炉等的合成表,详见<a href="img/MITE-ITE4.0.png" target="_blank">新版的合成表</a><br/>
+		增加了新的装备强化属性 <br/>
+					<br/>
+					<ul>
+		    <li><b>斩首</b>: 可以应用在武器上,每级增加5%的斩首几率,最高5级,权重为1</li><br/>
+		    <li><b>超自然</b>: 可以应用在工具上,每级增加0.1挖掘低等级方块时的效率(乘以挖掘等级差值),最高5级,权重为1</li><br/>
+			</ul>
+		强化等级加成 <br/>
+		<br/>
+		<ul>
+		    <li>对所有装备:每级增加10%的耐久度</li><br/>
+		    <li>对工具及武器:提供攻击力加成,设原始攻击力为a,强化等级为x,提供的攻击力为y,遵循以下公式:</li><br/>
+		    y = a[(1.028)^(2.28x) - 1]<br/>
+		    <li>对护甲:提供护甲加成,设原始护甲为b,强化等级为x,提供的护甲为y,遵循以下公式:</li><br/>
+		    y = x/3 + 0.68 * b[(1.028)^(2.28x) - 1]<br/>
+		    <li>在游戏中可以对物品按住Shift查看强化加成</li><br/>
+		</ul>
+		</ol>
+		实体
+		<ol>
+		    增加了猪人领主(和僵尸领主装备,属性一样,替换了原来在下界生成的僵尸领主,有岩浆粒子特效提示)<br/>
+		    僵尸领主现在无法着火,且必须要玩家击杀才会掉落钻石<br/>
+		    巨人僵尸只有被玩家杀死才会掉落物品,128天前掉落4~6个远古金属粒<br/>
+		    巨人僵尸每<span class="LP">1200</span>tick 即 1分钟将会召唤1个僵尸<span class="LG">{giant_zombie_spawn_zombie_cooldown}[整数]</span><br/>
+		</ol>
+		游戏机制
+		<ol>
+		玩家现在无法通过退出游戏解除渐进伤害<br/>
+		</ol>
+		其他
+		<ol>
+		增加了<span class="LG">/forging_grade set 数值</span>指令,用于设置装备的强化等级(仅用于Dev)<br/>
+		</ol>
+		</blockquote>
+		
+		<font color="#007BFF">B0.4.0 pre9更新日志</font><br/>
+		<blockquote>
+		Bug 修复
+		<ol>
+		    修复了在服务器上打开锻造台客户端崩溃的Bug<br/>
+		    修复了<b>超自然</b>强化只能用于武器的Bug<br/>		
+		</ol>
+		生物
+		<ol>
+		骷髅现在有20%的几率强制进行近战<span class="LG">{skeleton_force_melee_attack}[开关]</span><br/>
+		</ol>
+		其他
+		<ol>
+		地底世界随机传送前的五分钟时会有提醒<br/>
+		</ol>
+		</blockquote>
+		
+		<font color="#007BFF">B0.4.0 pre10更新日志</font><br/>
+		<blockquote>
+		Bug 修复
+		<ol>
+		修复了空手击杀实体时崩溃的Bug<br/>
+		</ol>
+		</blockquote>
+		</details>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
@@ -673,6 +773,12 @@
 <td></td>
 </tr>
 <tr>
+<td>164</td>
+<td>锻造台</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td></td>
 <td></td>
 <td></td>
@@ -780,6 +886,12 @@
 <td></td>
 <td></td>
 </tr>
+<tr>
+<td>2297</td>
+<td>强化石</td>
+<td></td>
+<td></td>
+</tr>
 </table>
 
 
@@ -792,7 +904,7 @@
 		<br/>
 		<br/>
 		<a href="https://ae01.alicdn.com/kf/He1904f1c8bc840bb94b435d26caed26er.jpg" target="_blank">振金合成表</a>
-		
+		<a href="img/MITE-ITE4.0.png" target="_blank">振金合成表4.0</a><br/>
 		
 		
 		
