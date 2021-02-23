@@ -30,9 +30,9 @@
 				a = document.getElementById(strTemp).value;
 				b = document.getElementById(strTemp).alt;
 				if (a == b){
-					document.getElementById(strTemp).style.color = "black"
+					document.getElementById(strTemp).style.color = "black";
 				}else{
-					document.getElementById(strTemp).style.color = "red"
+					document.getElementById(strTemp).style.color = "red";
 				}
 			}	
 		}
@@ -157,7 +157,7 @@
 				var sTemp = "";
 				var sT ="";
 				for (var i=0;i<=count;i++) {
-					sTemp = "ITE[" + i.toString() +"]"
+					sTemp = "ITE[" + i.toString() +"]";
 					strName[i] = document.getElementById(sTemp).name;
 					sT = document.getElementById(sTemp).value;
 					if (sT == "Boolean"){
@@ -165,10 +165,10 @@
 					}else{
 						strValue[i] = document.getElementById(sTemp).value;
 						if(strValue[i] == ""){
-							alert(strName[i] + "的值为空，请确认！")
+							alert(strName[i] + "的值为空，请确认！");
 							return;
 						}else if(parseInt(strValue[i])>=2147483647){
-							alert(strName[i] + "的值不能大于2147483647，请确认！")
+							alert(strName[i] + "的值不能大于2147483647，请确认！");
 							return;
 						}
 					}
@@ -180,12 +180,12 @@
 				for (var i=0;i<=count;i++) {
 						sTemp = sTemp + "\"" + strName[i] +"\"" + ":" + strValue[i] + ", \n ";
 				}
-				sTemp = sTemp.substring(0,sTemp.length - 4)
-				sTemp = "{" + sTemp + "}"
+				sTemp = sTemp.substring(0,sTemp.length - 4);
+				sTemp = "{" + sTemp + "}";
 				//console.log(strName[66])
 				//console.log(strValue[66])
 				//var eleTextarea = sTemp
-				funDownload(sTemp, 'mite-ite-cfg.json')
+				funDownload(sTemp, 'mite-ite-cfg.json');
 				
 				}
 		</script>
