@@ -343,9 +343,9 @@
 		    对玩家的窒息伤害增加至<span class="LP">10</span>点<span class="LG">{in_wall_damage_for_player}[小数]</span><br/>
 		    玩家附魔到好附魔的概率降低<br/>
 		    
-		玩家待在雨中<span class="LP">3600</span>tick即<span class="LP">30</span>分钟将得到虚弱1效果<span class="LG">{in_rain_debuff_time}[整数]</span><br/>
+		玩家待在雨中<span class="LP">3600</span>tick即<span class="LP">3</span>分钟将得到虚弱1效果<span class="LG">{in_rain_debuff_time}[整数]</span><br/>
 		当装备全套保护5时,提供一个减伤 <span class="LP">0.1</span> * 100 即 <span class="LP">10</span>% 的效果 <span class="LG">{all_protection_v_defence_fraction}[小数]</span><br/>
-		玩家在地狱待<span class="LP">72000</span> tick即<span class="LP">1</span>小时后将获得挖掘疲劳<br/>
+		玩家在地狱待<span class="LP">72000</span> tick即<span class="LP">1</span>小时后将获得挖掘疲劳<span class="LG">{nether_debuff_time}[整数]</span><br/>
 		<ul>
 		<li>必须在其他世界待<span class="LP">相同</span>的时间才能<span class="LP">完全消除</span>影响(完全消除时左下角将有提示)</li><br/>
 		</ul>
@@ -366,7 +366,7 @@
 			</ol>
 		物品
 			<ol>
-		    石英将只能将玩家升至<span class="LP">80</span>级<span class="LG">{quartz_max_exp_level}[整数]</span><br/>
+		    石英将只能将玩家升至<span class="LP">55</span>级<span class="LG">{quartz_max_exp_level}[整数]</span><br/>
 		    增加了一些振金熔炉的合成表(所需热值均为5)<br/>
 		        四个铁块烧制为一个秘银锭,用时<span class="LP">6000</span>tick即<span class="LP">5分钟</span><span class="LG"> {iron_to_mithril_cook_time}[整数]</span><br/>
 		        一个秘银块烧制为一个艾德曼锭,用时<span class="LP">9000</span>tick即<span class="LP">7.5分钟</span> <span class="LG">{mithril_to_adamantium_cook_time}[整数]</span><br/>
@@ -377,11 +377,11 @@
 			</ol>	
 		附魔
 			<ol>
-		    增加了扩展附魔(稀有,附魔难度10),可以附在任意工具上,最高5级,每级增加<span class="LP">0.5</span>格触及半径 <span class="LG">{extend_enchantment_boost_per_lvl}[小数]</span><br/>
+		    增加了扩展附魔(稀有,附魔难度10),可以附在任意工具上,最高5级,每级增加<span class="LP">0.5</span>格触及半径<s> <span class="LG">{extend_enchantment_boost_per_lvl}[小数]</span></s><br/>
 		    增加了暴击附魔(稀有,附魔难度10),可以附在剑上,最高5级,每级增加<span class="LP">2</span> * 10% = <span class="LP">20%</span> 平砍暴击几率和<span class="LP"> 0.4</span> 的暴击伤害<br/>
 		    <span class="LG">{crit_enchantment_chance_boost_per_lvl}[整数],{crit_enchantment_damage_boost_per_lvl[小数]}</span><br/>
 		    增加了格挡附魔(稀有,附魔难度20),可以附在振金剑上,最高1级,拥有后可以使用格挡<br/>				
-		增加了紧急守备附魔(稀有,附魔难度15),可以附在任意装备上,最高1级,拥有后当生命值掉至30%以下时将获得抗性提升2持续三秒，冷却:<span class="LP">72000</span> tick 即 <span class="LP">1</span>小时{emergency_cooldown}[整数]		
+		增加了紧急守备附魔(稀有,附魔难度15),可以附在任意装备上,最高1级,拥有后当生命值掉至30%以下时将获得抗性提升2持续三秒，冷却:<span class="LP">72000</span> tick 即 <span class="LP">1</span>小时 <span class="LG">{emergency_cooldown}[整数]</span>		
 				</ol>
 		方块	
 		<ol><span class="LP">
@@ -643,7 +643,7 @@
 		</ol>
 		其他
 		<ol>
-		地底世界和地狱的惩罚倒计时提示都移至快捷栏上方g<br/>
+		地底世界和地狱的惩罚倒计时提示都移至快捷栏上方<br/>
 		</ol>
 		</blockquote>
 		
@@ -656,6 +656,11 @@
 		</blockquote>
 		
 		</details>
+
+
+
+		<a href="mite-ite-cfg.html" target="_blank"><font color="red">☞振金4.0配置文件生成器</font></a>
+		<br/>
 		
 		
 		
@@ -667,14 +672,11 @@
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
 		<br/>
 		<font size="6" color="cornflowerblue">MITE振金修改器</font><br/>
 		主要用于直接修改物品的强化属性<br/>
