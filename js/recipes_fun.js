@@ -456,7 +456,50 @@
                 '','item_zombiebrain','item_goldencarrot'
             ],
             'keywords': '三尸脑神丹 花'
+        },
+        {
+            'name':'松脆蜘蛛腿  &rarr;  油炸冻蛛腿（暂定）',
+            'output':'item_spider_leg_b',
+            'outamt': '6',
+            'items':[
+                'item_spider_leg','','item_spider_leg',
+                'item_spider_leg','item_snowball','item_spider_leg',
+                'item_spider_leg','item_bakedpotato','item_spider_leg'
+            ],
+            'keywords': '土豆 雪球 蜘蛛 腿'
+        },
+        {
+            'name':'皮革  &rarr;  一捆皮革',
+            'output':'item_stack_leather',
+            'items':[
+                'item_leather','item_leather','item_leather',
+                'item_leather','item_sinew','item_leather',
+                'item_leather','item_leather','item_leather'
+            ],
+            'keywords': '皮革 线 绳'
+        },
+        {
+            'name':'皮革  &rarr;  一捆皮革',
+            'output':'item_stack_leather',
+            'items':[
+                'item_leather','item_leather','item_leather',
+                'item_leather','item_string','item_leather',
+                'item_leather','item_leather','item_leather'
+            ],
+            'keywords': '皮革 线 绳'
+        },
+        {
+            'name':'一捆皮革  &rarr;  皮革',
+            'output':'item_leather',
+            'outamt': '8',
+            'items':[
+                '','','',
+                '','item_stack_leather','',
+                '','',''
+            ],
+            'keywords': '皮革 线 绳'
         }
+
     ]);
 };
 
