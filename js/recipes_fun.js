@@ -498,7 +498,18 @@
                 '','',''
             ],
             'keywords': '皮革 线 绳'
+        },
+        {
+            'name':'任意金属锭  &rarr;  漏斗',
+            'output':'item_hopper',
+            'items':[
+                'item_copperingot','','item_copperingot',
+                'item_copperingot','item_chest','item_copperingot',
+                '','item_copperingot',''
+            ],
+            'keywords': '锭 漏斗'
         }
+
 
     ]);
 };
