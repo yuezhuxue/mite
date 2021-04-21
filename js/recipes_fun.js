@@ -508,7 +508,103 @@
                 '','item_copperingot',''
             ],
             'keywords': '锭 漏斗'
+        },
+        {
+            'name':'竹子  &rarr;  木棍',
+            'output':'item_stick',
+            'items':[
+                '','item_bamboo','',
+                '','item_bamboo','',
+                '','item_bamboo',''
+            ],
+            'keywords': '竹子 木棍'
+        },
+        {
+            'name':'腐肉  &rarr;  辣条',
+            'output':'item_latiao',
+            'items':[
+                '','','',
+                '','item_rottenflesh','item_rottenflesh',
+                '','item_rottenflesh','item_rottenflesh'
+            ],
+            'keywords': '腐肉 辣条'
+        },
+        {
+            'name':'糖  &rarr;  方糖',
+            'output':'item_cubesugar',
+            'items':[
+                '','','',
+                '','item_sugar','item_sugar',
+                '','item_sugar','item_sugar'
+            ],
+            'keywords': '糖 方糖'
+        },
+        {
+            'name':'  &rarr;  金之萃',
+            'output':'item_powder_jin',
+            'items':[
+                'item_goldnugget','item_silvernugget','item_coppernugget',
+                'item_ironnugget','item_ancient_metal_nugget','item_mithrilnugget',
+                'item_adamantiumnugget','item_vibranium_nugget','item_gem_blue'
+            ],
+            'keywords': '金 萃 粒'
+        },
+        {
+            'name':'地精粒  &rarr;  地精锭',
+            'output':'item_mitega',
+            'items':[
+                'item_mitega_nugget','item_mitega_nugget','item_mitega_nugget',
+                'item_mitega_nugget','item_mitega_nugget','item_mitega_nugget',
+                'item_mitega_nugget','item_mitega_nugget','item_mitega_nugget'
+            ],
+            'keywords': '地精粒 地精锭'
+        },
+        {
+            'name':'  &rarr;  灵力核心',
+            'output':'item_core',
+            'items':[
+                '','','',
+                '','item_mitega_nugget','item_mitega_nugget',
+                '','item_mitega_nugget','item_mitega_nugget'
+            ],
+            'keywords': '灵力 核心'
+        },
+        {
+            'name':'解密物品  &rarr;  地精粒',
+            'output':'item_mitega_nugget',
+            'items':[
+                'item_powder_jin','item_powder_mu','item_powder_shui',
+                'item_powder_huo','item_powder_tu','item_powder_feng',
+                'item_powder_lei','item_powder_bing','item_powder_an'
+            ],
+            'keywords': '地精粒'
+        },
+        {
+            'name':'  &rarr;  地精扇',
+            'output':'item_fan',
+            'items':[
+                'item_paper','','',
+                'item_stick','item_paper','',
+                'item_core','item_stick','item_paper'
+            ],
+            'keywords': ''
+        },
+        {
+            'name':'  &rarr;  回城卷轴',
+            'output':'item_homwscroll',
+        	'outamt': '64',
+            'items':[
+                'item_paper','item_powder_tu','item_paper',
+                'item_powder_tu','item_gem_blue','item_powder_tu',
+                'item_paper','item_powder_tu','item_paper'
+            ],
+            'keywords': '回城卷轴'
         }
+
+
+
+
+
 
 
     ]);
