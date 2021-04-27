@@ -599,7 +599,19 @@
                 'item_paper','item_powder_tu','item_paper'
             ],
             'keywords': '回城卷轴'
+        },
+        {
+            'name':'蓝宝石 任意染料  &rarr;  对应颜色灵石',
+            'output':'item_gotcha',
+            'outamt': '64',
+            'items':[
+                '','','',
+                '','item_gem_blue','item_pinkdye',
+                '','',''
+            ],
+            'keywords': '蓝宝石 灵石'
         }
+
 
 
 
