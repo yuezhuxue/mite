@@ -610,7 +610,40 @@
                 '','',''
             ],
             'keywords': '蓝宝石 灵石'
+        },
+        {
+            'name':'  &rarr;  唤物法杖',
+            'output':'item_summon_staff',
+            'items':[
+                '','item_gem_blue','',
+                '','item_stick','',
+                '','item_stick',''
+            ],
+            'keywords': '蓝宝石 木棍 唤物法杖'
+        },
+        {
+            'name':'  &rarr;  真·矿物袋',
+            'output':'item_ore_bag',
+            'items':[
+                'item_leather','item_leather','item_leather',
+                'item_leather','item_core','item_leather',
+                'item_leather','item_leather','item_leather'
+            ],
+            'keywords': '皮革 矿物 矿物袋'
+        },
+        {
+            'name':'金锭  &rarr;  引魂钟',
+            'output':'item_animal_bag',
+            'items':[
+                '','item_goldingot','',
+                'item_goldingot','item_core','item_goldingot',
+                'item_goldingot','','item_goldingot'
+            ],
+            'keywords': '金锭 引魂钟'
         }
+
+
+
 
 
 
