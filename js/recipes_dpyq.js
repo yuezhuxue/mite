@@ -301,17 +301,17 @@
             'keywords': '铁船'
         },
         {
-            'name':'红色羊毛+线+灯笼  &rarr;  灯笼',
+            'name':'红色羊毛+线+火把  &rarr;  灯笼',
             'output':'item_lantern',
             'items':[
                 '','','',
                 'item_redwool','item_string','item_torch',
                 '','',''
             ],
-            'keywords': '灯笼'
+            'keywords': '羊毛 线 火把 灯笼'
         },
         {
-            'name':'  &rarr;  盾牌',
+            'name':'木头+铁锭  &rarr;  盾牌',
             'output':'item_shield',
             'items':[
                 'item_oakwoodplanks','item_ironingot','item_oakwoodplanks',
@@ -321,7 +321,7 @@
             'keywords': '铁锭 木头 盾牌'
         },
         {
-            'name':'  &rarr;  电子板',
+            'name':'红石+铁锭  &rarr;  电子板',
             'output':'item_electric_board',
             'items':[
                 '','','',
