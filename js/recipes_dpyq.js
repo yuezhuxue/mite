@@ -191,37 +191,37 @@
             'keywords': '雪球 糖 纸 甜筒'
         },
         {
-            'name':'小麦+碗  &rarr;  小麦汤',
+            'name':'小麦+碗  &rarr;  小麦汤(旧版为空碗',
             'output':'item_wheat_soup',
             'items':[
                 '','','',
                 '','item_seeds','item_seeds',
-                '','item_seeds','item_bowl'
+                '','item_seeds','item_waterbowl'
             ],
             'keywords': '小麦 碗 小麦汤'
         },
         {
-            'name':'  &rarr;  莲子汤',
+            'name':'  &rarr;  莲子汤(旧版为空碗+三莲叶',
             'output':'item_lotus_soup',
             'items':[
                 '','','',
-                '','item_lilypad','item_lilypad',
-                '','item_lilypad','item_bowl'
+                '','item_lilypad','item_sugar',
+                '','item_lilypad','item_waterbowl'
             ],
             'keywords': '莲叶 莲子汤'
         },
         {
-            'name':'  &rarr;  鱼丸',
+            'name':'  &rarr;  鱼丸（旧版需火把',
             'output':'item_fish_ball',
             'items':[
                 '','','',
-                'item_rawfish','item_torch','item_rawfish',
+                'item_rawfish','item_rawfish','',
                 '','',''
             ],
-            'keywords': '鱼+火把 鱼丸'
+            'keywords': '鱼 火把 鱼丸'
         },
         {
-            'name':'皮革  &rarr;  腰带',
+            'name':'皮革  &rarr;  皮带（腰带',
             'output':'item_belt',
             'items':[
                 '','','',
@@ -261,7 +261,7 @@
             'keywords': '末影珍珠 金锭 皮革 背包'
         },
         {
-            'name':'  &rarr;  金属箱升级道具（其他金属类推',
+            'name':'硬石粒+硬石锭+箱子  &rarr;  金属箱升级道具（类推',
             'output':'item_hard_update',
             'items':[
                 'item_hard_nugget','item_hard_ingot','item_hard_nugget',
@@ -329,6 +329,106 @@
                 '','',''
             ],
             'keywords': '电子板 电子版'
+        },
+        {
+            'name':'  &rarr;  简易燧石小刀',
+            'output':'item_flintknife',
+            'items':[
+                '','','',
+                '','','item_flintchip',
+                '','item_straw_rope','item_stick'
+            ],
+            'keywords': '简易燧石小刀'
+        },
+        {
+            'name':'  &rarr;  糖水',
+            'output':'item_sugar_soup',
+            'items':[
+                '','','',
+                '','item_waterbowl','item_sugar',
+                '','',''
+            ],
+            'keywords': '糖 水'
+        },
+        {
+            'name':'  &rarr;  热水',
+            'output':'item_hot_water',
+            'items':[
+                '','','',
+                '','item_flintandsteel','item_waterbowl',
+                '','',''
+            ],
+            'keywords': '热水 打火石'
+        },
+        {
+            'name':'竹子  &rarr;  斗笠',
+            'output':'item_rain_hat',
+            'items':[
+                '','item_bamboodpyq','',
+                'item_bamboodpyq','item_string','item_bamboodpyq',
+                '','',''
+            ],
+            'keywords': '绳 竹 斗笠'
+        },
+        {
+            'name':'植物纤维  &rarr;  草绳',
+            'output':'item_straw_rope',
+            'items':[
+                '','','',
+                '','item_plant_fiber','item_plant_fiber',
+                '','item_plant_fiber','item_plant_fiber'
+            ],
+            'keywords': '植物纤维 草绳'
+        },
+        {
+            'name':'  &rarr;  萤石火把',
+            'output':'item_glow_torch',
+            'items':[
+                '','','',
+                '','item_glowstonedust','',
+                '','item_stick',''
+            ],
+            'keywords': '萤石 木棍 火把'
+        },
+        {
+            'name':'  &rarr;  筛子',
+            'output':'item_shaizi',
+            'items':[
+                '','','',
+                'item_oakwood','item_string','item_oakwood',
+                'item_stick','','item_stick'
+            ],
+            'keywords': ''
+        },
+        {
+            'name':'  &rarr;  火把枪',
+            'output':'item_torch_gun',
+            'items':[
+                '','item_oakwood','',
+                'item_oakwood','item_ironingot','item_oakwood',
+                '','item_stick','item_oakwood'
+            ],
+            'keywords': ''
+        },
+        {
+            'name':'  &rarr;  篝火',
+            'output':'item_gouhuo',
+            'items':[
+                '','','',
+                'item_stick','','item_stick',
+                'item_oakwoodplanks','item_oakwood','item_oakwoodplanks'
+            ],
+            'keywords': '篝火 木棍 原木 木板'
+        },
+        {
+            'name':'皮革+简易燧石小刀  &rarr;  皮革绳',
+            'output':'item_sinew',
+            'items':[
+                '','','',
+                '','item_leather','item_flintknife',
+                '','',''
+            ],
+            'keywords': '皮革 简易燧石小刀'
         }
 
 
