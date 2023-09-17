@@ -1,0 +1,61 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.col-md-4 {
+    color: #fff;
+    padding: 1.5rem;
+}
+
+.alert-danger strong {
+    display: block;
+}
+
+@media screen and (min-width: 992px) {
+.col-md-4{
+    max-width: calc(30%);
+}
+}
+
+.col-md-4 h2 {
+    font-variant-caps: small-caps;
+}
+
+.col-md-4 p:first-of-type {
+    flex-grow: 2;
+}
+
+.bgblue {
+    background: #003f72;
+}
+
+.bgred {
+    background: #992414;
+}
+
+.bggreen {
+    background: #6d7200;
+}
+
+.jumbotron {
+    background-color: #BBBBBB;
+    color: #fff;
+    max-width: 98%;
+    margin: 1rem auto;
+}
+
+.jumbotron h1 {
+    font-family: 'Shojumaru', cursive;
+}
+.mitega {
+	color:#212529;
+    margin-left:calc(20%);
+}
+.btn-secondary {
+    background-color: #4e789c;
+}
+
+.handwritten {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 2rem;
+}

@@ -1,0 +1,107 @@
+.crafting_layout{
+	position:absolute;
+	top:22px;
+	left:48px;
+	width:108px
+	}
+.crafting_output{
+	position:absolute;
+	top:50px;
+	left:228px;
+	background-position:center;
+	text-align:right;
+	vertical-align:middle;padding:8px;
+	color:#FFF!important;
+	text-shadow:2px 2px 0 #3f3f3f
+	}
+.crafting{
+	border:10px solid transparent;
+	background-color:#C3C3C3;
+	background-clip:content-box;
+	border-image:url(recipeT/square.png) 10;
+	position:relative
+	}
+.item{
+	width:32px;
+	height:32px;
+	border:2px solid transparent;
+	border-image:url(recipeT/angel.png) 2;
+	background:#8b8b8b;
+	float:left;
+	text-align:right;
+	vertical-align:middle;
+	font-size:1.375rem;
+	color:#FFF!important;
+	text-shadow:2px 2px 0 #3F3F3F;
+	box-sizing:content-box
+	}
+.recipe p{text-align:center;font-weight:700}
+.filter-bar{margin-bottom:2rem;font-weight:700;text-align:center}
+.filter-bar label{margin-right:2rem;font-size:1.25rem}
+.filter-bar input{border-radius:.5rem;width:20rem;padding:0 .5rem}
+div .item div{width:32px;height:32px}
+div .item_sinew{background:url(recipes/sinew.png)}
+div .item_irondagger{background:url(recipes/irondagger.png)}
+div .item_ironbattleaxe{background:url(recipes/ironbattleaxe.png)}
+div .item_ironwarhammer{background:url(recipes/ironwarhammer.png)}
+div .item_ironmattock{background:url(recipes/ironmattock.png)}
+div .item_ironscythe{background:url(recipes/ironscythe.png)}
+div .item_chain{background:url(recipes/chain.png)}
+div .item_chainmail{background:url(recipes/chainmail.png)}
+div .item_mithrilingot{background:url(recipes/mithrilingot.png)}
+div .item_obsidianshard{background:url(recipes/obsidianshard.png)}
+div .item_clayoven{background:url(recipes/clayoven.png)}
+div .item_hardenedclay{background:url(recipes/hardenedclay.png)}
+div .item_mithrilbow{background:url(recipes/mithrilbow.png)}
+div .item_cudgel{background:url(recipes/cudgel.png)}
+div .item_club{background:url(recipes/club.png)}
+div .item_flintaxe{background:url(recipes/flintaxe.png)}
+div .item_flinthatchet{background:url(recipes/flinthatchet.png)}
+div .item_flintknife{background:url(recipes/flintknife.png)}
+div .item_flintchip{background:url(recipes/flintchip.png)}
+div .item_largeclayoven{background:url(recipes/largeclayoven.png)}
+div .item_sandstoneoven{background:url(recipes/sandstoneoven.png)}
+div .item_obsidianfurnace{background:url(recipes/obsidianfurnace.png)}
+div .item_netherrackfurnace{background:url(recipes/netherrackfurnace.png)}
+div .item_glassshard{background:url(recipes/glassshard.png)}
+div .item_emeraldshard{background:url(recipes/emeraldshard.png)}
+div .item_flour{background:url(recipes/flour.png)}
+div .item_milkbowl{background:url(recipes/milkbowl.png)}
+div .item_cheese{background:url(recipes/cheese.png)}
+div .item_dough{background:url(recipes/dough.png)}
+div .item_waterbowl{background:url(recipes/waterbowl.png)}
+div .item_chocolate{background:url(recipes/chocolate.png)}
+div .item_orange{background:url(recipes/orange.png)}
+div .item_onion{background:url(recipes/onion.png)}
+div .item_sorbet{background:url(recipes/sorbet.png)}
+div .item_icecream{background:url(recipes/icecream.png)}
+div .item_mashedpotato{background:url(recipes/mashedpotato.png)}
+div .item_beefstew{background:url(recipes/beefstew.png)}
+div .item_chickensoup{background:url(recipes/chickensoup.png)}
+div .item_vegetablesoup{background:url(recipes/vegetablesoup.png)}
+div .item_creamofvegetablesoup{background:url(recipes/creamofvegetablesoup.png)}
+div .item_pumpkinsoup{background:url(recipes/pumpkinsoup.png)}
+div .item_cereal{background:url(recipes/cereal.png)}
+div .item_creamofmushroomsoup{background:url(recipes/creamofmushroomsoup.png)}
+div .item_salad{background:url(recipes/salad.png)}
+div .item_porridge{background:url(recipes/porridge.png)}
+div .item_bottleodisenchanting{background:url(recipes/bottleodisenchanting.png)}
+div .item_blueberry{background:url(recipes/blueberry.png)}
+div .item_strongbox{background:url(recipes/strongbox.png)}
+div .item_thinsnow{background:url(recipes/thinsnow.png)}
+div .item_snowslab{background:url(recipes/snowslab.png)}
+div .item_coppercoin{background:url(recipes/coppercoin.png)}
+div .item_coppernugget{background:url(recipes/coppernugget.png)}
+div .item_goldnugget{background:url(recipes/goldnugget.png)}
+div .item_mithrilnugget{background:url(recipes/mithrilnugget.png)}
+div .item_mithrilrunestone{background:url(recipes/mithrilrunestone.png)}
+div .item_adamantiumnugget{background:url(recipes/adamantiumnugget.png)}
+div .item_adamantiumrunestone{background:url(recipes/adamantiumrunestone.png)}
+div .item_flintarrow{background:url(recipes/flintarrow.png)}
+div .item_ironfishingrod{background:url(recipes/ironfishingrod.png)}
+div .item_obsidianknife{background:url(recipes/obsidianknife.png)}
+div .item_obsidiantoolbench{background:url(recipes/obsidiantoolbench.png)}
+div .item_flinttoolbench{background:url(recipes/flinttoolbench.png)}
+div .item_coppertoolbench{background:url(recipes/coppertoolbench.png)}
+div .item_copperingot{background:url(recipes/copperingot.png)}
+div .item_cobblestone{background:url(recipes/cobblestone.png)}
