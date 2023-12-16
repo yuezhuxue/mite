@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>消防实操训练</title>
+		<style>
+			button{
+				margin-left: 80px;
+				width: 400px;
+				height: 200px;
+				font-size: 40px;
+			}
+			button#right{
+				margin-right: 80px;
+				width: 400px;
+				height: 200px;
+				font-size: 40px;
+			}
+			p{
+				font-size: 40px;
+				background-color:#DDEBF7;
+				/*color:#44AA44;*/
+			}
+			p#count{
+				color: lightblue;
+				margin-left: 20px;
+				background-color:#ffffff;
+			}
+			p#title{
+				color: hotpink;
+				margin-left: 5px;
+				background-color:#ffffff;
+			}
+			p#answer{
+				color: green;
+				margin-left: 10px;
+			}
+			p2{
+				color:royalblue;
+			}
+			p3{
+				color:green;
+			}
+		</style>
+	</head>
+	<body>
+		<p id="count">第  0  题</p>
+		<hr>
+		<p id="title" >问题</p>
+		<hr>
+		<p id="answer" >答案</p>
+		<hr>
+		<br/>
+		<button type="button" onclick="randomFunction()">随机</button>
+		<button type="button" id="right" onclick="answerFunction()">答案</button>
+		<hr>
+		<button type="button" onclick="nextFunction()">顺序</button>
+		<script>
+			var randCount = 0;
+			var intCount = 0;
+			var randomNum = -1;
+			var Question = [];
+			var Answer = [];
+			Question[1] = "指认一下消防控制室设备";
+			Question[2] = "介绍一下电气火灾监控设备";
+			Question[3] = "介绍一下可燃气体探测报警系统";
+			Question[4] = "你查一下历史报警信息";
+			Question[5] = "测试一下线型感烟和线型感温装置";
+			Question[6] = "请简述消防控制室设备如何保养";
+			Question[7] = "请简述线型感烟感温探测器的保养";
+			Question[8] = "请简述电气火灾监控器的保养<br/>请简述可燃气体报警控制器的保养";
+			Question[9] = "请演示以下消防电话操作";
+			Question[10] = "简述消防电梯如何迫降";
+			Question[11] = "简述消防电话的保养";
+			Question[12] = "简述消防应急广播的保养";
+			Question[13] = "简述消防电梯防水保养";
+			Question[14] = "简述消防应急照明系统的保养";
+			Question[15] = "简述防火卷帘的操作";
+			Question[16] = "简述防火门操作";
+			Question[17] = "操作一下应急照明控制器";
+			Question[18] = "检查一下火灾自动报警系统控制器的电源";
+			Question[19] = "防烟风机如何保养，排烟风机如何保养";
+			Question[20] = "测试一下火灾显示盘的功能";
+			Question[21] = "区分一下火灾报警控制器的信号";
+			Question[22] = "指认一下自动喷水系统";
+			Question[23] = "简述一下稳压泵控制柜的操作";
+			Question[24] = "简述湿式自动喷水灭火系统如何保养";
+			Question[25] = "简述消防稳压设施保养方法";
+			Answer[1] = "①这是集中火灾报警控制器<br/>②这是总线控制盘，这是多线控制盘，合起来叫做消防联动控制器<br/>③消防控制室图形显示装置";
+			Answer[2] = "①设备主电工作，备电充电，关闭主电开关，主电自动切换至备电工作，打开主电开关备电自动切换至主电工作<br/>②当前火警指示灯亮，现在设备处于火警状态，火警信息为，时间,地点,设备";
+			Answer[3] = "①设备主电工作，备电充电，关闭主电开关，主电自动切换至备电工作，打开主电开关备电自动切换至主电工作<br/>②当前火警指示灯亮，现在设备处于火警状态，火警信息为，时间,地点,设备";
+			Answer[4] = "①主机查询，编程-密码[4321]-记录查询-读取-退出<br/>②图形显示装置，数据-报警历史数据-组合筛选-退出";
+			Answer[5] = "①线型感烟：0.9db的滤光片测试时不报警，1-10db的报火警，11.5db以上的报火警或故障，30秒内发出火警信号<br/>②线型感温：距离30厘米外，用54℃的热水加热，30秒内发出火警信号，拆除电缆报故障，最后进行复位。";
+			Answer[6] = "断开主电备电，毛刷清洁灰尘杂质，毛巾软布擦拭表面，检查线头锈蚀氧化并处理，开备电主电，关门恢复原状";
+			Answer[7] = "用毛巾软布擦拭表面，检查线头锈蚀氧化并处理，接入火灾自动报警系统并测试和复位";
+			Answer[8] = "断开主电备电，毛刷清洁灰尘杂质，毛巾软布擦拭表面，检查线头锈蚀氧化并处理，开备电主电，关门恢复原状";
+			Answer[9] = "①主机打分机：拿起听筒，输入密码11111→拨分机1→按接通键→讲话→按挂断键→挂机<br/>②分机打主机：直接拿起听筒<br/>③移动分机：插入手报插孔，拿听筒";
+			Answer[10] = "①打开紧急迫降按钮保护罩<br/>②按下紧急迫降按钮，电梯应停靠首层开门待用<br/>③进入轿厢→长按关门键→长按楼层键→长按开门键<br/>④关闭紧急迫降按钮，系统复位";
+			Answer[11] = "毛巾软布擦拭表面，检查线头锈蚀氧化并处理，检查呼叫、通话、自检、消音、复位功能检查，保养完成后进行复位自检，等待2分钟后观察主机是否正常";
+			Answer[12] = "毛巾软布擦拭表面，检查线头锈蚀氧化并处理，手动启动广播时正前方3米声压不低于65dB,自动状态下测试广播与火灾声警报交替循环播放功能，保养完成后进行复位自检，等待2分钟后观察主机是否正常";
+			Answer[13] = "①修补挡水漫坡5cm<br/>②清理排水井容量2m³<br/>③排水泵除锈，排水量10L/s<br/>④手动启停排水泵无振动异响";
+			Answer[14] = "毛刷清洁灰尘杂质，毛巾软布擦拭表面，检查线头锈蚀氧化并处理，调试自检、消音、故障报警和一键启动，调试主电备电自动切换";
+			Answer[15] = "①钥匙解锁手动按钮控制器<br/>②手动拉链<br/>③手动速放装置<br/>④消防控制室联动控制器远程控制，观察反馈<br/>⑤自动联动（两个烟感报警）启动<br/>⑥防火卷帘控制器<br/>⑦温控开关释放73±0.5℃";
+			Answer[16] = "①主电备电互相切换<br/>②按下自动按钮，切换手动自动<br/>③按自检按钮自检<br/>④按复位按钮复位<br/>⑤蹲下来按电磁释放器上的红按钮手动关闭防火门（防火门关闭，监控器有报警）";
+			Answer[17] = "①输入点击登录→输入口令→确认<br/>②鼠标点击控制方式→自检→确认<br/>③主电备电的切换<br/>④鼠标点击控制方式→手动自动切换，观察面板自动灯亮<br/>⑤两台设备打自动，按下手报联动报警，消音，复位手报，复位主机，复位控制器<br/>⑥一键启动，然后复位";
+			Answer[18] = "主电工作备电充电状态，关闭主电开关自动切换备电工作（此时报主电故障灯亮），打开主电开关自动切换到主电";
+			Answer[19] = "①手动测试启停功能<br/>②检查指示灯电流表电压表<br/>③检查各部位无异响和振动<br/>④检查调节阀的开启动作，开启角度标志";
+			Answer[20] = "①自检:编程→密码0000→选B→确认<br/>②按下手报→消音→主机消音-主机复位（火灾显示盘报警、消音功能正常，由主机复位正常）<br/>③不具备故障报警功能";
+			Answer[21] = "火警消防车声大红灯，监管警车声黄灯，故障救护车声小红灯";
+			Answer[22] = "①湿式报警阀、水流指示器<br/>②干式报警阀、气压维持装置<br/>③[开式，闭式][直立、下垂、边墙][玻璃球、易融元件][快速、特殊、标准][雨淋、水幕、水雾][橙57红68黄79绿93蓝141]";
+			Answer[23] = "①当前处于主电工作，备电备用状态<br/>②这是双电源切换开关，当打在自动挡时，如果主电断电，设备自动切换到备电。这是主泵备泵切换开关，当处于1主2备时，如果主泵运行故障，自动切换备泵启动<br/>③开关打自动，切断主电时自动切备电<br/>④当前时1主2备自动状态，打开末端试水装置，管内压力下降，主泵自动启动，模拟主泵故障，切断主泵电源，备泵自动运行<br/>⑤以下为复位操作，关闭末端试水装置，泵开关打手动，关闭稳压泵，泵开关打1主2备";
+			Answer[24] = "工作环境打扫清理，检查设施组件齐全，做好表面除锈补漆，检查连接处无渗漏，阀门开关正常，测试观察系统自动启停运转正常";
+			Answer[25] = "工作环境打扫清理，检查设施组件齐全，做好表面除锈补漆，检查连接处无渗漏，阀门开关正常，观察稳压泵自动启停运转正常";
+			function randomFunction()
+			{
+				randCount += 1;
+				randomNum = Math.floor(Math.random() * 25) + 1;
+				document.getElementById("count").innerHTML = "随机练习，第  " + String(randomNum) + "  题，已练 " + String(randCount) + " 题";
+				//console.log("随机值=")
+				//console.log("随机值 = " + String(randomNum))
+				document.getElementById("title").innerHTML = Question[randomNum];
+				document.getElementById("answer").innerHTML = "";
+				//document.getElementById("answer").style.background = "PaleTurquoise";
+			};
+			//
+			function answerFunction()
+			{
+				document.getElementById("answer").innerHTML = Answer[randomNum];
+				//console.log("randomNum=" + String(randomNum))
+			}
+			function nextFunction(){
+				if(intCount>=25){
+					intCount = 1;
+				}else{
+					intCount += 1;
+				}
+				randomNum = intCount;
+				document.getElementById("count").innerHTML = "顺序练习，第  " + String(intCount) + "  题";
+				document.getElementById("title").innerHTML = Question[intCount];
+				document.getElementById("answer").innerHTML = "";
+			}
+		</script>
+	</body>
+</html>

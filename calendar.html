@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendar</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="script/bootstrap.min.css">
+
+</head>
+<body>
+<div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
+    <div class="card">
+        <h3 class="card-header" id="monthAndYear"></h3>
+        <table class="table table-bordered table-responsive-sm" id="calendar">
+            <thead>
+            <tr>
+                <th>星期日</th>
+                <th>星期一</th>
+                <th>星期二</th>
+                <th>星期三</th>
+                <th>星期四</th>
+                <th>星期五</th>
+                <th>星期六</th>
+            </tr>
+            </thead>
+
+            <tbody id="calendar-body">
+
+            </tbody>
+        </table>
+
+        <div class="form-inline">
+
+            <button class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()">上个月</button>
+
+            <button class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">下个月</button>
+        </div>
+        <br/>
+        <form class="form-inline">
+            <label class="lead mr-2 ml-2" for="month">跳转到: </label>
+            <select class="form-control col-sm-4" name="month" id="month" onchange="jump()">
+                <option value=0>一月</option>
+                <option value=1>二月</option>
+                <option value=2>三月</option>
+                <option value=3>四月</option>
+                <option value=4>五月</option>
+                <option value=5>六月</option>
+                <option value=6>七月</option>
+                <option value=7>八月</option>
+                <option value=8>九月</option>
+                <option value=9>十月</option>
+                <option value=10>十一月</option>
+                <option value=11>十二月</option>
+            </select>
+
+
+            <label for="year"></label><select class="form-control col-sm-4" name="year" id="year" onchange="jump()">
+            <option value=2020>2020</option>
+            <option value=2021>2021</option>
+            <option value=2022>2022</option>
+            <option value=2023>2023</option>
+			<option value=2023>2024</option>
+			<option value=2023>2025</option>
+			<option value=2023>2026</option>
+			<option value=2023>2027</option>
+			<option value=2023>2028</option>
+			<option value=2023>2029</option>
+			<option value=2023>2030</option>
+        </select></form>
+    </div>
+</div>
+<!--<button name="jump" onclick="jump()">Go</button>-->
+<script src="script/scripts.js"></script>
+
+<!-- Optional JavaScript for bootstrap -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="script/jquery-3.3.1.slim.min.js"></script>
+<script src="script/popper.min.js"></script>
+<script src="script/bootstrap.min.js"></script>
+
+
+</body>
+</html>
