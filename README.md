@@ -1,7 +1,5 @@
 ﻿#MITE模组地精科技站
 
->https://yuezhuxue.gitee.io/mite/
-
 >https://yuezhuxue.github.io/mite/
 
-gitee pages test
+gitee停止服务，迁移到github
