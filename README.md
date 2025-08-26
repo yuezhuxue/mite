@@ -1,6 +1,8 @@
 ﻿# MITE模组地精科技站
-> 主站（Cloudflare）：[https://mitega.pages.dev](https://mitega.pages.dev)  
-> 备用站（GitHub）：[https://yuezhuxue.github.io/mite](https://yuezhuxue.github.io/mite)
+
+> 国内站（极狐Gitlab）：[https://mite-ddf171.pages.jihulab.net](https://mite-ddf171.pages.jihulab.net) 
+> 国外站（GitHub）：[https://yuezhuxue.github.io/mite](https://yuezhuxue.github.io/mite)
+> 备用站（Cloudflare）：[https://mitega.pages.dev](https://mitega.pages.dev)  
 
 
-部署到cloudflare
+Coding Pages即将下线，故不部署
