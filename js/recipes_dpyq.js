@@ -455,7 +455,6 @@ createRecipeList = function(recipeList) {
 createRecipe = function(recipe) {
     var baseDiv = $('<div/>', {'class':'recipe'});
     var craftingDiv = $('<div/>', {'class':'crafting'});
-    //craftingDiv.append($('<img/>').attr('src', 'https://ae01.alicdn.com/kf/HTB1r2CMbkY2gK0jSZFg7635OFXaA.png'));
     craftingDiv.append($('<img/>').attr('src', '../ga/img/craft.png'));
     craftingDiv.append(crafting_layout(recipe));
     var craftingOutput = $('<div/>').addClass('crafting_output item');
