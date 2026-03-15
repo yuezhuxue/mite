@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>诅咒列表 - MITE魔法时代</title>
+    <link rel="stylesheet" href="../../css/modern_style.css">
+    <style>
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        .intro-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .intro-section h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .intro-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background: var(--bg-primary);
+        }
+
+        .curse-name {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .curse-effect {
+            color: #a855f7;
+            font-weight: 600;
+        }
+
+        .removed-tag {
+            display: inline-block;
+            background: #ef4444;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-left: 0.5rem;
+        }
+
+        .info-box {
+            background: var(--card-bg);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .info-box p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回魔法时代主页</a>
+
+        <div class="intro-section">
+            <h1>诅咒列表</h1>
+            <p>诅咒附魔的灵感来源于新版MC中的魔咒（绑定诅咒等）和MITE中女巫诅咒buff的设定。</p>
+            <p>附魔时有超大概率获得诅咒，每个附魔台的获得诅咒的概率不同：<strong>钻石 > 绿宝石 > 高级</strong></p>
+        </div>
+
+        <div class="info-box">
+            <h3>关于诅咒系统</h3>
+            <p>玩家能通过<strong>古金属魔法毡</strong>突破附魔5级上限，使用消耗魔法结晶和经验值，随机对一个物品上的某个附魔进行升级，包括诅咒。</p>
+            <p>使用<strong>彼岸结晶</strong>在魔法毡消耗经验能够消除诅咒一级。</p>
+            <p><strong>彼岸结晶</strong>：由魔法结晶和彼岸花合成（彼岸花从猪人领主掉落）</p>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>诅咒</th>
+                        <th>效果</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="curse-name">生锈</span></td>
+                        <td>当<span class="curse-effect">耐久减少</span>时，有概率减少更多</td>
+                    </tr>
+                    <tr>
+                        <td><span class="curse-name">虚弱</span></td>
+                        <td>奔跑的消耗增加（添加奔跑时减少<span class="curse-effect">氧气值</span>）</td>
+                    </tr>
+                    <tr>
+                        <td><span class="curse-name">笨重</span></td>
+                        <td>持有者减缓<span class="curse-effect">移动速度</span>，降低<span class="curse-effect">跳跃高度</span>（限定护甲）
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="curse-name">嗜血</span></td>
+                        <td>如果这个物品在一段时间内没有<span class="curse-effect">击杀</span>其他生物，则对持有者造成一定的<span
+                                class="curse-effect">伤害</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="curse-name">恐惧黑暗</span></td>
+                        <td>当装备时如果周围<span class="curse-effect">光亮</span>较低，则这个物品的附魔不生效</td>
+                    </tr>
+                    <tr>
+                        <td><span class="curse-name">群居</span></td>
+                        <td>穿戴时，如果身上没有<span class="curse-effect">4件</span>装备，则这个物品的附魔不生效</td>
+                    </tr>
+                    <tr>
+                        <td><span class="curse-name">不合群</span></td>
+                        <td>穿戴时，如果身上有<span class="curse-effect">3件或以上</span>的装备，则这个物品的附魔不生效</td>
+                    </tr>
+                    <tr>
+                        <td><span class="curse-name">爆炸</span></td>
+                        <td>这个物品非常喜欢爆炸，以至于附近的<span class="curse-effect">苦力怕</span>不用蓄力就能爆炸以及提高威力</td>
+                    </tr>
+                    <tr>
+                        <td><span class="curse-name">嫉妒</span><span class="removed-tag">已移除</span></td>
+                        <td>如果不在一定时间内<span class="curse-effect">装备</span>，则对携带者造成一定的伤害<br><small
+                                style="color: #ef4444;">（已在 v1.0.10 中移除）</small></td>
+                    </tr>
+                    <tr>
+                        <td><span class="curse-name">暴食</span></td>
+                        <td>会将背包内的<span class="curse-effect">食物</span>吃掉</td>
+                    </tr>
+                    <tr>
+                        <td><span class="curse-name">傲慢</span></td>
+                        <td>玩家的<span class="curse-effect">等级</span>低于一定水平时，无法捡起该物品，即使在背包里也会被丢出</td>
+                    </tr>
+                    <tr>
+                        <td><span class="curse-name">懒惰</span></td>
+                        <td><span class="curse-effect">天黑</span>时，该物品的附魔不生效</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            } else {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            htmlElement.setAttribute('data-theme', currentTheme);
+            updateThemeIcon(currentTheme);
+        });
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+    </script>
+</body>
+
+</html>

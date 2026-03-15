@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你知道吗 - MITE游戏技巧</title>
+    <link rel="stylesheet" href="../css/modern_style.css">
+    <style>
+        .page-header {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .page-header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .page-header .warning {
+            color: #ff6b6b;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tip-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .tip-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: bold;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .tip-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .tip-content {
+            color: var(--text-primary);
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .tip-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .tip-content a:hover {
+            color: var(--accent-color);
+            border-bottom-style: solid;
+        }
+
+        .tip-highlight {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        .server-commands {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .server-commands h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .server-commands h2 svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+
+        .command-block {
+            background: rgba(139, 92, 246, 0.05);
+            border-left: 3px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .command-block p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .command-list {
+            list-style: none;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .command-list li {
+            background: var(--bg-primary);
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 6px;
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .command-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .command-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--primary-color);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .command-link:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        [data-theme="dark"] .command-link:hover {
+            color: white;
+        }
+
+        [data-theme="dark"] .command-link:hover svg {
+            fill: white;
+        }
+
+        [data-theme="light"] .command-link:hover {
+            color: #1a1a2e;
+        }
+
+        [data-theme="light"] .command-link:hover svg {
+            fill: #1a1a2e;
+        }
+
+        .command-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .page-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+            text-align: center;
+        }
+
+        .page-footer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .page-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+
+    <div class="container">
+        <a href="../index_new.html" class="back-link">← 返回主页</a>
+
+        <div class="page-header">
+            <h1>你知道吗？</h1>
+            <p class="subtitle">一些实验总结和小教程</p>
+            <p class="warning">云玩家勿扰</p>
+        </div>
+
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">1</span>
+                    <div class="tip-content">下雨不会使草重生</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">2</span>
+                    <div class="tip-content">
+                        红蘑菇需要在遮盖物下面种植，旁边需要阳光，可以用粪便催熟（需要足够高度空间），
+                        <a href="../ga/tips/mushroom.html" target="_blank">教程点我</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">3</span>
+                    <div class="tip-content">鸡、猪、羊不需要草，只有牛才要草（可用小黄花代替）</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">4</span>
+                    <div class="tip-content">牛繁殖时几乎不会踩草</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">5</span>
+                    <div class="tip-content">经验值上限为2147483647，超过就会变成-40级</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">6</span>
+                    <div class="tip-content">负等级下每级都需要20经验</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">7</span>
+                    <div class="tip-content">单机植物生长不需要区块加载，使用时间跳跃可以瞬间成熟</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">8</span>
+                    <div class="tip-content">服务器植物生长需要区块加载（挂机），使用时间跳跃无法催熟</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">9</span>
+                    <div class="tip-content">单机如果跳过了血月，植物将大部分被催枯，服务器则不会</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">10</span>
+                    <div class="tip-content">击晕附魔会给目标一个26级的缓慢debuff，目标依然会攻击你</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">11</span>
+                    <div class="tip-content">
+                        乌贼攻击是3级缓慢，<span class="tip-highlight">食尸鬼攻击是6级缓慢</span>，其他教程说的"麻痹效果"纯属子虚乌有
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">12</span>
+                    <div class="tip-content">如果实在没食物，可穿银制装备吃腐肉，中毒将只持续10秒（扣一颗心）</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">13</span>
+                    <div class="tip-content">
+                        不消耗经验放水源，<a href="../ga/img/tips/water.jpg" target="_blank">教程点我</a>，在南北方向更容易成功
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">14</span>
+                    <div class="tip-content">
+                        刷铁轨机，<a href="https://weibo.com/1313420031/Q24MBq2WR" target="_blank">教程点我</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">15</span>
+                    <div class="tip-content">
+                        刷黑曜石机，<a href="../ga/img/tips/obsidianMachine.jpg" target="_blank">教程点我</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">16</span>
+                    <div class="tip-content">
+                        村民繁殖三部曲，<a href="../ga/tips/villager.html" target="_blank">教程点我</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">17</span>
+                    <div class="tip-content">龙蛋可以用半砖、床获取</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">18</span>
+                    <div class="tip-content">被火焰附加砍落的燃烧的肉雨天会被直接浇灭成熟肉</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">19</span>
+                    <div class="tip-content">马用金苹果繁殖，用普通苹果加血（1换1）</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">20</span>
+                    <div class="tip-content">动物病了铲草皮放回没用，老老实实检查三项：露天、水、数量</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">21</span>
+                    <div class="tip-content">
+                        蜘蛛能跳三格远，山地地形鸡舍注意周围高度，
+                        <a href="../ga/img/tips/chicken.jpg" target="_blank">一个绝对安全的养鸡场设计（示例）</a>，
+                        <a href="../ga/img/tips/chicken_large.jpg" target="_blank">一个大型养鸡场设计</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">22</span>
+                    <div class="tip-content">服务器植物会生病哦，推荐用本站的材质包，生病植物特别明显</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">23</span>
+                    <div class="tip-content">将房门改为上开下关的栅栏门结构欺骗怪物AI卡在门口</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">24</span>
+                    <div class="tip-content">不要用僵尸吓羊，得不偿失</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">25</span>
+                    <div class="tip-content">整组丢弃：鼠标移到对应物品栏，Ctrl+Q</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">26</span>
+                    <div class="tip-content">快捷存放：鼠标拿起物品，shift+左键双击同类物品</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">27</span>
+                    <div class="tip-content">拿取物品，在合成台（物品栏），右键点击拖动单个平铺，左键点击拖动平均平铺</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">28</span>
+                    <div class="tip-content">
+                        一个自动烧矿机，<a href="../ga/img/tips/furnaceMachine.jpg" target="_blank">教程点我</a>，注意按shift哦
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">29</span>
+                    <div class="tip-content">
+                        一个附魔台摆放设计，<a href="../ga/img/tips/ench.jpg" target="_blank">教程点我</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">30</span>
+                    <div class="tip-content">
+                        一个箱子摆放设计，<a href="../ga/img/tips/chest.jpg" target="_blank">教程点我</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">31</span>
+                    <div class="tip-content">
+                        如果按shift不显示物品耐久，F3+H按一下再试，
+                        <a href="../ga/tips/code.html" target="_blank">更多的快捷键点我查看</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">32</span>
+                    <div class="tip-content">下矿使用树叶垫脚将极大的节省方块使用和工具耐久</div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-header">
+                    <span class="tip-number">33</span>
+                    <div class="tip-content">梯子非常耗木头，建议用藤蔓铺设，每次下去随手就能剪很多</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="server-commands">
+            <h2>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z" />
+                </svg>
+                服务器命令
+            </h2>
+            <div class="command-block">
+                <p>服务器关闭队友伤害并显示队友血量</p>
+                <p>在服务器控制台依次输入：</p>
+                <ul class="command-list">
+                    <li>/scoreboard teams add team</li>
+                    <li>/scoreboard teams join team @a</li>
+                    <li>/scoreboard teams option team color blue</li>
+                    <li>/scoreboard teams option team friendlyFire false</li>
+                    <li>/scoreboard objectives add 血量 health</li>
+                    <li>/scoreboard objectives setdisplay sidebar 血量</li>
+                </ul>
+                <div class="command-links">
+                    <a href="../ga/server.html" target="_blank" class="command-link">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                        </svg>
+                        服务器详情
+                    </a>
+                    <a href="../ga/data.html" target="_blank" class="command-link">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg>
+                        局域网设置
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer class="page-footer">
+            <p>©2025 本<a href="https://mitega.pages.dev" target="_blank">网站</a>由<a href="https://yuezhuxue.pages.dev"
+                    target="_blank">月煮雪</a>强力驱动</p>
+            <div style="margin-top: 0.5rem; color: var(--text-secondary);">
+                <script async src="https://events.vercount.one/js"></script>
+                雪花量 <span id="vercount_value_page_pv"></span> 片
+            </div>
+        </footer>
+    </div>
+
+    <script>
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            const moonIcon = document.getElementById('moonIcon');
+            const sunIcon = document.getElementById('sunIcon');
+            if (newTheme === 'dark') {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            } else {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            const moonIcon = document.getElementById('moonIcon');
+            const sunIcon = document.getElementById('sunIcon');
+            if (savedTheme === 'dark') {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            } else {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            }
+        });
+
+
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    </script>
+</body>
+
+</html>

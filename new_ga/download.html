@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>下载链接 - MITE地精科技站</title>
+    <link rel="bookmark" type="image/x-icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../css/modern_style.css">
+    <style>
+        .download-section {
+            margin-bottom: 30px;
+        }
+
+        .download-card {
+            background-color: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .download-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .download-card h3 {
+            color: var(--text-primary);
+            margin: 0 0 15px 0;
+            font-size: 1.3em;
+        }
+
+        .download-card p {
+            color: var(--text-secondary);
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .download-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: var(--text-primary);
+            text-decoration: none;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .download-link:hover {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .extract-code {
+            display: inline-block;
+            background-color: var(--bg-primary);
+            padding: 5px 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            color: var(--accent-color);
+            margin-left: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            margin: 25px 0 15px 0;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-primary);
+            margin: 20px 0 12px 0;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+
+    <div id="indexbody">
+        <header>
+            <h1>下载链接</h1>
+        </header>
+
+        <main>
+            <div class="download-section">
+                <div class="download-card">
+                    <h3>百度网盘</h3>
+                    <p>喵喵喵，喵喵。。。度娘盘整理中</p>
+                    <a href="https://pan.baidu.com/s/1nQaWAFyMO6y7Aq7VZSNToA" target="_blank" class="download-link">
+                        前往下载
+                    </a>
+                    <span class="extract-code">提取码: mite</span>
+                </div>
+
+                <div class="download-card">
+                    <h3>Xy_Lose的网盘</h3>
+                    <p>新版本的下载请移步这里</p>
+                    <a href="https://pan.huang1111.cn/s/764otg" target="_blank" class="download-link">
+                        前往下载
+                    </a>
+                    <span class="extract-code">提取码: l9o99e</span>
+                </div>
+
+                <div class="download-card">
+                    <h3>Modded MITE社区QQ群</h3>
+                    <p>更新的版本的下载请移步QQ群</p>
+                    <p style="color: var(--accent-color); font-weight: 500;">注意: 进群需要答题</p>
+                    <a href="https://qm.qq.com/q/woKGGpnTnW" target="_blank" class="download-link">
+                        加入QQ群
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer id="indexfooter">
+        <div class="footer-content">
+            <div class="vercount">
+                雪花<span id="vercount_value_page_pv">❄️</span>片
+            </div>
+            <div class="copyright">
+                ©2025 本 <a href="https://mitega.pages.dev" target="_blank">网站</a> 由 <a
+                    href="https://yuezhuxue.pages.dev" target="_blank">月煮雪</a> 强力驱动
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', currentTheme);
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            } else {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            }
+        }
+
+        updateThemeIcon(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+    </script>
+    <script async src="https://events.vercount.one/js"></script>
+</body>
+
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>地精插件 - MITE地精科技站</title>
+    <link rel="bookmark" type="image/x-icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../css/modern_style.css">
+    <script type="text/javascript" src="../js/unicode16.js"></script>
+    <style>
+        .content-card {
+            background-color: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .warning {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        details {
+            margin: 10px 0;
+        }
+
+        details summary {
+            cursor: pointer;
+            padding: 12px;
+            background-color: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            user-select: none;
+            list-style: none;
+            position: relative;
+            padding-right: 40px;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary::after {
+            content: '';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid var(--text-primary);
+            border-bottom: 2px solid var(--text-primary);
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::after {
+            transform: translateY(-50%) rotate(-135deg);
+        }
+
+        details summary:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        details[open] summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom-color: transparent;
+        }
+
+        details>div {
+            padding: 15px;
+            border: 2px solid var(--border-color);
+            border-top: none;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            overflow: hidden;
+        }
+
+        details[open]>div {
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        details.closing>div {
+            animation: slideUp 0.3s ease-out;
+        }
+
+        blockquote {
+            margin: 10px 0;
+            padding-left: 20px;
+            border-left: 3px solid var(--accent-color);
+            color: var(--text-secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table th,
+        table td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        table td {
+            color: var(--text-secondary);
+        }
+
+        .converter-section {
+            background-color: var(--bg-primary);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            font-family: monospace;
+            resize: vertical;
+            margin: 10px 0;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        code {
+            background-color: var(--bg-primary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--accent-color);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            margin: 25px 0 15px 0;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--text-primary);
+            margin: 20px 0 12px 0;
+            font-weight: 600;
+        }
+
+        ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+
+    <div id="indexbody">
+        <header>
+            <h1>地精插件</h1>
+        </header>
+
+        <main>
+            <div class="content-card">
+                <p class="warning">
+                    已更新部分插件支持新版本振金v1.1.0-pre7 pre8等等<br />
+                    需要放置在mods文件夹而非coremods<br />
+                    请自行到本站度娘盘【插件】-【新版】下载更新
+                </p>
+
+                <p>在此页面更新一些插件<br />
+                    理论支持本站的所有振金版，娱乐版<br />
+                    如有错误，欢迎反馈</p>
+
+                <details>
+                    <summary>基础知识介绍</summary>
+                    <div>
+                        <p>关于一个插件是否需要客户端和服务器都安装？</p>
+                        <p>插件分为三类：</p>
+
+                        <h4>①客户端插件</h4>
+                        <blockquote>只在客户端生效，比如坐标器</blockquote>
+
+                        <h4>②服务端插件</h4>
+                        <blockquote>
+                            只在服务器生效的，比如去离线惩罚<br />
+                            特殊的，客户端作为局域网主机也可以使用某些服务器插件，比如地精传送
+                        </blockquote>
+
+                        <h4>③双端插件</h4>
+                        <blockquote>需要双方均安装同一个版本的，比如反作弊，反变速等</blockquote>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>地精传送MITETPA</summary>
+                    <div>
+
+                        <p>写了一个服务器插件。（单机可用）<br />
+                            支持玩家间跨界（维度）传送。</p>
+
+                        <p>客户端放到 <code>.minecraft\coremods\</code><br />
+                            服务器放到 <code>coremods\</code><br />
+                            运行时会在 <code>coremods\TPA\</code> 文件夹下生成配置文件。</p>
+
+                        <p class="warning">注意：</p>
+                        <ul>
+                            <li>装新版本插件请删掉TPA文件夹</li>
+                            <li>开新档时建议删掉coremods\TPA\ 下的所有.ga文件</li>
+                        </ul>
+
+                        <h4 class="warning">更新v1.1</h4>
+                        <blockquote>①所有的修改均不需要重启生效</blockquote>
+
+                        <h4 class="warning">更新v1.2</h4>
+                        <blockquote>
+                            ①使服主（管理员）可以在游戏内添加白名单<br />
+                            ②可以关闭白名单模式
+                        </blockquote>
+
+                        <h4 class="warning">更新v1.3</h4>
+                        <blockquote>
+                            ①修复一个linux os下的严重错误<br />
+                            ②添加/setback命令，可以手动设置BACK点<br />
+                            ③所有配置默认全开启，萌新友好，开袋即食
+                        </blockquote>
+
+                        <h4>可用指令</h4>
+                        <blockquote>
+                            /sethome（设置当前位置为家）<br />
+                            /home（传送到HOME）<br />
+                            /back（传送到上个位置）<br />
+                            /tpayes（自动接受所有tpa请求）<br />
+                            /tpano（自动拒绝所有tpa请求，默认拒绝）<br />
+                            /tpa 玩家名（传送到玩家位置）<br />
+                            <span class="highlight">/tpaadd 玩家名</span>（管理员可用，@a=全体在线玩家）
+                        </blockquote>
+
+                        <img src="../ga/img/gatp.jpg" alt="地精传送">
+
+                        <h4>配置说明</h4>
+                        <p>初次运行服主需要手动修改两个ini文件：</p>
+
+                        <p>①tpaConfig.ini是配置文件（0=关闭，1=打开）</p>
+                        <blockquote>
+                            home=1时允许/home<br />
+                            back=1时允许/back<br />
+                            time=30（传送冷却，3-3000，单位：秒）<br />
+                            whitelist=1时开启白名单<br />
+                            admin=管理员名（<span class="highlight">注意，不能为中文，可以用本网页下面的转码工具转成mc编码</span>）
+                        </blockquote>
+
+                        <p>②tpaList.ini是传送白名单</p>
+                        <blockquote>
+                            将玩家名依次填入，每行一个。<br />
+                            不在名单上的无法传送。<br />
+                            <span class="highlight">中文名</span>需要转成mc编码，或者让管理员直接游戏内添加
+                        </blockquote>
+
+                        <h4>举例说明一</h4>
+                        <p>玩家Akarin想要传送到玩家Banana</p>
+                        <blockquote>
+                            ①将Akarin加入tpaList.ini<br />
+                            ②Banana输入/tpayes<br />
+                            ③玩家Akarin输入/tpa Banana
+                        </blockquote>
+
+                        <h4>举例说明二</h4>
+                        <p>玩家Akarin在矿洞死亡了，想要记录back点</p>
+                        <blockquote>
+                            ①Akarin死亡后，不要点复活，直接输入/home飞尸<br />
+                            ②Akarin点复活<br />
+                            ③Akarin拿上物资输入/back回到死亡点
+                        </blockquote>
+
+                        <h4>举例说明三</h4>
+                        <p>管理员要将【大_PI】添加到白名单</p>
+                        <blockquote>
+                            方法①将大_PI转码为\u5927_PI，打开tpaList.ini，将\u5927_PI添加到新的一行<br />
+                            方法②管理员游戏内输入/tpaadd 大_PI<br />
+                            方法③管理员游戏内输入/tpaadd @a
+                        </blockquote>
+
+                        <p>/home /tpa 都会自动记录back点<br />
+                            <span class="highlight">玩家死亡不会自动记录back点</span>
+                        </p>
+
+                        <p>已知bug: ID有空格会无法传送</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>地精坐标器MITEGAUI</summary>
+                    <div>
+
+                        <p>和其他坐标器不兼容<br />
+                            从v1.1开始，改为双端插件<br />
+                            注意：v1.2和v1.1的区别仅仅是隐藏坐标</p>
+
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th>客户端</th>
+                                <th>服务端</th>
+                                <th>坐标</th>
+                                <th>游侠联机</th>
+                            </tr>
+                            <tr>
+                                <td>v1.0</td>
+                                <td>√</td>
+                                <td></td>
+                                <td>显示</td>
+                                <td>不支持</td>
+                            </tr>
+                            <tr>
+                                <td>v1.1</td>
+                                <td>√</td>
+                                <td>√</td>
+                                <td>显示</td>
+                                <td>支持</td>
+                            </tr>
+                            <tr>
+                                <td>v1.2</td>
+                                <td>√</td>
+                                <td>√</td>
+                                <td>隐藏</td>
+                                <td>支持</td>
+                            </tr>
+                        </table>
+
+                        <p>理论上支持本站所有振金版<br />
+                            因为内置坐标的原因<br />
+                            不支持娱乐版(v1.3)(v1.4)(v1.5)三个大版本<br />
+                            从(v1.6)开始重新支持</p>
+                    </div>
+                </details>
+
+                <p>下载地址见本站主页<a href="download.html" class="highlight">下载链接</a>页面<br />
+                    度娘盘【插件】目录</p>
+
+                <details>
+                    <summary>中文玩家名 ←转→ mc编码（unicode）</summary>
+                    <div>
+
+                        <div class="converter-section">
+                            <p>在这里输入中文玩家名或者mc编码</p>
+                            <textarea id="txt1" rows="4">玩家名</textarea>
+
+                            <div>
+                                <input type="button" class="btn" onclick="uz();" value="从mc编码还原" />
+                                <input type="button" class="btn" onclick="zu();" value="转换成mc编码" />
+                            </div>
+
+                            <label style="color: var(--text-secondary); margin: 10px 0; display: block;">
+                                <input type="checkbox" id="onlyzw" checked />
+                                不转换字母、数字等,只转换中文。
+                            </label>
+
+                            <textarea id="txt2" rows="4">这里显示转换后的结果。</textarea>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </main>
+    </div>
+
+    <footer id="indexfooter">
+        <div class="footer-content">
+            <div class="vercount">
+                雪花<span id="vercount_value_page_pv">❄️</span>片
+            </div>
+            <div class="copyright">
+                ©2025 本 <a href="https://mitega.pages.dev" target="_blank">网站</a> 由 <a
+                    href="https://yuezhuxue.pages.dev" target="_blank">月煮雪</a> 强力驱动
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', currentTheme);
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            } else {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            }
+        }
+
+        updateThemeIcon(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+
+        document.querySelectorAll('details').forEach(details => {
+            details.addEventListener('toggle', function (e) {
+                if (this.open) {
+
+                    const content = this.querySelector('div');
+                    if (content) {
+                        content.style.animation = 'none';
+                        void content.offsetHeight;
+                        content.style.animation = '';
+                    }
+                } else {
+
+                    e.preventDefault();
+                    this.classList.add('closing');
+
+                    setTimeout(() => {
+                        this.classList.remove('closing');
+                        this.removeAttribute('open');
+                    }, 300);
+                }
+            });
+        });
+    </script>
+    <script async src="https://events.vercount.one/js"></script>
+</body>
+
+</html>

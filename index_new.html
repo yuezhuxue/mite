@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>MITE模组地精科技站</title>
+	<link rel="bookmark" type="image/x-icon" href="favicon.ico">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<meta charset="UTF-8">
+	<meta name="keywords" content="MITE, 贝爷模组, Minecraft, Easy, 反作弊">
+	<meta name="description" content="Minecraft is too easy,获取游戏坐标修改存档刷物品备份创世之书符文门">
+	<script>
+		(function () {
+			const theme = localStorage.getItem('theme') || 'light';
+			document.documentElement.setAttribute('data-theme', theme);
+		})();
+	</script>
+	<link rel="stylesheet" type="text/css" href="css/modern_style.css">
+</head>
+
+<body>
+	<div id="indexbody">
+		<header>
+			<button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+				<svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+					<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+				</svg>
+				<svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+					fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<circle cx="12" cy="12" r="5" />
+					<line x1="12" y1="1" x2="12" y2="3" />
+					<line x1="12" y1="21" x2="12" y2="23" />
+					<line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+					<line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+					<line x1="1" y1="12" x2="3" y2="12" />
+					<line x1="21" y1="12" x2="23" y2="12" />
+					<line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+					<line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+				</svg>
+			</button>
+			<h1>MITE地精科技站</h1>
+			<nav>
+				<a href="https://yuezhuxue.github.io/mite" target="_blank" class="button">
+					<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+					</svg>
+					Github镜像
+				</a>
+				<a href="https://mitega.pages.dev" target="_blank" class="button">
+					<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" />
+					</svg>
+					Cloudflare镜像
+				</a>
+			</nav>
+		</header>
+
+		<main>
+			<section class="card-section">
+				<h2 class="section-title">常用工具</h2>
+				<div class="card-grid">
+					<a href="index_old.html" target="_blank" class="card">
+						<h3>旧版首页</h3>
+						<p>查看原始版本的网站首页</p>
+					</a>
+					<a href="new_ga/download.html" target="_blank" class="card">
+						<h3>下载链接</h3>
+						<p>获取各种工具和修改器</p>
+					</a>
+					<a href="new_ga/anticheat.html" target="_blank" class="card">
+						<h3>作弊检测</h3>
+						<p>反作弊系统相关信息</p>
+					</a>
+					<a href="new_ga/plugin.html" target="_blank" class="card">
+						<h3>地精插件</h3>
+						<p>服务器插件和扩展</p>
+					</a>
+					<a href="new_ga/offline.html" target="_blank" class="card">
+						<h3>离线惩罚清除器</h3>
+						<p>清除服务器玩家离线惩罚</p>
+					</a>
+					<a href="new_ga/calmanac.html" target="_blank" class="card">
+						<h3>MITE黄历</h3>
+						<p>今日宜忌，探索运势指南</p>
+					</a>
+					<a href="new_ga/tips.html" target="_blank" class="card">
+						<h3>游戏教程</h3>
+						<p>你知道吗？实用技巧合集</p>
+					</a>
+					<a href="new_ga/recipe.html" target="_blank" class="card">
+						<h3>合成表</h3>
+						<p>MITE原版合成配方查询</p>
+					</a>
+				</div>
+			</section>
+
+			<section class="card-section">
+				<h2 class="section-title">MITE 修改版</h2>
+				<div class="card-grid">
+					<a href="new_ga/miteite/index.html" target="_blank" class="card">
+						<h3>振金版</h3>
+						<p>MITE-ITE 振金修改版</p>
+					</a>
+					<a href="new_ga/mitemagic/index.html" target="_blank" class="card">
+						<h3>魔法时代</h3>
+						<p>添加魔法元素的 MITE 版本</p>
+					</a>
+					<a href="new_ga/miteReborn/index.html" target="_blank" class="card">
+						<h3>MITE 重生</h3>
+						<p>重制版本，全新体验</p>
+					</a>
+					<a href="new_ga/mitefun./index.html" target="_blank" class="card">
+						<h3>MITE 娱乐</h3>
+						<p>趣味性增强版本</p>
+					</a>
+					<a href="new_ga/mitedpyq/index.html" target="_blank" class="card">
+						<h3>打破一切</h3>
+						<p>突破极限的游戏体验</p>
+					</a>
+					<a href="new_ga/extreme/index.html" target="_blank" class="card">
+						<h3>极难版本</h3>
+						<p>挑战最高难度</p>
+					</a>
+					<a href="new_ga/miteitf/index.html" target="_blank" class="card">
+						<h3>生存之路</h3>
+						<p>专注生存的游戏模式</p>
+					</a>
+				</div>
+
+				<section class="card-section">
+					<h2 class="section-title">MITE 版本关系图</h2>
+					<div class="version-tree">
+						<details id="versionDetails">
+							<summary class="version-summary">
+								<span class="version-summary-text">展开查看版本关系图</span>
+							</summary>
+							<div class="version-content">
+								<a href="ga/img/MITEversions.png" target="_blank" class="version-image-link"
+									title="点击查看大图" style="float: right; margin-left: 1rem; margin-bottom: 1rem;">
+									<img src="ga/img/MITEversions.png" alt="MITE版本关系图" class="version-thumbnail">
+								</a>
+								<p class="version-note">最终更新时间：2023-09-18 | 无特殊表明全部是 1.6.4 版本</p>
+
+								<div class="version-category">
+									<h4>官方版</h4>
+									<div class="version-flow">
+										<div class="version-line-group">
+											<div class="version-box">R23</div>
+											<span class="arrow">→</span>
+											<div class="version-box">R148</div>
+											<span class="arrow">→</span>
+											<div class="version-box">R195</div>
+											<span class="author-tag">Avaernite</span>
+										</div>
+										<div class="version-branch-line">
+											<div class="branch-connector">└→</div>
+											<div class="version-box">R149</div>
+											<span class="arrow">→</span>
+											<div class="version-box">R196</div>
+											<span class="author-tag">Avaernite</span>
+										</div>
+										<div class="version-line-group" style="margin-top: 1.5rem;">
+											<div class="version-box">MITE-Reborn 1.14.4</div>
+											<span class="arrow">→</span>
+											<div class="version-box">MITE-Reborn 1.16.3</div>
+											<span class="arrow">→</span>
+											<div class="version-box">MITE-Reborn 1.18</div>
+											<span class="author-tag">Kelvin285</span>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="version-category">
+									<h4>魔改版</h4>
+									<div class="version-flow">
+
+										<div class="version-line-group">
+											<div class="version-box">R1</div>
+											<span class="arrow">→</span>
+											<div class="version-box">R5</div>
+											<span class="arrow">→</span>
+											<div class="version-box">R6</div>
+											<span class="arrow">→</span>
+											<div class="version-box">魔法时代</div>
+											<span class="author-tag">defoli_ation</span>
+										</div>
+
+
+										<div class="version-branch-line" style="margin-top: 1rem;">
+											<div class="branch-connector">↓</div>
+										</div>
+										<div class="version-line-group">
+											<div class="version-box">Dev端 FishModLoder</div>
+											<span class="arrow">→</span>
+											<div class="version-box">振金版 B0.4.0-Final</div>
+											<span class="arrow">→</span>
+											<div class="version-box">振金版 v1.1.0-Pre14</div>
+											<span class="author-tag">XiaoYu233</span>
+										</div>
+
+
+										<div class="version-branch-line">
+											<div class="branch-connector">└→</div>
+											<div class="version-box">娱乐版 MITE-GA</div>
+											<span class="author-tag">yuezhuxue</span>
+										</div>
+
+
+										<div class="version-branch-line">
+											<div class="branch-connector">└→</div>
+											<div class="version-box">MITE魂环传说</div>
+											<div class="version-box-group">
+												<div class="version-box small">振金极难 MITE-Extreme</div>
+												<div class="version-box small">娱乐版 MITE-GA-P14</div>
+											</div>
+											<span class="author-tag">Wensc</span>
+										</div>
+
+
+										<div class="version-branch-line">
+											<div class="branch-connector">└→</div>
+											<div class="version-box-group">
+												<div class="version-box small">Mite-EXtends</div>
+												<div class="version-box small">MITE-EXtends-SP</div>
+												<div class="version-box small">MITE-profession</div>
+												<div class="version-box small">MITE-INNN</div>
+											</div>
+										</div>
+										<div class="version-branch-line">
+											<div class="branch-connector">└→</div>
+											<div class="version-box-group">
+												<div class="version-box small">振金版 v1.1.1</div>
+												<div class="version-box small">振金版 v1.1.2</div>
+												<div class="version-box small">振金版 v1.2.6</div>
+												<div class="version-box small">MITE-ITE-PLUS</div>
+												<div class="version-box small">MITE-ITE-NET</div>
+												<div class="version-box small">MITE-ITE-PFN</div>
+											</div>
+											<span class="author-tag">NoRegrets</span>
+										</div>
+
+
+										<div class="version-branch-line">
+											<div class="branch-connector">└→</div>
+											<div class="version-box">MITE黄昏 MITE-ITF</div>
+											<span class="author-tag">Rizur</span>
+										</div>
+										<div class="version-branch-line" style="margin-left: 2rem;">
+											<div class="branch-connector">└→</div>
+											<div class="version-box">MITE-ITF-Plus</div>
+											<span class="author-tag">Xy_lose</span>
+										</div>
+
+
+										<div class="version-branch-line">
+											<div class="branch-connector">└→</div>
+											<div class="version-box">MITE:创世</div>
+											<span class="author-tag">MITE-Creation</span>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="version-category">
+									<h4>仿制版</h4>
+									<div class="version-flow">
+										<div class="version-line-group">
+											<div class="version-box">MITE 1.13.2</div>
+											<div class="version-box">MITE 1.16.1</div>
+											<div class="version-box">MITE 1.18.2</div>
+											<span class="author-tag">XiaoYu233</span>
+										</div>
+										<div class="version-line-group">
+											<div class="version-box">打破一切 BreakEverything</div>
+											<span class="author-tag">马桶C & 梦幻MC</span>
+										</div>
+										<div class="version-line-group">
+											<div class="version-box">MITE基岩版</div>
+											<span class="author-tag">[未标明作者]</span>
+										</div>
+										<div class="version-line-group">
+											<div class="version-box">MITE破晓</div>
+											<div class="version-box">MITE绝境求生</div>
+											<span class="author-tag">禾叶君</span>
+										</div>
+									</div>
+								</div>
+							</div>
+				</section>
+			</section>
+		</main>
+	</div>
+	<br />
+	<br />
+	<br />
+	<hr>
+	<footer id="indexfooter">
+		<div class="footer-content">
+			<div class="vercount">
+				雪晶<span id="vercount_value_site_pv">❄️</span>粒 |
+				雪花<span id="vercount_value_page_pv">❄️</span>片 |
+				雪球<span id="vercount_value_site_uv">❄️</span>颗
+			</div>
+			<div class="copyright">
+				©2025 本 <a href="https://mitega.pages.dev" target="_blank">网站</a> 由 <a
+					href="https://yuezhuxue.pages.dev" target="_blank">月煮雪</a> 强力驱动
+			</div>
+			<div id="site_runtime"></div>
+			<div class="greeting">每天都要开心哟~ (•ᴗ•)</div>
+		</div>
+		<script type="text/javascript">
+
+			const themeToggle = document.getElementById('themeToggle');
+			const htmlElement = document.documentElement;
+			const moonIcon = document.getElementById('moonIcon');
+			const sunIcon = document.getElementById('sunIcon');
+
+
+			const currentTheme = localStorage.getItem('theme') || 'light';
+			htmlElement.setAttribute('data-theme', currentTheme);
+
+
+			function updateThemeIcon(theme) {
+				if (theme === 'dark') {
+					moonIcon.style.display = 'none';
+					sunIcon.style.display = 'block';
+				} else {
+					moonIcon.style.display = 'block';
+					sunIcon.style.display = 'none';
+				}
+			}
+
+			updateThemeIcon(currentTheme);
+
+
+			themeToggle.addEventListener('click', () => {
+				const currentTheme = htmlElement.getAttribute('data-theme');
+				const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+				htmlElement.setAttribute('data-theme', newTheme);
+				localStorage.setItem('theme', newTheme);
+				updateThemeIcon(newTheme);
+			});
+
+
+			function show_site_runtime() {
+				window.setTimeout("show_site_runtime()", 1000);
+				X = new Date("09/01/2018 00:00:00");
+				Y = new Date();
+				T = (Y.getTime() - X.getTime());
+				i = 24 * 60 * 60 * 1000;
+				d = T / i;
+				D = Math.floor(d);
+				h = (d - D) * 24;
+				H = Math.floor(h);
+				m = (h - H) * 60;
+				M = Math.floor(m);
+				s = (m - M) * 60
+				S = Math.floor(s);
+				document.getElementById('site_runtime').innerHTML = "本站已运行 " + D + " 天 " + H + " 时 " + M + " 分 " + S + " 秒 ";
+			}
+			window.onload = function () {
+				show_site_runtime();
+			};
+		</script>
+		<script async src="https://events.vercount.one/js"></script>
+	</footer>
+</body>
+
+</html>

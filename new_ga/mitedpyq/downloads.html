@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>版本下载 - MITE打破一切</title>
+    <style>
+        :root {
+            --primary-color: #0069D9;
+            --accent-color: #80BDFF;
+            --warning-color: #FF8C00;
+            --bg-primary: #0a0e27;
+            --bg-secondary: #1a1f3a;
+            --card-bg: #151937;
+            --text-primary: #e8eaf0;
+            --text-secondary: #a0a8c0;
+            --border-color: #2a3150;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f5f7fa;
+            --bg-secondary: #ffffff;
+            --card-bg: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #5a6c7d;
+            --border-color: #e1e8ed;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            background-color: var(--bg-primary);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: transparent;
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            border-color: var(--primary-color);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-primary);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        .page-header {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.1), rgba(255, 140, 0, 0.05));
+            border-left: 4px solid var(--warning-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .warning-box h3 {
+            color: var(--warning-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .warning-box p {
+            color: var(--text-secondary);
+        }
+
+        .version-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .version-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .version-list {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .version-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .version-item:hover {
+            border-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .version-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .version-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            flex: 1;
+        }
+
+        .version-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .version-code {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .version-divider {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--warning-color);
+            font-weight: 600;
+            border-top: 2px dashed var(--border-color);
+            border-bottom: 2px dashed var(--border-color);
+            margin: 1rem 0;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+        }
+
+        .special-note {
+            background: linear-gradient(135deg, rgba(255, 127, 80, 0.1), rgba(255, 127, 80, 0.05));
+            border-left: 4px solid coral;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .special-note p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .special-note a {
+            color: coral;
+            text-decoration: none;
+        }
+
+        .special-note a:hover {
+            text-decoration: underline;
+        }
+
+        .page-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+            text-align: center;
+        }
+
+        .page-footer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .page-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .version-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .version-tag {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回打破一切主页</a>
+
+        <div class="page-header">
+            <h1>版本下载</h1>
+            <p>MITE打破一切 - 所有版本下载链接</p>
+        </div>
+
+        <div class="warning-box">
+            <h3>⚠️ 下载说明</h3>
+            <p>• 请随时关注官网更新，本站可能会滞后</p>
+            <p>• 建议下载最新版本以获得最佳体验</p>
+            <p>• 部分版本提供本站网盘下载</p>
+        </div>
+
+        <div class="version-section">
+            <h2>📦 早期版本（v0.1 - v0.5.2）</h2>
+            <div class="version-list">
+                <div class="version-item">
+                    <span class="version-tag">v0.1</span>
+                    <a href="https://pan.baidu.com/s/1CBcFyfbWEppeej-vXjNefw" target="_blank"
+                        class="version-link">百度网盘下载</a>
+                    <span class="version-code">提取码: aapu</span>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.2</span>
+                    <a href="https://pan.baidu.com/s/1VLs4UcwWg9bkpCSAzmRDSQ" target="_blank"
+                        class="version-link">百度网盘下载</a>
+                    <span class="version-code">提取码: z621</span>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.3</span>
+                    <a href="https://pan.baidu.com/s/1oNCY45KIJTf3gnhJA-gcdg" target="_blank"
+                        class="version-link">百度网盘下载</a>
+                    <span class="version-code">提取码: 2g44</span>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.4</span>
+                    <a href="https://pan.baidu.com/s/115sjBP3xWKe7q0Q9J4XxPQ" target="_blank"
+                        class="version-link">百度网盘下载</a>
+                    <span class="version-code">提取码: 48gq</span>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.4.4</span>
+                    <a href="https://pan.baidu.com/s/1XqvaNxzdUpHMzgIY3e1cgg" target="_blank"
+                        class="version-link">百度网盘下载</a>
+                    <span class="version-code">提取码: whbc</span>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.5</span>
+                    <a href="../download.html" target="_blank" class="version-link">本站网盘下载</a>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.5v1</span>
+                    <a href="../download.html" target="_blank" class="version-link">本站网盘下载</a>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.5v2</span>
+                    <a href="../download.html" target="_blank" class="version-link">本站网盘下载</a>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.5.2</span>
+                    <a href="../download.html" target="_blank" class="version-link">本站网盘下载</a>
+                </div>
+            </div>
+
+            <div class="special-note">
+                <p><strong style="color: coral;">特别版本：</strong>加了地精坐标器的 v0.4.4 版本</p>
+                <p>详见 <a href="../download.html" target="_blank">本站网盘</a></p>
+            </div>
+        </div>
+
+        <div class="version-divider">
+            ========== 版本分界线 ==========
+        </div>
+
+        <div class="version-section">
+            <h2>🚀 新版本（v0.5.4 - v0.9）</h2>
+            <div class="version-list">
+                <div class="version-item">
+                    <span class="version-tag">v0.5.4</span>
+                    <a href="https://pan.baidu.com/s/1Ece7vOqmofiOcGTFcvB4gQ?pwd=6n5c" target="_blank"
+                        class="version-link">百度网盘下载</a>
+                    <span class="version-code">提取码: 6n5c</span>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.5.5</span>
+                    <a href="https://pan.baidu.com/s/1bX_01fmj5QfBNpzSFdnBOg?pwd=1234" target="_blank"
+                        class="version-link">百度网盘下载</a>
+                    <span class="version-code">提取码: 1234</span>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.5.6</span>
+                    <a href="https://pan.baidu.com/s/1EyCYmAbixlbmft42ZwgABQ?pwd=3pbz" target="_blank"
+                        class="version-link">百度网盘下载</a>
+                    <span class="version-code">提取码: 3pbz</span>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.5.7</span>
+                    <a href="https://pan.baidu.com/s/15FC6FDaCO56MO8ajcWlP4A?pwd=u9tu" target="_blank"
+                        class="version-link">百度网盘下载</a>
+                    <span class="version-code">提取码: u9tu</span>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.5.8</span>
+                    <a href="https://pan.baidu.com/s/12PynaQYzfJGznF5JI02V4g?pwd=3g6m" target="_blank"
+                        class="version-link">百度网盘下载</a>
+                    <span class="version-code">提取码: 3g6m</span>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.5.9</span>
+                    <a href="https://pan.baidu.com/s/14dd2HXZV3wv8BxeYzZN8lQ?pwd=8hdj" target="_blank"
+                        class="version-link">百度网盘下载</a>
+                    <span class="version-code">提取码: 8hdj</span>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.6</span>
+                    <a href="https://pan.baidu.com/s/104X4X3H6tZW727t7gqISjw?pwd=krcd" target="_blank"
+                        class="version-link">百度网盘下载</a>
+                    <span class="version-code">提取码: krcd</span>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.7</span>
+                    <a href="https://pan.baidu.com/s/1wLZw-Zfz99BBRGzQJYzd6Q?pwd=qrgv" target="_blank"
+                        class="version-link">百度网盘下载</a>
+                    <span class="version-code">提取码: qrgv</span>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.8</span>
+                    <a href="https://pan.baidu.com/s/1domEoSA5-b-J56oxAsshiA?pwd=654a" target="_blank"
+                        class="version-link">百度网盘下载</a>
+                    <span class="version-code">提取码: 654a</span>
+                </div>
+                <div class="version-item">
+                    <span class="version-tag">v0.9</span>
+                    <a href="https://pan.baidu.com/s/10btesjB6RhFzS2g-1IVnlQ?pwd=6fhg" target="_blank"
+                        class="version-link">百度网盘下载</a>
+                    <span class="version-code">提取码: 6fhg</span>
+                </div>
+            </div>
+
+            <div class="special-note" style="border-left-color: darkorange;">
+                <p><strong style="color: darkorange;">v0.9 特别版本：</strong></p>
+                <p>添加坐标器 + 死亡不掉落 + 允许创造模式</p>
+                <p>详见 <a href="../download.html" target="_blank" style="color: darkorange;">本站网盘</a> → 打破一切 → 地精修改</p>
+            </div>
+        </div>
+
+        <footer class="page-footer">
+            <p>©2025 本<a href="https://mitega.pages.dev" target="_blank">网站</a>由<a href="https://yuezhuxue.pages.dev"
+                    target="_blank">月煮雪</a>强力驱动</p>
+            <div style="margin-top: 0.5rem; color: var(--text-secondary);">
+                <script async src="https://events.vercount.one/js"></script>
+                雪花量 <span id="vercount_value_page_pv"></span> 片
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            const moonIcon = document.getElementById('moonIcon');
+            const sunIcon = document.getElementById('sunIcon');
+            if (newTheme === 'dark') {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            } else {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            const moonIcon = document.getElementById('moonIcon');
+            const sunIcon = document.getElementById('sunIcon');
+            if (savedTheme === 'dark') {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            } else {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            }
+        });
+
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    </script>
+</body>
+
+</html>

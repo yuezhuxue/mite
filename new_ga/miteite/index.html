@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MITE振金版 - MITE-ITE</title>
+    <link rel="stylesheet" href="../../css/modern_style.css">
+    <style>
+        .intro-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .intro-section h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .intro-section .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .nav-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .nav-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .nav-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .nav-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .quick-links {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .quick-links h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .recipe-btn {
+            display: inline-block;
+            margin: 0.5rem 1rem 0.5rem 0;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            border-radius: 8px;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .recipe-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .recipe-display {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .recipe-display h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .version-tree {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .version-tree h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .version-category {
+            margin-bottom: 2rem;
+        }
+
+        .version-category h4 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .version-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .version-node {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--primary-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .version-node:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .version-arrow {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin: 0 0.3rem;
+        }
+
+        .version-author {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-left: 0.5rem;
+        }
+
+        .version-branch {
+            margin-left: 2rem;
+            border-left: 2px solid var(--border-color);
+            padding-left: 1rem;
+        }
+
+        .version-note {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        .feature-list {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .feature-list h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .feature-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+
+    <div class="container">
+        <div class="intro-section">
+            <h1>MITE振金版 (MITE-<span class="highlight">ITE</span>)</h1>
+            <div class="subtitle">
+                <p><strong>MITE <span class="highlight">I</span>s <span class="highlight">T</span>oo <span
+                            class="highlight">E</span>asy</strong></p>
+                <p>主要强化了怪物（血量、攻击、装备）</p>
+                <p>增加了振金系列物品（比艾德曼更强）</p>
+                <p>武器工具添加了强化系统（越用越强）</p>
+            </div>
+            <a href="../../ga/download.html" class="btn" style="display: inline-block; margin-top: 1rem;">下载整合包</a>
+            <a href="../../ga/img/MITEversions.png" target="_blank" class="btn btn-secondary"
+                style="display: inline-block; margin-top: 1rem;">版本关系图</a>
+        </div>
+
+        <div class="nav-cards">
+            <a href="changelog.html" class="nav-card">
+                <h3>更新日志</h3>
+                <p>查看所有版本的详细更新内容，从 B0.1.0 到 v1.1.0</p>
+                <span class="version-badge">最新: v1.1.0-pre14</span>
+            </a>
+
+            <a href="modifier.html" class="nav-card">
+                <h3>振金修改器</h3>
+                <p>直接修改物品的强化属性，背包编辑等功能</p>
+                <span class="version-badge">v1.5</span>
+            </a>
+
+            <a href="items.html" class="nav-card">
+                <h3>物品ID表</h3>
+                <p>振金物品的完整ID列表和附加值说明</p>
+            </a>
+
+            <a href="config.html" class="nav-card">
+                <h3>配置文件生成器</h3>
+                <p>生成振金4.0版本的配置文件</p>
+            </a>
+        </div>
+
+        <div class="feature-list">
+            <h3>核心特性</h3>
+            <ul>
+                <li>怪物强化系统 - 血量、攻击力随天数增长</li>
+                <li>振金装备系统 - 比艾德曼更强的终极装备</li>
+                <li>装备强化系统 - 武器工具可升级，越用越强</li>
+                <li>锻造台系统 - 使用强化石提升装备等级</li>
+                <li>新增怪物 - 僵尸领主、湮灭骷髅、流浪女巫等</li>
+                <li>附魔扩展 - 新增暴击、格挡、紧急守备等附魔</li>
+                <li>世界机制 - 地底世界传送、地狱烫脚等挑战</li>
+            </ul>
+        </div>
+
+        <div class="quick-links">
+            <h3>合成表</h3>
+            <button onclick="showRecipe('recipe1')" class="recipe-btn">振金合成表</button>
+            <button onclick="showRecipe('recipe2')" class="recipe-btn">振金合成表4.0</button>
+        </div>
+
+        <div id="recipe1" class="recipe-display" style="display: none;">
+            <h3>振金合成表</h3>
+            <img src="../../ga/img/MITE-ITE.png" alt="振金合成表"
+                style="max-width: 100%; border-radius: 8px; border: 1px solid var(--border-color);">
+        </div>
+
+        <div id="recipe2" class="recipe-display" style="display: none;">
+            <h3>振金合成表4.0</h3>
+            <img src="../../ga/img/MITE-ITE4.0.png" alt="振金合成表4.0"
+                style="max-width: 100%; border-radius: 8px; border: 1px solid var(--border-color);">
+        </div>
+    </div>
+
+    <script>
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            const icon = document.querySelector('.theme-icon');
+            icon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const icon = document.querySelector('.theme-icon');
+            if (icon) {
+                icon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+            }
+        });
+
+
+        function showRecipe(recipeId) {
+
+            document.querySelectorAll('.recipe-display').forEach(div => {
+                div.style.display = 'none';
+            });
+
+
+            const recipe = document.getElementById(recipeId);
+            if (recipe.style.display === 'none') {
+                recipe.style.display = 'block';
+
+                recipe.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新日志 - MITE魔法时代</title>
+    <link rel="stylesheet" href="../../css/modern_style.css">
+    <style>
+        .version-nav {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .version-nav h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .version-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .version-link {
+            padding: 0.5rem 1rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .version-link:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .changelog-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            scroll-margin-top: 100px;
+        }
+
+        .changelog-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .changelog-section h3 {
+            color: var(--accent-color);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .changelog-section h4 {
+            color: var(--text-primary);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .changelog-section ul {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-left: 1.5rem;
+        }
+
+        .changelog-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .changelog-section blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        details summary {
+            list-style: none;
+            cursor: pointer;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            width: 0.4rem;
+            height: 0.4rem;
+            border-right: 2px solid var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::before {
+            transform: translateY(-50%) rotate(-135deg);
+        }
+
+        .highlight-text {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回魔法时代主页</a>
+
+        <div class="version-nav">
+            <h3>版本导航</h3>
+            <div class="version-links">
+                <a href="#v1.0.14" class="version-link">v1.0.14</a>
+                <a href="#v1.0.13" class="version-link">v1.0.13</a>
+                <a href="#v1.0.10" class="version-link">v1.0.10</a>
+                <a href="#v1.0.9" class="version-link">v1.0.9</a>
+                <a href="#v1.0.8" class="version-link">v1.0.8</a>
+                <a href="#v1.0.7" class="version-link">v1.0.7</a>
+                <a href="#v1.0.5" class="version-link">v1.0.5</a>
+                <a href="#v1.0.2" class="version-link">v1.0.2</a>
+            </div>
+        </div>
+
+        <div id="v1.0.14" class="changelog-section">
+            <h2>v1.0.14 更新日志</h2>
+            <details open>
+                <summary>
+                    <h3>更新内容</h3>
+                </summary>
+                <blockquote>
+                    <h4>Bug修复</h4>
+                    <ul>
+                        <li>修复一个崩溃bug</li>
+                    </ul>
+                </blockquote>
+            </details>
+        </div>
+
+        <div id="v1.0.13" class="changelog-section">
+            <h2>v1.0.13 更新日志</h2>
+            <details>
+                <summary>
+                    <h3>更新内容</h3>
+                </summary>
+                <blockquote>
+                    <h4>新增</h4>
+                    <ul>
+                        <li><span class="highlight-text">魔法工作台</span>：将魔法工作台放置于原版工作台上，消耗魔法结晶加速合成</li>
+                    </ul>
+                </blockquote>
+            </details>
+        </div>
+
+        <div id="v1.0.10" class="changelog-section">
+            <h2>v1.0.10 更新日志</h2>
+            <details>
+                <summary>
+                    <h3>更新内容</h3>
+                </summary>
+                <blockquote>
+                    <h4>新增</h4>
+                    <ul>
+                        <li><span class="highlight-text">彼岸花</span>：从猪人领主掉落</li>
+                        <li>魔法结晶和彼岸花合成出<span class="highlight-text">彼岸结晶</span></li>
+                        <li>使用彼岸结晶在魔法毡消耗经验能够<span class="highlight-text">消除诅咒一级</span></li>
+                    </ul>
+                    <h4>修复</h4>
+                    <ul>
+                        <li>修复血月相关问题</li>
+                        <li>修复当物品有嫉妒诅咒时出现的奇怪bug</li>
+                    </ul>
+                    <h4>移除</h4>
+                    <ul>
+                        <li>移除诅咒：嫉妒（考虑换成另一种效果）</li>
+                    </ul>
+                    <h4>说明</h4>
+                    <ul>
+                        <li><span class="highlight-text">爆炸诅咒</span>：当你身上的物品和手持的物品有爆炸的诅咒时生效</li>
+                    </ul>
+                </blockquote>
+            </details>
+        </div>
+
+        <div id="v1.0.9" class="changelog-section">
+            <h2>v1.0.9 更新日志</h2>
+            <details>
+                <summary>
+                    <h3>更新内容</h3>
+                </summary>
+                <blockquote>
+                    <h4>修复</h4>
+                    <ul>
+                        <li>掉落方块不会在玩家放置时掉落（当游戏很卡时也不会掉落，但这是保护措施）</li>
+                        <li>金苹果和经验瓶能直接合成附魔金苹果</li>
+                        <li>只通过右键就能触发床的bug（两个玩家合作卡床的bug无法测试）</li>
+                    </ul>
+                    <h4>新增</h4>
+                    <ul>
+                        <li>高级附魔台和古金属魔法毡的<span class="highlight-text">Shift快捷键</span>可用</li>
+                    </ul>
+                </blockquote>
+            </details>
+        </div>
+
+        <div id="v1.0.8" class="changelog-section">
+            <h2>v1.0.8 更新日志</h2>
+            <details>
+                <summary>
+                    <h3>更新内容</h3>
+                </summary>
+                <blockquote>
+                    <h4>修复</h4>
+                    <ul>
+                        <li>修复地形损坏问题</li>
+                    </ul>
+                </blockquote>
+            </details>
+        </div>
+
+        <div id="v1.0.7" class="changelog-section">
+            <h2>v1.0.7 更新日志</h2>
+            <details>
+                <summary>
+                    <h3>更新内容</h3>
+                </summary>
+                <blockquote>
+                    <h4>修复</h4>
+                    <ul>
+                        <li>魔法毡名字的显示</li>
+                        <li>捡起和合成的物品不能自动堆叠</li>
+                        <li>古金属魔法块无法挖掘</li>
+                        <li>魔法毡的GUI显示bug</li>
+                    </ul>
+                </blockquote>
+            </details>
+        </div>
+
+        <div id="v1.0.5" class="changelog-section">
+            <h2>v1.0.5 更新日志</h2>
+            <details>
+                <summary>
+                    <h3>更新内容</h3>
+                </summary>
+                <blockquote>
+                    <h4>修复</h4>
+                    <ul>
+                        <li>诅咒无效的问题</li>
+                        <li>无法进入地下世界</li>
+                        <li>高级附魔台和高级书架一碰就掉落</li>
+                        <li>古金属魔法块无法挖掘</li>
+                    </ul>
+                    <h4>更新</h4>
+                    <ul>
+                        <li>古金属魔法毡GUI更新</li>
+                    </ul>
+                </blockquote>
+            </details>
+        </div>
+
+        <div id="v1.0.2" class="changelog-section">
+            <h2>v1.0.2 更新日志（初始版本）</h2>
+            <details>
+                <summary>
+                    <h3>R6 基础更新</h3>
+                </summary>
+                <blockquote>
+                    <ul>
+                        <li>修复关于矿车的一个bug</li>
+                        <li>创世之书不再给经验</li>
+                        <li>更新代码框架</li>
+                    </ul>
+                </blockquote>
+            </details>
+
+            <details>
+                <summary>
+                    <h3>Magic Mod 新增内容</h3>
+                </summary>
+                <blockquote>
+                    <h4>物品</h4>
+                    <ul>
+                        <li>魔法碎片、魔法结晶、魔法纸、魔法皮革</li>
+                        <li>古金属魔法锭、魔法书</li>
+                    </ul>
+                    <h4>方块</h4>
+                    <ul>
+                        <li>古金属魔法毡、魔法书架、高级附魔台</li>
+                        <li>古金属魔法块、魔法源矿</li>
+                    </ul>
+                    <h4>诅咒</h4>
+                    <ul>
+                        <li>不合群、爆炸、嗜血、笨重、嫉妒、暴食</li>
+                        <li>恐惧黑暗、污染、傲慢、生锈、懒惰、群居、虚弱</li>
+                    </ul>
+                </blockquote>
+            </details>
+
+            <details>
+                <summary>
+                    <h3>游戏机制</h3>
+                </summary>
+                <blockquote>
+                    <ul>
+                        <li>玩家能通过<span class="highlight-text">古金属魔法毡</span>突破附魔5级上限，使用消耗魔法结晶和经验值，随机对一个物品上的某个附魔进行升级，包括诅咒
+                        </li>
+                        <li>附魔时有超大概率获得诅咒，每个附魔台的获得诅咒的概率不同：钻石 > 绿宝石 > 高级</li>
+                        <li><span class="highlight-text">魔法书架</span>：一个等于两个书架</li>
+                        <li><span class="highlight-text">高级附魔台</span>：能够在40书架加成下附魔</li>
+                    </ul>
+                </blockquote>
+            </details>
+
+            <details>
+                <summary>
+                    <h3>新增怪物</h3>
+                </summary>
+                <blockquote>
+                    <ul>
+                        <li><span class="highlight-text">猪人领主</span>：身穿精致的装备，手持长弓，另备长剑，作为精英怪，他不是眼瞎并且会主动叫附近的猪人主动攻击你</li>
+                    </ul>
+                </blockquote>
+            </details>
+
+            <details>
+                <summary>
+                    <h3>更改</h3>
+                </summary>
+                <blockquote>
+                    <ul>
+                        <li>删除了附魔金苹果原先的获得方式改为合成</li>
+                    </ul>
+                </blockquote>
+            </details>
+
+            <details>
+                <summary>
+                    <h3>反作弊</h3>
+                </summary>
+                <blockquote>
+                    <ul>
+                        <li>检测到反作弊行为将会自动关闭游戏</li>
+                    </ul>
+                </blockquote>
+            </details>
+
+            <details>
+                <summary>
+                    <h3>矿物调整</h3>
+                </summary>
+                <blockquote>
+                    <ul>
+                        <li>石英的生成概率减半，每颗石英获得的经验值从50变为100</li>
+                        <li>魔法源矿在地下世界生成</li>
+                        <li>主世界不生成秘银</li>
+                        <li>地下世界没有钻石</li>
+                    </ul>
+                </blockquote>
+            </details>
+
+            <details>
+                <summary>
+                    <h3>命令</h3>
+                </summary>
+                <blockquote>
+                    <ul>
+                        <li>现在只允许两个命令：/day 和 /xp</li>
+                    </ul>
+                </blockquote>
+            </details>
+        </div>
+    </div>
+
+    <script>
+
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            } else {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            htmlElement.setAttribute('data-theme', currentTheme);
+            updateThemeIcon(currentTheme);
+        });
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+    </script>
+</body>
+
+</html>

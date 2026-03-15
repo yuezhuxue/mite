@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MITE重生 - MITE Reborn</title>
+    <link rel="stylesheet" href="../../css/modern_style.css">
+    <style>
+        .intro-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .intro-section h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .intro-section .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .nav-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .nav-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .nav-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .nav-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .quick-links {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .quick-links h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .recipe-btn {
+            display: inline-block;
+            margin: 0.5rem 1rem 0.5rem 0;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            border-radius: 8px;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .recipe-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .recipe-display {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .recipe-display h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .author-message {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .author-message h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .author-message p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .source-link {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .source-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .source-link a:hover {
+            text-decoration: underline;
+        }
+
+        .feature-list {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .feature-list h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .feature-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        .bug-box {
+            background: rgba(241, 196, 15, 0.1);
+            border: 1px solid #f1c40f;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .bug-box h3 {
+            color: #f1c40f;
+            margin-bottom: 1rem;
+        }
+
+        .bug-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bug-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .bug-box li:before {
+            content: "⚠";
+            position: absolute;
+            left: 0;
+            color: #f1c40f;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+
+    <div class="container">
+        <div class="intro-section">
+            <h1>MITE重生 (MITE <span class="highlight">Reborn</span>)</h1>
+            <div class="subtitle">
+                <p><strong>将 MITE 从 1.6.4 移植到最新版 Minecraft</strong></p>
+                <p>目前发布的整合包是基于 <span class="highlight">1.14.4</span> 和 <span class="highlight">1.16.3</span></p>
+                <p>本站已经汉化更新 <span class="highlight">1.16.3</span> 的版本</p>
+                <p>作者是 <strong>Kelvin</strong>，还有一名代码贡献者 <strong>candarion</strong></p>
+            </div>
+            <a href="../../ga/download.html" class="btn" style="display: inline-block; margin-top: 1rem;">下载整合包</a>
+            <a href="../../ga/img/MITEversions.png" target="_blank" class="btn btn-secondary"
+                style="display: inline-block; margin-top: 1rem;">版本关系图</a>
+        </div>
+
+        <div class="nav-cards">
+            <a href="changelog.html" class="nav-card">
+                <h3>更新日志</h3>
+                <p>查看所有版本的详细更新内容，从 R03 到 R04.1</p>
+                <span class="version-badge">最新: R04.1</span>
+            </a>
+
+            <a href="features.html" class="nav-card">
+                <h3>特性列表</h3>
+                <p>查看 MITE 重生版的核心特性和改动</p>
+            </a>
+
+            <a href="recipes.html" class="nav-card">
+                <h3>合成表</h3>
+                <p>R03 和 R04.1 版本的完整合成配方</p>
+            </a>
+        </div>
+
+        <div class="author-message">
+            <h3>作者的话</h3>
+            <p class="source-link">
+                原文地址：<a href="https://www.curseforge.com/minecraft/mc-mods/mite-reborn" target="_blank">CurseForge</a>
+                <span style="margin-left: 1rem; font-style: italic;">翻译by: 月煮雪</span>
+            </p>
+
+            <p>MITE Reborn 依然在制作中，目前 R03 是一个试玩版本。</p>
+
+            <p>MITE Reborn 的目标是将 MITE 从 1.6.4 移植到最新版 Minecraft。本 Mod 的目标是通过修改 MC 的各个运作方式来增加游戏难度。</p>
+
+            <p>最初我是想为 Avernite（MITE 的原作者）提供一个更新 MITE 的途径。我给 Avernite 发了私信，他说他已经弃坑了，MITE 八成不会有官方后续更新。所以我们大概玩不到由最新版本 MC
+                制作的 MITE 了。</p>
+
+            <p>我问 Avernite 能不能由我来移植更新 MITE 到新版本，他说可以并给了我鼓励。</p>
+
+            <p>在之后的几个月，我一直致力于修改 1.6.4-MITE 的原始代码，使用 MCP 对代码进行反编译，并尝试将新版本的更新内容加入其中，但是困难重重啊，这种方法行不通。</p>
+
+            <p>2010年9月，一个点子映入我的脑海。我要做一个新的生存 mod，把它做成一个 MITE 的小版本，这就是本模组的由来，我将它命名为"5分钟生存"。这个模组得到了一些人的支持，他们也对在 Forge 下重构
+                MITE 的想法感兴趣，于是本项目就一步步的做出来了。</p>
+
+            <p>我把 mod 的名字改成了【MITE:重生】，列下原版 MITE 的所有特性，并逐步添加到其中，希望可以给新老玩家一个全新的游戏体验。</p>
+        </div>
+
+        <div class="feature-list">
+            <h3>R03 版本特性</h3>
+            <ul>
+                <li>用斧子对原木右键可以获得 1-2 个树皮</li>
+                <li>沙砾可以掉落平滑岩石</li>
+                <li>方块破坏时间增加，让开局不再枯燥乏味</li>
+                <li>小麦种子可以食用以阻止饱食度下降</li>
+                <li>僵尸和你一样可以徒手破坏方块（泥土、沙子、木板等）</li>
+                <li>你可以徒手破坏熔炉</li>
+            </ul>
+        </div>
+
+        <div class="feature-list">
+            <h3>R04+ 版本特性</h3>
+            <ul>
+                <li>所有金属工作台系统</li>
+                <li>加入了亚麻、亚麻种子、树皮、平滑岩石、木盾牌、标枪</li>
+                <li>耐久调整：木镐 8、石镐 2、铁镐 43、钻石镐 131</li>
+                <li>F3 屏幕显示原版 MITE 中 /stats 指令的信息</li>
+                <li>季节系统（春夏秋冬）</li>
+                <li>方块硬度、血量、饱食度系统调整</li>
+                <li>显示合成剩余时间，物品需要手动取出</li>
+            </ul>
+        </div>
+
+        <div class="bug-box">
+            <h3>已知问题</h3>
+            <ul>
+                <li>一旦僵尸开始破坏方块就不会停止，除非方块被破坏或者离方块过远</li>
+            </ul>
+        </div>
+
+        <div class="quick-links">
+            <h3>合成表</h3>
+            <button onclick="showRecipe('recipe1')" class="recipe-btn">R03 合成表</button>
+            <button onclick="showRecipe('recipe2')" class="recipe-btn">R04.1 合成表</button>
+        </div>
+
+        <div id="recipe1" class="recipe-display" style="display: none;">
+            <h3>MITE 重生 R03 合成表</h3>
+            <img src="../../ga/img/miterebornrecipes.jpg" alt="MITE 重生 R03 合成表"
+                style="max-width: 100%; border-radius: 8px; border: 1px solid var(--border-color);">
+        </div>
+
+        <div id="recipe2" class="recipe-display" style="display: none;">
+            <h3>MITE 重生 R04.1 合成表</h3>
+            <img src="../../ga/img/miterebornrecipes3.jpg" alt="MITE 重生 R04.1 合成表"
+                style="max-width: 100%; border-radius: 8px; border: 1px solid var(--border-color);">
+        </div>
+    </div>
+
+    <script>
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            const moonIcon = document.getElementById('moonIcon');
+            const sunIcon = document.getElementById('sunIcon');
+            if (newTheme === 'dark') {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            } else {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            const moonIcon = document.getElementById('moonIcon');
+            const sunIcon = document.getElementById('sunIcon');
+            if (savedTheme === 'dark') {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            } else {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            }
+        });
+
+
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+
+        function showRecipe(recipeId) {
+
+            document.querySelectorAll('.recipe-display').forEach(div => {
+                div.style.display = 'none';
+            });
+
+
+            const recipe = document.getElementById(recipeId);
+            if (recipe.style.display === 'none') {
+                recipe.style.display = 'block';
+
+                recipe.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+    </script>
+</body>
+
+</html>

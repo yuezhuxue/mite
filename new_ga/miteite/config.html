@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>振金4.0配置文件生成器 - MITE-ITE</title>
+    <link rel="stylesheet" href="../../css/modern_style.css">
+    <style>
+        .intro-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .intro-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .intro-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .warning {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .note {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .config-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .config-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .config-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .config-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .config-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .config-table tr:hover {
+            background: var(--bg-primary);
+        }
+
+        .config-table input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .config-table input[type="number"] {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .config-table input[type="number"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .config-name {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .config-key {
+            font-family: 'Courier New', monospace;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .changed {
+            color: #ff6b6b !important;
+        }
+
+        .download-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .download-btn {
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-toggle" onclick="toggleTheme()" title="切换主题">
+        <span class="theme-icon">🌙</span>
+    </div>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回振金版主页</a>
+
+        <div class="intro-card">
+            <h2>振金4.0配置文件生成器</h2>
+            <p>支持4.0-pre15，兼容旧版本</p>
+            <p class="warning">注意：点击下方按钮你将会下载一个 mite-ite-cfg.json</p>
+            <p>服务器：将此文件放在根目录</p>
+            <p>客户端：将此文件放在 /.minecraft/</p>
+            <p>替换原有文件，重启游戏即可生效！</p>
+            <p class="note">纯手工录入，如有错误，欢迎反馈</p>
+        </div>
+
+        <div class="config-section">
+            <h3>开关选项</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">勾选表示启用</p>
+            <table class="config-table">
+                <thead>
+                    <tr>
+                        <th>配置项</th>
+                        <th style="width: 100px;">启用</th>
+                        <th>配置键名</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="config-name">地狱爬行者加强</td><td><input type="checkbox" id="ITE[0]" value="Boolean" checked name="infernal_creeper_boost" oninput="ColorCC()" alt="true" /></td><td class="config-key">infernal_creeper_boost</td></tr>
+                    <tr><td class="config-name">地狱岩灼烧伤害</td><td><input type="checkbox" id="ITE[1]" value="Boolean" checked name="netherrack-damage" oninput="ColorCC()" alt="true" /></td><td class="config-key">netherrack-damage</td></tr>
+                    <tr><td class="config-name">吸血蝙蝠攻击带毒</td><td><input type="checkbox" id="ITE[2]" value="Boolean" checked name="bat_poison_attack" oninput="ColorCC()" alt="true" /></td><td class="config-key">bat_poison_attack</td></tr>
+                    <tr><td class="config-name">骷髅三发弓箭</td><td><input type="checkbox" id="ITE[3]" value="Boolean" checked name="skeleton_triple_shot" oninput="ColorCC()" alt="true" /></td><td class="config-key">skeleton_triple_shot</td></tr>
+                    <tr><td class="config-name">骷髅死亡是否分裂</td><td><input type="checkbox" id="ITE[4]" value="Boolean" checked name="compressed_skeleton" oninput="ColorCC()" alt="true" /></td><td class="config-key">compressed_skeleton</td></tr>
+                    <tr><td class="config-name">第一天白天双倍时间</td><td><input type="checkbox" id="ITE[5]" value="Boolean" checked name="first_day_longer_day_time" oninput="ColorCC()" alt="true" /></td><td class="config-key">first_day_longer_day_time</td></tr>
+                    <tr><td class="config-name">僵尸猪人远程攻击</td><td><input type="checkbox" id="ITE[6]" value="Boolean" checked name="zombie_pigman_use_bow" oninput="ColorCC()" alt="true" /></td><td class="config-key">zombie_pigman_use_bow</td></tr>
+                    <tr><td class="config-name">主世界生成艾德曼</td><td><input type="checkbox" id="ITE[7]" value="Boolean" checked name="overworld_adamantite_ore" oninput="ColorCC()" alt="true" /></td><td class="config-key">overworld_adamantite_ore</td></tr>
+                    <tr><td class="config-name">地下世界会随机传送</td><td><input type="checkbox" id="ITE[8]" value="Boolean" checked name="underworld-random-teleport" oninput="ColorCC()" alt="true" /></td><td class="config-key">underworld-random-teleport</td></tr>
+                    <tr><td class="config-name">骷髅公爵血量攻击翻倍</td><td><input type="checkbox" id="ITE[9]" value="Boolean" checked name="bone-lord-tweak" oninput="ColorCC()" alt="true" /></td><td class="config-key">bone-lord-tweak</td></tr>
+                    <tr><td class="config-name">怪物是否格挡</td><td><input type="checkbox" id="ITE[10]" value="Boolean" checked name="zombie_defense" oninput="ColorCC()" alt="true" /></td><td class="config-key">zombie_defense</td></tr>
+                    <tr><td class="config-name">骷髅有几率强制近战</td><td><input type="checkbox" id="ITE[11]" value="Boolean" checked name="skeleton_force_melee_attack" oninput="ColorCC()" alt="true" /></td><td class="config-key">skeleton_force_melee_attack</td></tr>
+                    <tr><td class="config-name">狼攻击带肉玩家</td><td><input type="checkbox" id="ITE[12]" value="Boolean" checked name="wolves_attack_players_with_meat" oninput="ColorCC()" alt="true" /></td><td class="config-key">wolves_attack_players_with_meat</td></tr>
+                    <tr><td class="config-name">秘银块能强化铁傀儡</td><td><input type="checkbox" id="ITE[13]" value="Boolean" checked name="can_boost_iron_golem" oninput="ColorCC()" alt="true" /></td><td class="config-key">can_boost_iron_golem</td></tr>
+                    <tr><td class="config-name">刷怪笼加速刷怪</td><td><input type="checkbox" id="ITE[14]" value="Boolean" checked name="mob_spawner_speed_up_with_players" oninput="ColorCC()" alt="true" /></td><td class="config-key">mob_spawner_speed_up_with_players</td></tr>
+                    <tr><td class="config-name">地下世界会给疲劳效果</td><td><input type="checkbox" id="ITE[15]" value="Boolean" checked name="underworld_debuff" oninput="ColorCC()" alt="true" /></td><td class="config-key">underworld_debuff</td></tr>
+                    <tr><td class="config-name">地狱会给虚弱效果</td><td><input type="checkbox" id="ITE[16]" value="Boolean" checked name="nether_debuff" oninput="ColorCC()" alt="true" /></td><td class="config-key">nether_debuff</td></tr>
+                    <tr><td class="config-name">玩家过符文门通告</td><td><input type="checkbox" id="ITE[17]" value="Boolean" checked name="log_players_interact_with_portal" oninput="ColorCC()" alt="true" /></td><td class="config-key">log_players_interact_with_portal</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="config-section">
+            <h3>时间配置</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">本表数值 = 秒数 × 20</p>
+            <table class="config-table">
+                <thead>
+                    <tr>
+                        <th>配置项</th>
+                        <th style="width: 150px;">数值</th>
+                        <th>配置键名</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="config-name">雨中虚弱所需时间</td><td><input type="number" id="ITE[18]" value="3600" name="in_rain_debuff_time" oninput="ColorCC()" alt="3600" /></td><td class="config-key">in_rain_debuff_time</td></tr>
+                    <tr><td class="config-name">地下世界缓慢I所需时间</td><td><input type="number" id="ITE[19]" value="72000" name="underworld_debuff_period1" oninput="ColorCC()" alt="72000" /></td><td class="config-key">underworld_debuff_period1</td></tr>
+                    <tr><td class="config-name">地下世界缓慢II所需时间</td><td><input type="number" id="ITE[20]" value="108000" name="underworld_debuff_period2" oninput="ColorCC()" alt="108000" /></td><td class="config-key">underworld_debuff_period2</td></tr>
+                    <tr><td class="config-name">地下世界缓慢III所需时间</td><td><input type="number" id="ITE[21]" value="132000" name="underworld_debuff_period3" oninput="ColorCC()" alt="132000" /></td><td class="config-key">underworld_debuff_period3</td></tr>
+                    <tr><td class="config-name">地狱获得挖掘疲劳所需时间</td><td><input type="number" id="ITE[22]" value="72000" name="nether_debuff_time" oninput="ColorCC()" alt="72000" /></td><td class="config-key">nether_debuff_time</td></tr>
+                    <tr><td class="config-name">铁块烧秘银锭耗时</td><td><input type="number" id="ITE[23]" value="6000" name="iron_to_mithril_cook_time" oninput="ColorCC()" alt="6000" /></td><td class="config-key">iron_to_mithril_cook_time</td></tr>
+                    <tr><td class="config-name">秘银块烧艾德曼锭耗时</td><td><input type="number" id="ITE[24]" value="9000" name="mithril_to_adamantium_cook_time" oninput="ColorCC()" alt="9000" /></td><td class="config-key">mithril_to_adamantium_cook_time</td></tr>
+                    <tr><td class="config-name">地下世界随机传送冷却</td><td><input type="number" id="ITE[25]" value="36000.0" name="underworld-random-teleport-time" oninput="ColorCC()" alt="36000.0" /></td><td class="config-key">underworld-random-teleport-time</td></tr>
+                    <tr><td class="config-name">巨人僵尸召僵尸冷却时间</td><td><input type="number" id="ITE[26]" value="1200" name="giant_zombie_spawn_zombie_cooldown" oninput="ColorCC()" alt="1200" /></td><td class="config-key">giant_zombie_spawn_zombie_cooldown</td></tr>
+                    <tr><td class="config-name">动物生病到死亡的时间</td><td><input type="number" id="ITE[27]" value="144000" name="animal_ill_to_death_time" oninput="ColorCC()" alt="144000" /></td><td class="config-key">animal_ill_to_death_time</td></tr>
+                    <tr><td class="config-name">紧急守备附魔冷却时间</td><td><input type="number" id="ITE[28]" value="72000" name="emergency_cooldown" oninput="ColorCC()" alt="72000" /></td><td class="config-key">emergency_cooldown</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="config-section">
+            <h3>游戏参数配置</h3>
+            <table class="config-table">
+                <thead>
+                    <tr>
+                        <th>配置项</th>
+                        <th style="width: 150px;">数值</th>
+                        <th>配置键名</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="config-name">蛋白纤维条偏移X</td><td><input type="number" id="ITE[29]" value="0" name="health_bar_x_offset" oninput="ColorCC()" alt="0" /></td><td class="config-key">health_bar_x_offset</td></tr>
+                    <tr><td class="config-name">蛋白纤维条偏移Y</td><td><input type="number" id="ITE[30]" value="0" name="health_bar_y_offset" oninput="ColorCC()" alt="0" /></td><td class="config-key">health_bar_y_offset</td></tr>
+                    <tr><td class="config-name">多少羊毛换绿宝石碎片</td><td><input type="number" id="ITE[31]" value="4" name="villager_wool_to_emerald_shard_count" oninput="ColorCC()" alt="4" /></td><td class="config-key">villager_wool_to_emerald_shard_count</td></tr>
+                    <tr><td class="config-name">羊毛换绿宝石碎片个数</td><td><input type="number" id="ITE[32]" value="1" name="villager_wool_to_emerald_shard_shard_count" oninput="ColorCC()" alt="1" /></td><td class="config-key">villager_wool_to_emerald_shard_shard_count</td></tr>
+                    <tr><td class="config-name">几个秘银块烧艾德曼锭</td><td><input type="number" id="ITE[33]" value="1" name="mithril_block_count_to_adamantium" oninput="ColorCC()" alt="1" /></td><td class="config-key">mithril_block_count_to_adamantium</td></tr>
+                    <tr><td class="config-name">鸡繁殖经验</td><td><input type="number" id="ITE[34]" value="3" name="breed_xp_chicken" oninput="ColorCC()" alt="3" /></td><td class="config-key">breed_xp_chicken</td></tr>
+                    <tr><td class="config-name">羊繁殖经验</td><td><input type="number" id="ITE[35]" value="5" name="breed_xp_sheep" oninput="ColorCC()" alt="5" /></td><td class="config-key">breed_xp_sheep</td></tr>
+                    <tr><td class="config-name">猪繁殖经验</td><td><input type="number" id="ITE[36]" value="15" name="breed_xp_pig" oninput="ColorCC()" alt="15" /></td><td class="config-key">breed_xp_pig</td></tr>
+                    <tr><td class="config-name">牛繁殖经验</td><td><input type="number" id="ITE[37]" value="25" name="breed_xp_cow" oninput="ColorCC()" alt="25" /></td><td class="config-key">breed_xp_cow</td></tr>
+                    <tr><td class="config-name">钓鱼经验倍率</td><td><input type="number" id="ITE[38]" value="3" name="fishing_xp_scale" oninput="ColorCC()" alt="3" /></td><td class="config-key">fishing_xp_scale</td></tr>
+                    <tr><td class="config-name">钻石经验值</td><td><input type="number" id="ITE[39]" value="300" name="diamond_exp" oninput="ColorCC()" alt="300" /></td><td class="config-key">diamond_exp</td></tr>
+                    <tr><td class="config-name">吃石英经验限制级数</td><td><input type="number" id="ITE[40]" value="55" name="quartz_max_exp_level" oninput="ColorCC()" alt="55" /></td><td class="config-key">quartz_max_exp_level</td></tr>
+                    <tr><td class="config-name">骷髅死亡分裂个数</td><td><input type="number" id="ITE[41]" value="5" name="compressed_skeleton_expand_count" oninput="ColorCC()" alt="5" /></td><td class="config-key">compressed_skeleton_expand_count</td></tr>
+                    <tr><td class="config-name">血月地表恶魂允许生成天数</td><td><input type="number" id="ITE[42]" value="128" name="ghast_spawn_limit_day" oninput="ColorCC()" alt="128" /></td><td class="config-key">ghast_spawn_limit_day</td></tr>
+                    <tr><td class="config-name">血月地表远古骷髅公爵允许生成天数</td><td><input type="number" id="ITE[43]" value="192" name="ancient_bone_lord_spawn_limit_day" oninput="ColorCC()" alt="192" /></td><td class="config-key">ancient_bone_lord_spawn_limit_day</td></tr>
+                    <tr><td class="config-name">暴击附魔每级平砍几率（数值×10%）</td><td><input type="number" id="ITE[44]" value="2" name="crit_enchantment_chance_boost_per_lvl" oninput="ColorCC()" alt="2" /></td><td class="config-key">crit_enchantment_chance_boost_per_lvl</td></tr>
+                    <tr><td class="config-name">暴击附魔每级暴击伤害</td><td><input type="number" id="ITE[45]" value="0.4" name="crit_enchantment_damage_boost_per_lvl" oninput="ColorCC()" alt="0.4" /></td><td class="config-key">crit_enchantment_damage_boost_per_lvl</td></tr>
+                    <tr><td class="config-name">血月刷怪上限</td><td><input type="number" id="ITE[62]" value="128.0" name="blood_moon_max_hostile_fraction" oninput="ColorCC()" alt="128.0" /></td><td class="config-key">blood_moon_max_hostile_fraction</td></tr>
+                    <tr><td class="config-name">全套保护V的减伤</td><td><input type="number" id="ITE[63]" value="0.1" name="all_protection_v_defence_fraction" oninput="ColorCC()" alt="0.1" /></td><td class="config-key">all_protection_v_defence_fraction</td></tr>
+                    <tr><td class="config-name">同一实体渐进伤害</td><td><input type="number" id="ITE[64]" value="0.1" name="stepped_mob_damage_factor" oninput="ColorCC()" alt="0.1" /></td><td class="config-key">stepped_mob_damage_factor</td></tr>
+                    <tr><td class="config-name">精英僵尸猪人生成几率</td><td><input type="number" id="ITE[65]" value="0.025" name="zombie_pigman_boost_chance" oninput="ColorCC()" alt="0.025" /></td><td class="config-key">zombie_pigman_boost_chance</td></tr>
+                    <tr><td class="config-name">刷怪上限随着天数的提升</td><td><input type="number" id="ITE[66]" value="1.0" name="mob_max_spawn_count_increase_per_day" oninput="ColorCC()" alt="1.0" /></td><td class="config-key">mob_max_spawn_count_increase_per_day</td></tr>
+                    <tr><td class="config-name">窒息伤害</td><td><input type="number" id="ITE[67]" value="10.0" name="in_wall_damage_for_player" oninput="ColorCC()" alt="10.0" /></td><td class="config-key">in_wall_damage_for_player</td></tr>
+                    <tr><td class="config-name">主世界恶魂火球强度倍率</td><td><input type="number" id="ITE[68]" value="1.25" name="ghast_overworld_boost" oninput="ColorCC()" alt="1.25" /></td><td class="config-key">ghast_overworld_boost</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="config-section">
+            <h3>矿物生成权重配置</h3>
+            <table class="config-table">
+                <thead>
+                    <tr>
+                        <th>配置项</th>
+                        <th style="width: 150px;">数值</th>
+                        <th>配置键名</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="config-name">主世界金矿生成权重</td><td><input type="number" id="ITE[46]" value="20" name="gold_frequency_overworld" oninput="ColorCC()" alt="20" /></td><td class="config-key">gold_frequency_overworld</td></tr>
+                    <tr><td class="config-name">主世界银矿生成权重</td><td><input type="number" id="ITE[47]" value="10" name="silver_frequency_overworld" oninput="ColorCC()" alt="10" /></td><td class="config-key">silver_frequency_overworld</td></tr>
+                    <tr><td class="config-name">主世界铜矿生成权重</td><td><input type="number" id="ITE[48]" value="40" name="copper_frequency_overworld" oninput="ColorCC()" alt="40" /></td><td class="config-key">copper_frequency_overworld</td></tr>
+                    <tr><td class="config-name">主世界铁矿生成权重</td><td><input type="number" id="ITE[49]" value="40" name="iron_frequency_overworld" oninput="ColorCC()" alt="40" /></td><td class="config-key">iron_frequency_overworld</td></tr>
+                    <tr><td class="config-name">主世界青金石生成权重</td><td><input type="number" id="ITE[50]" value="4" name="lapis_frequency_overworld" oninput="ColorCC()" alt="4" /></td><td class="config-key">lapis_frequency_overworld</td></tr>
+                    <tr><td class="config-name">主世界钻石生成权重</td><td><input type="number" id="ITE[51]" value="5" name="diamond_frequency_overworld" oninput="ColorCC()" alt="5" /></td><td class="config-key">diamond_frequency_overworld</td></tr>
+                    <tr><td class="config-name">主世界秘银生成权重</td><td><input type="number" id="ITE[52]" value="10" name="mithril_frequency_overworld" oninput="ColorCC()" alt="10" /></td><td class="config-key">mithril_frequency_overworld</td></tr>
+                    <tr><td class="config-name">主世界艾德曼生成权重</td><td><input type="number" id="ITE[53]" value="1" name="adamantium_frequency_overworld" oninput="ColorCC()" alt="1" /></td><td class="config-key">adamantium_frequency_overworld</td></tr>
+                    <tr><td class="config-name">地下世界金矿生成权重</td><td><input type="number" id="ITE[54]" value="20" name="gold_frequency_underworld" oninput="ColorCC()" alt="20" /></td><td class="config-key">gold_frequency_underworld</td></tr>
+                    <tr><td class="config-name">地下世界银矿生成权重</td><td><input type="number" id="ITE[55]" value="10" name="silver_frequency_underworld" oninput="ColorCC()" alt="10" /></td><td class="config-key">silver_frequency_underworld</td></tr>
+                    <tr><td class="config-name">地下世界铜矿生成权重</td><td><input type="number" id="ITE[56]" value="40" name="copper_frequency_underworld" oninput="ColorCC()" alt="40" /></td><td class="config-key">copper_frequency_underworld</td></tr>
+                    <tr><td class="config-name">地下世界铁矿生成权重</td><td><input type="number" id="ITE[57]" value="60" name="iron_frequency_underworld" oninput="ColorCC()" alt="60" /></td><td class="config-key">iron_frequency_underworld</td></tr>
+                    <tr><td class="config-name">地下世界青金石生成权重</td><td><input type="number" id="
+number" id="ITE[58]" value="5" name="lapis_frequency_underworld" oninput="ColorCC()" alt="5" /></td><td class="config-key">lapis_frequency_underworld</td></tr>
+                    <tr><td class="config-name">地下世界钻石生成权重</td><td><input type="number" id="ITE[59]" value="5" name="diamond_frequency_underworld" oninput="ColorCC()" alt="5" /></td><td class="config-key">diamond_frequency_underworld</td></tr>
+                    <tr><td class="config-name">地下世界秘银矿生成权重</td><td><input type="number" id="ITE[60]" value="10" name="mithril_frequency_underworld" oninput="ColorCC()" alt="10" /></td><td class="config-key">mithril_frequency_underworld</td></tr>
+                    <tr><td class="config-name">地下世界艾德曼矿生成权重</td><td><input type="number" id="ITE[61]" value="5" name="adamantium_frequency_underworld" oninput="ColorCC()" alt="5" /></td><td class="config-key">adamantium_frequency_underworld</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="download-section">
+            <button type="button" onclick="snowFunction()" class="download-btn">
+                下载 mite-ite-cfg.json 配置文件
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function getCount() {
+            return 68;
+        }
+
+        function ColorCC() {
+            var strTemp = "";
+            var a, b;
+            for (var i = 0; i <= getCount(); i++) {
+                strTemp = "ITE[" + i.toString() + "]";
+                a = document.getElementById(strTemp).value;
+                b = document.getElementById(strTemp).alt;
+                if (a == b) {
+                    document.getElementById(strTemp).classList.remove('changed');
+                } else {
+                    document.getElementById(strTemp).classList.add('changed');
+                }
+            }
+        }
+
+        function snowFunction() {
+            var count = getCount();
+            var strName = new Array();
+            var strValue = new Array();
+            var sTemp = "";
+            var sT = "";
+            
+            for (var i = 0; i <= count; i++) {
+                sTemp = "ITE[" + i.toString() + "]";
+                strName[i] = document.getElementById(sTemp).name;
+                sT = document.getElementById(sTemp).value;
+                
+                if (sT == "Boolean") {
+                    strValue[i] = document.getElementById(sTemp).checked;
+                } else {
+                    strValue[i] = document.getElementById(sTemp).value;
+                    if (strValue[i] == "") {
+                        alert(strName[i] + " 的值为空，请确认！");
+                        return;
+                    } else if (parseInt(strValue[i]) >= 2147483647) {
+                        alert(strName[i] + " 的值不能大于2147483647，请确认！");
+                        return;
+                    }
+                }
+            }
+            
+            sTemp = "";
+            for (var i = 0; i <= count; i++) {
+                sTemp = sTemp + "\"" + strName[i] + "\"" + ":" + strValue[i] + ", \n ";
+            }
+            sTemp = sTemp.substring(0, sTemp.length - 4);
+            sTemp = "{" + sTemp + "}";
+            
+            funDownload(sTemp, 'mite-ite-cfg.json');
+        }
+
+        var funDownload = function (content, filename) {
+            var eleLink = document.createElement('a');
+            eleLink.download = filename;
+            eleLink.style.display = 'none';
+            var blob = new Blob([content]);
+            eleLink.href = URL.createObjectURL(blob);
+            document.body.appendChild(eleLink);
+            eleLink.click();
+            document.body.removeChild(eleLink);
+        };
+
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            const icon = document.querySelector('.theme-icon');
+            icon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const icon = document.querySelector('.theme-icon');
+            if (icon) {
+                icon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+            }
+        });
+    </script>
+</body>
+</html>

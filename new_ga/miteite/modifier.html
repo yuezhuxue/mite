@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>振金修改器 - MITE振金版</title>
+    <link rel="stylesheet" href="../../css/modern_style.css">
+    <style>
+        .intro-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .intro-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .intro-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .download-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .download-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .download-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .download-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .download-link:hover {
+            border-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .download-link::before {
+            content: "▸";
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            color: var(--primary-color);
+        }
+
+        .feature-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .feature-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-section h4 {
+            color: var(--accent-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-section li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .feature-section li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        .warning-box {
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 4px solid #ff6b6b;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .warning-box p {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .info-box {
+            background: rgba(78, 205, 196, 0.1);
+            border-left: 4px solid #4ecdc4;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .info-box p {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .screenshot {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin: 1rem 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+
+        details summary {
+            list-style: none;
+            cursor: pointer;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            width: 0.4rem;
+            height: 0.4rem;
+            border-right: 2px solid var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::before {
+            transform: translateY(-50%) rotate(-135deg);
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+    </button>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回振金版主页</a>
+
+        <div class="intro-card">
+            <h2>MITE振金修改器</h2>
+            <p>主要用于直接修改物品的强化属性</p>
+            <p>附带一些其他功能</p>
+        </div>
+
+        <div class="download-section">
+            <h3>下载链接</h3>
+            <div class="download-links">
+                <a href="../../ga/dl/MITE振金修改器v1.4.zip" class="download-link">
+                    MITE振金修改器 v1.4.zip
+                </a>
+                <a href="../../ga/dl/MITE振金修改器v1.5.zip" class="download-link">
+                    MITE振金修改器 v1.5.zip（最新版）
+                </a>
+            </div>
+        </div>
+
+        <div class="feature-section">
+            <h3>更新日志</h3>
+            
+            <details open>
+                <summary><h4>v1.5</h4></summary>
+                <ul>
+                    <li>添加超自然、斩首、锻造三个强化选项</li>
+                    <li>兼容旧版本</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary><h4>v1.4</h4></summary>
+                <ul>
+                    <li>加入防呆拦截，现在存档背包为空将不能写入</li>
+                    <li>现在可以自定义负值代表的个数(0~127)</li>
+                    <li><em>特殊的，个数为0的物品</em></li>
+                </ul>
+            </details>
+
+            <details>
+                <summary><h4>v1.3</h4></summary>
+                <ul>
+                    <li>添加了两个功能：</li>
+                </ul>
+                
+                <h4>① 背包编辑</h4>
+                <img src="../../ga/img/miteZJ/zj1.jpg" alt="背包编辑界面" class="screenshot">
+                <p>这是一项快捷编辑背包内物品的功能</p>
+                <p>仅推荐振金版和魔法版使用（原版MITE需要箱子中转）</p>
+                
+                <ul>
+                    <li><strong style="color: #ff6b6b;">红色</strong>框选区域对应背包和装备栏
+                        <ul>
+                            <li>其中的数字表示该位置的物品ID</li>
+                            <li>当ID为正时，个数为1，举例：23</li>
+                            <li>当ID为负时，个数为64，举例：-295</li>
+                            <li>装备区预设了一些装备套装可以迅速填入ID</li>
+                        </ul>
+                    </li>
+                    <li><strong style="color: #17a2b8;">蓝色</strong>区域为代码区
+                        <ul>
+                            <li>[生成]：将背包、装备的信息生成一串代码显示出来</li>
+                            <li>[解析]：将代码粘贴进去，按解析将自动填充背包、装备区域</li>
+                        </ul>
+                    </li>
+                    <li><strong style="color: #28a745;">绿色</strong>区域为选项区（针对程序界面）
+                        <ul>
+                            <li>[全负]：背包全部变为负值</li>
+                            <li>[+/-]：背包正负随机变化</li>
+                            <li>[全正]：背包全部变为正值</li>
+                            <li>[扩1]：将背包左下角第一个的ID填入背包所有区域</li>
+                            <li>[随机]：背包ID随机</li>
+                            <li>[随机2]：背包和装备的ID随机</li>
+                            <li>[数量随机]：如果勾选，将无视正负，物品数量随机在1~64个</li>
+                            <li>[读取]：读取存档内背包和装备栏物品ID</li>
+                            <li>[修改]：将当前程序背包和装备的物品ID写入存档</li>
+                            <li>[清空背包]：程序界面ID全部取值为0</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>② 背包继承</h4>
+                <img src="../../ga/img/miteZJ/zj2.jpg" alt="背包继承界面" class="screenshot">
+                <p>将背包信息压缩为一段代码用于网络分享</p>
+                <p>与上面白板物品不同的是，此功能将包含物品的所有信息（附魔，耐久，强化等）</p>
+                <p>仅推荐振金版和魔法版使用（原版MITE需要箱子中转）</p>
+                
+                <ul>
+                    <li><strong style="color: #ff6b6b;">红色</strong>框选区域为代码区
+                        <ul>
+                            <li>[读取]：将存档背包物品信息压缩为代码</li>
+                            <li>[写入]：解析代码并将信息写入存档</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p><strong>此功能适用于以下情况互相交流：</strong></p>
+                <ul>
+                    <li>同一版本的不同存档之间</li>
+                    <li>不同的版本之间（比如R195,R196)</li>
+                    <li>不同的魔改版本之间（比如振金版，魔法版，R195）</li>
+                    <li>不同的玩家之间</li>
+                </ul>
+                <p>你可以把代码分享到Q群、贴吧、论坛、微博、朋友圈等社交媒体供大家选用。</p>
+            </details>
+
+            <details>
+                <summary><h4>v1.2</h4></summary>
+                <ul>
+                    <li>强化等级上限现在是2147483646，虽然没什么用</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary><h4>v1.1</h4></summary>
+                <ul>
+                    <li>修复了一些bug</li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="feature-section">
+            <h3>重要提示</h3>
+            
+            <div class="warning-box">
+                <p>注意！不能无中生有。背包中必需至少有个东西才能修改</p>
+            </div>
+            <p>无中生有可能会看不到存档，恢复办法为依次按下[清空背包]-[修改]按钮，将空背包写入</p>
+            <p>或者使用空背包继承码：</p>
+            <code style="background: var(--bg-primary); padding: 0.5rem; border-radius: 4px; display: block; margin: 0.5rem 0;">mitehash=[00]{H4sIAAAAAAAEAGMAAI3vAtIBAAAA}</code>
+
+            <div class="warning-box" style="margin-top: 1.5rem;">
+                <p>注意！魔法版如果写入了不存在的物品ID（如振金），进游戏会奔溃</p>
+            </div>
+            <p>所以修改之前最好清楚自己导入了什么物品</p>
+            <p>恢复办法也很简单，改成游戏存在的物品ID即可（比如石头，id=1)</p>
+
+            <div class="info-box" style="margin-top: 1.5rem;">
+                <p>振金版高等级的抗性提升buff，保护附魔，抗火附魔都不能阻止岩浆掉血，可以用瞬间治疗buff抵消，或者开血量锁定。</p>
+            </div>
+            <div class="info-box">
+                <p>振金版可以直接修改物品ID，无需利用箱子中转保留。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            const icon = document.querySelector('.theme-icon');
+            icon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const icon = document.querySelector('.theme-icon');
+            if (icon) {
+                icon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+            }
+        });
+
+
+        document.querySelectorAll('details').forEach(details => {
+            details.addEventListener('toggle', function(e) {
+                if (this.open) {
+                    const content = this.querySelector('ul, p, img');
+                    if (content) {
+                        content.style.animation = 'none';
+                        void content.offsetHeight;
+                        content.style.animation = '';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

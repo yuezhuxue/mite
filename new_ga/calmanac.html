@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>MITE黄历</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script>
+        (function () {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <link rel="stylesheet" href="../css/modern_style.css" />
+    <script id="jquery_183" type="text/javascript" class="library" src="../js/jquery-1.8.3.min.js"></script>
+    <script id="almanac" type="text/javascript" class="library" src="../js/almanac.js"></script>
+    <style>
+        .almanac-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .almanac-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .almanac-title sup {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-left: 0.5rem;
+        }
+
+        .date {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .fortune-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .good,
+        .bad {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .good .title,
+        .bad .title {
+            padding: 1rem;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .good .title {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: #fff;
+        }
+
+        .bad .title {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: #fff;
+        }
+
+        .good .content,
+        .bad .content {
+            padding: 1.5rem;
+        }
+
+        .content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .content ul li {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .content ul li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .content ul li .name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .content ul li .description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .tips-section {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .line-tip {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .line-tip:last-child {
+            margin-bottom: 0;
+        }
+
+        .line-tip strong {
+            color: var(--text-primary);
+            min-width: 100px;
+            font-weight: 600;
+        }
+
+        .direction_value {
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        .drink_value {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .goddes_value {
+            color: #e74c3c;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+
+        .comment {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .comment ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .comment ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .comment footer {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .comment footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .comment footer a:hover {
+            text-decoration: underline;
+        }
+
+        .vercount-display {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .fortune-section {
+                grid-template-columns: 1fr;
+            }
+
+            .almanac-title {
+                font-size: 2rem;
+            }
+
+            .date {
+                font-size: 1.1rem;
+            }
+
+            .good .title,
+            .bad .title {
+                font-size: 1.5rem;
+            }
+
+            .line-tip {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .line-tip strong {
+                margin-bottom: 0.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="top-nav">
+            <div class="nav-left">
+                <a href="../index_new.html" class="nav-brand">MITE地精科技站</a>
+                <span class="nav-separator">/</span>
+                <a href="../index_new.html" class="nav-link">首页</a>
+                <span class="nav-separator">/</span>
+                <span class="nav-current">MITE黄历</span>
+            </div>
+        </div>
+
+
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+            <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+        </button>
+
+        <div class="almanac-container">
+
+            <div class="almanac-title">
+                MITE黄历<sup>v1.0</sup>
+            </div>
+
+
+            <div class="date"></div>
+
+
+            <div class="fortune-section">
+                <div class="good">
+                    <div class="title">宜</div>
+                    <div class="content">
+                        <ul></ul>
+                    </div>
+                </div>
+                <div class="bad">
+                    <div class="title">忌</div>
+                    <div class="content">
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="tips-section">
+                <div class="line-tip">
+                    <strong>探索朝向：</strong>
+                    <span>面向<span class="direction_value"></span>跑图。</span>
+                </div>
+                <div class="line-tip">
+                    <strong>推荐食物：</strong>
+                    <span class="drink_value"></span>
+                </div>
+                <div class="line-tip">
+                    <strong>下雨指数：</strong>
+                    <span class="goddes_value"></span>
+                </div>
+            </div>
+
+
+            <div class="comment">
+                <ul>
+                    <li>本页内容仅供娱乐；</li>
+                    <li>本黄历由程序自动生成。</li>
+                </ul>
+                <div class="vercount-display">
+                    <script async src="https://events.vercount.one/js"></script>
+                    雪花量<span id="vercount_value_page_pv">❄️</span>片
+                </div>
+                <footer>
+                    ©2025 本 <a href="https://mitega.pages.dev" target="_blank">网站</a> 由 <a
+                        href="https://yuezhuxue.pages.dev" target="_blank">月煮雪</a> 强力驱动
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+
+
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', currentTheme);
+
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            } else {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            }
+        }
+
+        updateThemeIcon(currentTheme);
+
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+    </script>
+</body>
+
+</html>

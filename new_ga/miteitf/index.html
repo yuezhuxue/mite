@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MITE黄昏 - MITE-ITF</title>
+    <link rel="stylesheet" href="../../css/modern_style.css">
+    <style>
+        .intro-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .intro-section h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .intro-section .title-highlight {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .intro-section .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .intro-section .codename {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .intro-section .codename svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .warning-box {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid #ff6b6b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .warning-box svg {
+            width: 24px;
+            height: 24px;
+            fill: #ff6b6b;
+            flex-shrink: 0;
+        }
+
+        .warning-box p {
+            color: #ff6b6b;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-card h3 svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .info-section {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .info-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-section h3 svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .info-section p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .external-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--primary-color);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            margin-right: 1rem;
+        }
+
+        .external-link:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        [data-theme="dark"] .external-link:hover {
+            color: white;
+        }
+
+        [data-theme="dark"] .external-link:hover svg {
+            fill: white;
+        }
+
+        [data-theme="light"] .external-link:hover {
+            color: #1a1a2e;
+        }
+
+        [data-theme="light"] .external-link:hover svg {
+            fill: #1a1a2e;
+        }
+
+        .external-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .recipe-section {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .recipe-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .recipe-section h3 svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .recipe-btn {
+            display: inline-block;
+            margin: 0.5rem 1rem 0.5rem 0;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            border-radius: 8px;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .recipe-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .recipe-display {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .recipe-display h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .recipe-display img {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .easter-egg {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .easter-egg summary {
+            color: var(--primary-color);
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .easter-egg summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .easter-egg summary svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .easter-egg[open] summary svg {
+            transform: rotate(90deg);
+        }
+
+        .easter-egg blockquote {
+            margin: 1rem 0 0 0;
+            padding: 1rem;
+            border-left: 3px solid var(--primary-color);
+            background: rgba(139, 92, 246, 0.05);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .page-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+            text-align: center;
+        }
+
+        .page-footer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .page-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+
+    <div class="container">
+        <a href="../../index_new.html" class="back-link">← 返回主页</a>
+
+        <div class="intro-section">
+            <h1>MITE黄昏 (MITE-<span class="title-highlight">ITF</span>)</h1>
+            <div class="subtitle">
+                <p>原名：MITE-LongRoadOfSuivive（生存之路）</p>
+                <p><strong>MITE <span class="title-highlight">I</span>s <span class="title-highlight">T</span>oo <span
+                            class="title-highlight">F</span>alse</strong></p>
+            </div>
+            <div class="codename">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+                </svg>
+                代号：mitf
+            </div>
+            <div class="warning-box">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+                </svg>
+                <p>强调：此Mod不叫"喝水版"！</p>
+            </div>
+        </div>
+
+        <div class="feature-cards">
+            <div class="feature-card">
+                <h3>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                    </svg>
+                    喝水系统
+                </h3>
+                <p>增加了真实的喝水需求，玩家需要定期补充水分以维持生存</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                    宝石系统改动
+                </h3>
+                <p>宝石不能直接食用，需要通过特殊方式使用</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                    乌鲁金属
+                </h3>
+                <p>新增乌鲁金属系列，提供更强大的装备选择</p>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                </svg>
+                详细信息
+            </h3>
+            <p>MITE黄昏是基于MITE振金版开发的独特分支，专注于生存体验的深度优化。</p>
+            <a href="https://www.mcmod.cn/class/15074.html" target="_blank" class="external-link">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                </svg>
+                查看MC百科详细介绍
+            </a>
+            <a href="https://huix.ink/" target="_blank" class="external-link">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
+                </svg>
+                访问官方网站
+            </a>
+            <a href="../download.html" class="external-link">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                </svg>
+                下载整合包
+            </a>
+            <a href="../../ga/img/MITEversions.png" target="_blank" class="external-link">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
+                </svg>
+                版本关系图
+            </a>
+        </div>
+
+        <div class="recipe-section">
+            <h3>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
+                </svg>
+                合成表
+            </h3>
+            <button onclick="showRecipe('recipe1')" class="recipe-btn">查看黄昏合成表</button>
+        </div>
+
+        <div id="recipe1" class="recipe-display" style="display: none;">
+            <h3>黄昏合成表</h3>
+            <img src="../../ga/img/miteitfrecipe.png" alt="黄昏合成表">
+        </div>
+
+        <details class="easter-egg">
+            <summary>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5z" />
+                </svg>
+                !!!!!
+            </summary>
+            <blockquote>
+                啥也没有哦<br />
+                晚安zzz
+            </blockquote>
+        </details>
+
+        <footer class="page-footer">
+            <p>©2025 本<a href="https://mitega.pages.dev" target="_blank">网站</a>由<a href="https://yuezhuxue.pages.dev"
+                    target="_blank">月煮雪</a>强力驱动</p>
+            <div style="margin-top: 0.5rem; color: var(--text-secondary);">
+                <script async src="https://events.vercount.one/js"></script>
+                雪花量 <span id="vercount_value_page_pv"></span> 片
+            </div>
+        </footer>
+    </div>
+
+    <script>
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            const moonIcon = document.getElementById('moonIcon');
+            const sunIcon = document.getElementById('sunIcon');
+            if (newTheme === 'dark') {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            } else {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            const moonIcon = document.getElementById('moonIcon');
+            const sunIcon = document.getElementById('sunIcon');
+            if (savedTheme === 'dark') {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            } else {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            }
+        });
+
+
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+
+        function showRecipe(recipeId) {
+            const recipe = document.getElementById(recipeId);
+            if (recipe.style.display === 'none') {
+                recipe.style.display = 'block';
+                recipe.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                recipe.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

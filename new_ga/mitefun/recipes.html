@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合成表 - MITE娱乐版</title>
+    <link rel="stylesheet" href="../../css/modern_style.css">
+    <link rel="stylesheet" href="../../css/recipes/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../css/recipes/main.css" />
+    <link rel="stylesheet" href="../../css/recipes/minecraft-main.css" />
+    <link rel="stylesheet" href="../../css/recipes/minecraft_fun.css" />
+    <style>
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        .recipe-header {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .recipe-header h1 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .recipe-header p {
+            color: var(--text-secondary);
+        }
+
+        .filter-bar {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .filter-bar label {
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-right: 1rem;
+        }
+
+        #filter-field {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 1rem;
+            width: 300px;
+            max-width: 100%;
+        }
+
+        #filter-field:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        #recipe_list {
+            min-height: 200px;
+        }
+
+        .page-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+            text-align: center;
+        }
+
+        .page-footer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .page-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+
+
+        body {
+            background-color: var(--bg-primary) !important;
+        }
+
+        .container {
+            background-color: transparent !important;
+        }
+
+
+        [data-theme="dark"] body {
+            color: var(--text-primary) !important;
+        }
+
+        [data-theme="dark"] .filter-bar label {
+            color: var(--text-primary) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回娱乐版主页</a>
+
+        <div class="recipe-header">
+            <h1>MITE娱乐版合成表</h1>
+            <p>搜索并查看所有娱乐版特有的合成配方</p>
+        </div>
+
+        <div class="crafting filter-bar">
+            <label for="filter-field">搜索关键字:</label>
+            <input type="text" id="filter-field" placeholder="输入关键字进行过滤" />
+        </div>
+
+        <div class="d-flex flex-row justify-content-around flex-wrap" id="recipe_list">
+        </div>
+
+        <footer class="page-footer">
+            <p>©2025 本<a href="https://mitega.pages.dev" target="_blank">网站</a>由<a href="https://yuezhuxue.pages.dev"
+                    target="_blank">月煮雪</a>强力驱动</p>
+            <div style="margin-top: 0.5rem; color: var(--text-secondary);">
+                <script async src="https://events.vercount.one/js"></script>
+                雪花量 <span id="vercount_value_page_pv"></span> 片
+            </div>
+        </footer>
+    </div>
+
+    <script src="../../js/recipes/jquery-3.2.1.slim.min.js"></script>
+    <script src="../../js/recipes_fun.js"></script>
+    <script src="../../js/recipes/popper.min.js"></script>
+    <script src="../../js/recipes/bootstrap.min.js"></script>
+
+    <script>
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            const moonIcon = document.getElementById('moonIcon');
+            const sunIcon = document.getElementById('sunIcon');
+            if (newTheme === 'dark') {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            } else {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            const moonIcon = document.getElementById('moonIcon');
+            const sunIcon = document.getElementById('sunIcon');
+            if (savedTheme === 'dark') {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            } else {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            }
+        });
+
+
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    </script>
+</body>
+
+</html>

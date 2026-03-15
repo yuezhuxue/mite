@@ -664,7 +664,9 @@ createRecipeList = function(recipeList) {
 createRecipe = function(recipe) {
     var baseDiv = $('<div/>', {'class':'recipe'});
     var craftingDiv = $('<div/>', {'class':'crafting'});
-    craftingDiv.append($('<img/>').attr('src', 'img/craft.png'));
+    // 根据当前页面路径确定图片路径
+    var imgPath = window.location.pathname.includes('/new_ga/') ? '../../ga/img/craft.png' : 'img/craft.png';
+    craftingDiv.append($('<img/>').attr('src', imgPath));
     craftingDiv.append(crafting_layout(recipe));
     var craftingOutput = $('<div/>').addClass('crafting_output item');
     var outputItem = $('<div/>').addClass(recipe.output).html(recipe.outamt);

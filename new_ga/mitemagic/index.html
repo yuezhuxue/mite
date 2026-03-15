@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MITE魔法时代</title>
+    <link rel="stylesheet" href="../../css/modern_style.css">
+    <style>
+        .intro-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .intro-section h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .intro-section .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            color: #a855f7;
+            font-weight: bold;
+        }
+
+        .nav-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .nav-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .nav-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .nav-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .feature-list h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .feature-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        .quick-links {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .quick-links h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .recipe-btn {
+            display: inline-block;
+            margin: 0.5rem 1rem 0.5rem 0;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            border-radius: 8px;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .recipe-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .recipe-display {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .recipe-display h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+
+    <div class="container">
+        <div class="intro-section">
+            <h1>MITE魔法时代 (Magic Mod)</h1>
+            <div class="subtitle">
+                <p>又称 MITE R6 魔法版</p>
+                <p>主要是对钻石、秘银、附魔金苹果的修改，增加了<span class="highlight">魔法矿物系列合成</span></p>
+                <p>以及<span class="highlight">诅咒附魔系统</span>（类似国产网游的装备强化）</p>
+                <p>不同于振金版追求更强金属的理念，本模组围绕着<span class="highlight">远古金属</span>这个MITE中存在感最低的金属展开</p>
+            </div>
+            <a href="../../ga/download.html" class="btn" style="display: inline-block; margin-top: 1rem;">下载整合包</a>
+            <a href="../../ga/img/MITEversions.png" target="_blank" class="btn btn-secondary"
+                style="display: inline-block; margin-top: 1rem;">版本关系图</a>
+        </div>
+
+        <div class="nav-cards">
+            <a href="changelog.html" class="nav-card">
+                <h3>更新日志</h3>
+                <p>查看所有版本的详细更新内容，从 v1.0.2 到 v1.0.14</p>
+            </a>
+
+            <a href="curses.html" class="nav-card">
+                <h3>诅咒列表</h3>
+                <p>查看所有诅咒效果和说明</p>
+            </a>
+
+            <a href="items.html" class="nav-card">
+                <h3>物品ID表</h3>
+                <p>魔法时代物品的完整ID列表</p>
+            </a>
+
+            <a href="recipes.html" class="nav-card">
+                <h3>合成表</h3>
+                <p>查看所有新增物品的合成方法</p>
+            </a>
+        </div>
+
+        <div class="feature-list">
+            <h3>核心特性</h3>
+            <ul>
+                <li>诅咒附魔系统 - 附魔时有超大概率获得诅咒</li>
+                <li>古金属魔法毡 - 突破附魔5级上限，随机升级附魔</li>
+                <li>高级附魔台 - 能够在40书架加成下附魔</li>
+                <li>魔法书架 - 一个等于两个书架</li>
+                <li>魔法工作台 - 消耗魔法结晶加速合成</li>
+                <li>彼岸结晶 - 可以消除诅咒一级</li>
+                <li>猪人领主 - 新增精英怪物</li>
+            </ul>
+        </div>
+
+        <div class="feature-list">
+            <h3>游戏机制调整</h3>
+            <ul>
+                <li>石英的生成概率减半，每颗石英获得的经验值从50变为100</li>
+                <li>魔法源矿在地下世界生成</li>
+                <li>主世界不生成秘银</li>
+                <li>地下世界没有钻石</li>
+                <li>删除了附魔金苹果原先的获得方式改为合成</li>
+                <li>现在只允许两个命令：/day 和 /xp</li>
+                <li>检测到反作弊行为将会自动关闭游戏</li>
+            </ul>
+        </div>
+
+        <div class="quick-links">
+            <h3>合成表</h3>
+            <button onclick="showRecipe('recipe1')" class="recipe-btn">魔法时代合成表</button>
+        </div>
+
+        <div id="recipe1" class="recipe-display" style="display: none;">
+            <h3>魔法时代合成表</h3>
+            <img src="../../ga/img/mitemagicrecipes.jpg" alt="魔法时代合成表"
+                style="max-width: 100%; border-radius: 8px; border: 1px solid var(--border-color);">
+        </div>
+    </div>
+
+    <script>
+
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            } else {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            htmlElement.setAttribute('data-theme', currentTheme);
+            updateThemeIcon(currentTheme);
+        });
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+
+        function showRecipe(recipeId) {
+            document.querySelectorAll('.recipe-display').forEach(div => {
+                div.style.display = 'none';
+            });
+
+            const recipe = document.getElementById(recipeId);
+            if (recipe.style.display === 'none') {
+                recipe.style.display = 'block';
+                recipe.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+    </script>
+</body>
+
+</html>

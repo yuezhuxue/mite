@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新日志 - MITE振金版</title>
+    <link rel="stylesheet" href="../../css/modern_style.css">
+    <style>
+        .version-nav {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .version-nav h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .version-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .version-link {
+            padding: 0.5rem 1rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .version-link:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .changelog-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            scroll-margin-top: 100px;
+        }
+
+        .changelog-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .changelog-section h3 {
+            color: var(--accent-color);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .changelog-section ul,
+        .changelog-section ol {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-left: 1.5rem;
+        }
+
+        .changelog-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .changelog-section blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+        }
+
+        .config-tag {
+            display: inline-block;
+            background: #ffd93d;
+            color: #333;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-left: 0.5rem;
+        }
+
+        .switch-tag {
+            background: #6bcf7f;
+        }
+
+        .number-tag {
+            background: #4ecdc4;
+        }
+
+        .highlight-text {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .warning-text {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-primary);
+        }
+
+        th,
+        td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background: var(--card-bg);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+
+        details summary {
+            list-style: none;
+            cursor: pointer;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            width: 0.4rem;
+            height: 0.4rem;
+            border-right: 2px solid var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::before {
+            transform: translateY(-50%) rotate(-135deg);
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回振金版主页</a>
+
+        <div class="version-nav">
+            <h3>版本导航</h3>
+            <div class="version-links">
+                <a href="#v1.1.0" class="version-link">v1.1.0 系列</a>
+                <a href="#b0.4.0" class="version-link">B0.4.0 系列</a>
+                <a href="#b0.3.x" class="version-link">B0.3.x 系列</a>
+                <a href="#b0.1.0" class="version-link">B0.1.0</a>
+            </div>
+        </div>
+
+
+        <div id="v1.1.0" class="changelog-section">
+            <h2>v1.1.0 系列更新</h2>
+
+            <details open>
+                <summary>
+                    <h3>v1.1.0-pre14 更新日志</h3>
+                </summary>
+                <blockquote>
+                    <h4>怪物</h4>
+                    <ul>
+                        <li>可在配置文件里修改主世界湮灭骷髅是否在光照出生成</li>
+                        <li>绿色史莱姆的伤害增加一倍(可在配置中调整)</li>
+                    </ul>
+                    <h4>Bug修复</h4>
+                    <ul>
+                        <li>修复玩家负等级时由于渐进伤害无法打出伤害的Bug</li>
+                    </ul>
+                </blockquote>
+            </details>
+
+            <details>
+                <summary>
+                    <h3>v1.1.0-pre13 更新日志</h3>
+                </summary>
+                <blockquote>
+                    <h4>怪物</h4>
+                    <ul>
+                        <li>流浪女巫是否生成可以在配置文件中更改</li>
+                    </ul>
+                    <h4>Bug修复</h4>
+                    <ul>
+                        <li>修复了流浪女巫的蝙蝠崩溃的Bug</li>
+                    </ul>
+                </blockquote>
+            </details>
+
+            <details>
+                <summary>
+                    <h3>v1.1.0-pre1 更新日志（重大更新）</h3>
+                </summary>
+                <blockquote>
+                    <h4>游戏机制</h4>
+                    <ul>
+                        <li>使铁块能在黑曜石熔炉用岩浆烧制为秘银</li>
+                        <li>玩家也能触发渐进伤害(等级*0.1)最大值为2</li>
+                        <li>工作台合成速度提升：燧石0% 铜银10% 铁20% 秘银30% 艾德曼40% 振金55%</li>
+                        <li>信标合成速度加成：1级25% 2级40% 3级60% 4级85%</li>
+                        <li>地狱烫脚更改至96天后出现</li>
+                        <li>地底世界疲劳等级最高为2，在玩家受到疲劳2后20分钟随机传送</li>
+                    </ul>
+
+                    <h4>锻造系统</h4>
+                    <ul>
+                        <li>添加铁质锻造台、秘银锻造台、艾德曼锻造台、振金锻造台</li>
+                        <li>移除制作消耗经验提升品质，和品质提升耐久度</li>
+                        <li>强化等级品质：2-3级为优秀，4-5级为精良，6-7级为史诗，8-9级为传说，10级神话</li>
+                        <li>添加不同种类的强化石：
+                            <ul>
+                                <li>抛光石：用于强化0-4级，成功概率50%</li>
+                                <li>精锻石：5-7级，概率40%</li>
+                                <li>淬炼石：8-10级，概率30%</li>
+                            </ul>
+                        </li>
+                        <li>强化给予相应的属性加成和额外装备经验加成</li>
+                    </ul>
+
+                    <h4>世界生成</h4>
+                    <ul>
+                        <li>将地底世界所有矿物生成更改为140层至225层</li>
+                        <li>将地狱所有矿物生成更改为35层至115层并添加艾德曼</li>
+                        <li>地底世界地幔升高至75层</li>
+                    </ul>
+
+                    <h4>物品</h4>
+                    <ul>
+                        <li>加强金苹果效果：60s生命恢复I、20s伤害吸收I、10s抗性提升I、10s抗火</li>
+                        <li>加强附魔金苹果：60s生命恢复II、20s伤害吸收II、30s抗性提升II、60s抗火</li>
+                        <li>金苹果附魔经验提升至400</li>
+                        <li>装备等级上限修改为全材质15级</li>
+                        <li>护甲工具升级经验降低</li>
+                    </ul>
+
+                    <h4>附魔与装备属性</h4>
+                    <ul>
+                        <li>玩家使用格挡将会拥有8s冷却，且格挡时间最大为2s</li>
+                        <li>武器拥有缴械时格挡会触发缴械概率为附魔的一半</li>
+                        <li>紧急守备冷却计算移动至装备</li>
+                        <li>添加征服者附魔，每级提高一点渐进伤害增量</li>
+                        <li>将斩首移动至附魔，用于斧子，每级10%概率斩首</li>
+                        <li>添加新装备强化属性：
+                            <ul>
+                                <li><strong>坚毅不倒</strong>：血量越低攻击力越高（适用于胸甲）</li>
+                                <li><strong>恶魔之力</strong>：对非主世界怪物提升25%攻击力（适用于武器）</li>
+                                <li><strong>地质学</strong>：挖掘矿物获得50%比例的烧制经验（适用于镐子）</li>
+                                <li><strong>免疫</strong>：减少负面状态时间，每级减少15%（适用于头盔）</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h4>怪物属性修改</h4>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr>
+                                <th>怪物</th>
+                                <th>血量</th>
+                                <th>攻击力</th>
+                            </tr>
+                            <tr>
+                                <td>僵尸</td>
+                                <td>30+天数/16</td>
+                                <td>8+天数/24+工具</td>
+                            </tr>
+                            <tr>
+                                <td>骷髅</td>
+                                <td>15+天数/16</td>
+                                <td>10+天数/24+(工具×2.0)</td>
+                            </tr>
+                            <tr>
+                                <td>苦力怕</td>
+                                <td>20+天数/8</td>
+                                <td>零距离20点爆炸伤害</td>
+                            </tr>
+                            <tr>
+                                <td>巨人僵尸</td>
+                                <td>100+天数/16</td>
+                                <td>25+天数/16</td>
+                            </tr>
+                            <tr>
+                                <td>末影人</td>
+                                <td>100+天数/24</td>
+                                <td>30+天数/20</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <h4>新怪物</h4>
+                    <ul>
+                        <li><strong>湮灭骷髅</strong>
+                            <ul>
+                                <li>攻击力无穷</li>
+                                <li>亮红色眼睛拥有灰烬粒子特效</li>
+                                <li>免疫毒、火、摔落、窒息、远程、岩浆、击退</li>
+                                <li>主世界在64天后生成</li>
+                                <li>掉落5个振金粒和2个钻石</li>
+                            </ul>
+                        </li>
+                        <li><strong>流浪女巫</strong>
+                            <ul>
+                                <li>红眼红袍的邪恶女巫</li>
+                                <li>看见玩家必定诅咒</li>
+                                <li>每15s召唤吸血蝙蝠</li>
+                                <li>掉落4个艾德曼粒和1-3个地狱疣</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h4>末影龙增强</h4>
+                    <ul>
+                        <li>末影龙血量提升至1250</li>
+                        <li>末影水晶只能由振金稿或振金锤打破</li>
+                        <li>末影龙20%概率给攻击者10s凋零</li>
+                        <li>末影龙攻击玩家给予15s缓慢</li>
+                        <li>50%血量以下每60s给予所有玩家30s虚弱</li>
+                        <li>30%血量下免疫远程</li>
+                    </ul>
+                </blockquote>
+            </details>
+        </div>
+
+
+        <div id="b0.4.0" class="changelog-section">
+            <h2>B0.4.0 系列更新</h2>
+
+            <details>
+                <summary>
+                    <h3>B0.4.0 final 更新日志</h3>
+                </summary>
+                <blockquote>
+                    <p><strong>本次更新仅更新版本号，并没有实质的内容更新</strong></p>
+                    <p><em>这个版本应该也是MITE-ITE的最终版本</em>，因为MITE-ITE已经没有太多的发展空间，之后将专注于1.16.5的MITE的开发。</p>
+                </blockquote>
+            </details>
+
+            <details>
+                <summary>
+                    <h3>B0.4.0 pre8 更新日志（锻造台系统）</h3>
+                </summary>
+                <blockquote>
+                    <h4>方块</h4>
+                    <ul>
+                        <li><strong>增加了锻造台！</strong>
+                            <ul>
+                                <li>右键打开，用于强化装备</li>
+                                <li>锻造时需要战锤和斧子</li>
+                                <li>将武器或装备放入中间格子获取强化信息</li>
+                                <li>右侧显示强化用时、失败几率、耐久消耗、失败惩罚</li>
+                                <li>关闭界面将中止锻造</li>
+                                <li>锻造成功或失败都有音效提示</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h4>物品</h4>
+                    <ul>
+                        <li>增加了<strong>强化石</strong>，用于装备强化</li>
+                        <li>更改了振金砧、振金熔炉等的合成表</li>
+                        <li>增加了新的装备强化属性：
+                            <ul>
+                                <li><strong>斩首</strong>：可应用在武器上，每级增加5%斩首几率，最高5级</li>
+                                <li><strong>超自然</strong>：可应用在工具上，每级增加0.1挖掘低等级方块时的效率，最高5级</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h4>强化等级加成</h4>
+                    <ul>
+                        <li>对所有装备：每级增加10%的耐久度</li>
+                        <li>对工具及武器：提供攻击力加成，公式：y = a[(1.028)^(2.28x) - 1]</li>
+                        <li>对护甲：提供护甲加成，公式：y = x/3 + 0.68 * b[(1.028)^(2.28x) - 1]</li>
+                        <li>在游戏中可以对物品按住Shift查看强化加成</li>
+                    </ul>
+
+                    <h4>实体</h4>
+                    <ul>
+                        <li>增加了猪人领主（和僵尸领主装备、属性一样）</li>
+                        <li>僵尸领主现在无法着火，且必须要玩家击杀才会掉落钻石</li>
+                        <li>巨人僵尸只有被玩家杀死才会掉落物品</li>
+                        <li>巨人僵尸每<span class="highlight-text">1200</span>tick即<span
+                                class="highlight-text">1</span>分钟将会召唤1个僵尸<span
+                                class="config-tag number-tag">{giant_zombie_spawn_zombie_cooldown}[整数]</span></li>
+                        <li>地狱苦力怕在256天后爆炸范围翻倍</li>
+                    </ul>
+                </blockquote>
+            </details>
+
+            <details>
+                <summary>
+                    <h3>B0.4.0 pre1 更新日志（特大更新）</h3>
+                </summary>
+                <blockquote>
+                    <p><strong>特大更新！</strong></p>
+                    <p>注：本次更新日志中<span class="highlight-text">蓝色加粗</span>的地方全都可以通过配置文件（mite-ite-cfg.json）修改</p>
+                    <p class="warning-text">注意！本次更新后，模组加载器的所需最低版本将会变为B0.1.4，请注意更新！</p>
+
+                    <h4>生物</h4>
+                    <ul>
+                        <li><span class="highlight-text">地狱里的猪人有20%的概率拿弓进行远程攻击</span><span
+                                class="config-tag switch-tag">{zombie_pigman_use_bow}[开关]</span></li>
+                        <li>普通苦力怕爆炸范围增加（为原来的2倍）</li>
+                        <li><span class="highlight-text">地狱苦力怕的爆炸范围变为原来的3倍</span><span
+                                class="config-tag switch-tag">{infernal_creeper_boost}[开关]</span></li>
+                        <li><span class="highlight-text">小白将有40%的几率可以使用横向三发弓</span><span
+                                class="config-tag switch-tag">{skeleton_triple_shot}[开关]</span></li>
+                        <li><span class="highlight-text">吸血蝙蝠攻击玩家时，将有50%的几率使玩家中毒</span><span
+                                class="config-tag switch-tag">{bat_poison_attack}[开关]</span></li>
+                        <li>固定一部分动物的繁殖所得经验：鸡<span class="highlight-text">3</span>，羊<span
+                                class="highlight-text">5</span>，猪<span class="highlight-text">15</span>，牛<span
+                                class="highlight-text">25</span></li>
+                        <li><span class="highlight-text">狼会攻击快捷栏有生肉的玩家</span><span
+                                class="config-tag switch-tag">{wolves_attack_players_with_meat}[开关]</span></li>
+                        <li>骷髅有2%的几率变为压缩骷髅，死亡时分裂出<span class="highlight-text">5</span>个骷髅<span
+                                class="config-tag switch-tag">{compressed_skeleton}[开关]</span></li>
+                        <li><span class="highlight-text">一个秘银块可以强化铁傀儡</span><span
+                                class="config-tag switch-tag">{can_boost_iron_golem}[开关]</span></li>
+                    </ul>
+
+                    <h4>游戏机制</h4>
+                    <ul>
+                        <li>巨人僵尸将在血月生成在地表上</li>
+                        <li>恶魂将在<span class="highlight-text">128</span>天后的血月生成在地表上<span
+                                class="config-tag number-tag">{ghast_spawn_limit_day}[整数]</span></li>
+                        <li>远古骷髅公爵将在<span class="highlight-text">192</span>天后的血月生成在地表上<span
+                                class="config-tag number-tag">{ancient_bone_lord_spawn_limit_day}[整数]</span></li>
+                        <li>刷怪数量增加：
+                            <ul>
+                                <li>血月刷怪默认为原版的<span class="highlight-text">2</span>倍<span
+                                        class="config-tag number-tag">{blood_moon_max_hostile_fraction}[整数]</span></li>
+                                <li>刷怪上限会随着天数的提升而增加<span
+                                        class="config-tag number-tag">{mob_max_spawn_count_increase_per_day}[小数]</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>玩家在地底世界待的时间过长会获得Debuff：
+                            <ul>
+                                <li>待<span class="highlight-text">72000</span>tick即<span
+                                        class="highlight-text">1小时</span>获得缓慢一</li>
+                                <li>待<span class="highlight-text">108000</span>tick即<span
+                                        class="highlight-text">1小时30分钟</span>获得缓慢二</li>
+                                <li>待<span class="highlight-text">132000</span>tick即<span
+                                        class="highlight-text">1小时50分钟</span>获得缓慢三</li>
+                            </ul>
+                        </li>
+                        <li><span class="highlight-text">玩家被攻击时将有渐进式伤害</span><span
+                                class="config-tag switch-tag">{stepped_mob_damage}[开关]</span></li>
+                        <li>对玩家的窒息伤害增加至<span class="highlight-text">10</span>点<span
+                                class="config-tag number-tag">{in_wall_damage_for_player}[小数]</span></li>
+                        <li><span class="highlight-text">玩家第一天开局的白天时间变为原来的2倍</span><span
+                                class="config-tag switch-tag">{first_day_longer_day_time}[开关]</span></li>
+                    </ul>
+
+                    <h4>界面GUI</h4>
+                    <ul>
+                        <li>使玩家可以实时看到自己的营养值</li>
+                    </ul>
+
+                    <h4>世界生成</h4>
+                    <ul>
+                        <li>降低青金石的矿脉大小至2，生成频率降至4</li>
+                        <li>降低石英的矿脉大小至9（原为13）</li>
+                        <li><span class="highlight-text">主世界增加会生成爱德曼</span><span
+                                class="config-tag switch-tag">{overworld_adamantite_ore}[开关]</span></li>
+                    </ul>
+
+                    <h4>物品</h4>
+                    <ul>
+                        <li>石英将只能将玩家升至<span class="highlight-text">55</span>级<span
+                                class="config-tag number-tag">{quartz_max_exp_level}[整数]</span></li>
+                        <li>增加了一些振金熔炉的合成表（所需热值均为5）：
+                            <ul>
+                                <li>四个铁块烧制为一个秘银锭，用时<span class="highlight-text">6000</span>tick即<span
+                                        class="highlight-text">5分钟</span></li>
+                                <li>一个秘银块烧制为一个艾德曼锭，用时<span class="highlight-text">9000</span>tick即<span
+                                        class="highlight-text">7.5分钟</span></li>
+                            </ul>
+                        </li>
+                        <li>现在每件振金护甲都需要一个远古金属块</li>
+                        <li>每个振金的工具都需要一个对应的远古金属的工具</li>
+                    </ul>
+
+                    <h4>附魔</h4>
+                    <ul>
+                        <li>增加了<strong>扩展附魔</strong>（稀有，附魔难度10）：可附在任意工具上，最高5级，每级增加<span
+                                class="highlight-text">0.5</span>格触及半径</li>
+                        <li>增加了<strong>暴击附魔</strong>（稀有，附魔难度10）：可附在剑上，最高5级，每级增加<span
+                                class="highlight-text">20%</span>平砍暴击几率</li>
+                        <li>增加了<strong>格挡附魔</strong>（稀有，附魔难度20）：可附在振金剑上，最高1级，拥有后可以使用格挡</li>
+                        <li>增加了<strong>紧急守备附魔</strong>（稀有，附魔难度15）：可附在任意装备上，最高1级，生命值掉至30%以下时获得抗性提升2持续三秒</li>
+                    </ul>
+
+                    <h4>方块</h4>
+                    <ul>
+                        <li><span class="highlight-text">刷怪笼在刷怪半径内有玩家时将加速刷怪</span><span
+                                class="config-tag switch-tag">{mob_spawner_speed_up_with_players}[开关]</span></li>
+                    </ul>
+                </blockquote>
+            </details>
+        </div>
+
+
+        <div id="b0.3.x" class="changelog-section">
+            <h2>B0.3.x 系列更新</h2>
+
+            <details>
+                <summary>
+                    <h3>B0.3.13 更新日志</h3>
+                </summary>
+                <blockquote>
+                    <h4>方块</h4>
+                    <ul>
+                        <li>使玩家不能通过树叶透视</li>
+                    </ul>
+                    <h4>游戏机制</h4>
+                    <ul>
+                        <li>使地狱烫脚的判定范围增大（Y轴方向上）</li>
+                    </ul>
+                    <h4>生物</h4>
+                    <ul>
+                        <li>改变了村民羊毛换绿宝石的交易，变为羊毛换绿宝石碎片</li>
+                    </ul>
+                    <h4>物品</h4>
+                    <ul>
+                        <li>使武器和工具无法使用格挡</li>
+                        <li>降低了盔甲的最大强化等级</li>
+                    </ul>
+                    <h4>Bug修复</h4>
+                    <ul>
+                        <li>修复了玩家可以通过退出游戏来躲避随机传送的问题</li>
+                    </ul>
+                </blockquote>
+            </details>
+
+            <details>
+                <summary>
+                    <h3>B0.3.12 更新日志</h3>
+                </summary>
+                <blockquote>
+                    <h4>生物</h4>
+                    <ul>
+                        <li>使骷髅公爵和远古骷髅公爵血量攻击力翻
+        </div>
+
+        <script>
+
+            function toggleTheme() {
+                const html = document.documentElement;
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+
+                const icon = document.querySelector('.theme-icon');
+                icon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+            }
+
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const savedTheme = localStorage.getItem('theme') || 'dark';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                const icon = document.querySelector('.theme-icon');
+                if (icon) {
+                    icon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+                }
+            });
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>振金物品ID表 - MITE振金版</title>
+    <link rel="stylesheet" href="../../css/modern_style.css">
+    <style>
+        .intro-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .intro-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .table-container {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .table-container h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-primary);
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        tr:hover {
+            background: var(--card-bg);
+        }
+
+        .id-cell {
+            font-family: 'Courier New', monospace;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .item-name {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .sub-value {
+            font-family: 'Courier New', monospace;
+            color: var(--accent-color);
+        }
+
+        .search-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .badge-block {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+        }
+
+        .badge-item {
+            background: rgba(78, 205, 196, 0.2);
+            color: #4ecdc4;
+        }
+
+        .badge-tool {
+            background: rgba(108, 117, 125, 0.2);
+            color: #6c757d;
+        }
+
+        .badge-armor {
+            background: rgba(0, 123, 255, 0.2);
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回振金版主页</a>
+
+        <div class="intro-card">
+            <h2>振金物品ID表</h2>
+            <p>完整的振金物品ID列表，用于修改器等工具</p>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="搜索物品名称或ID..." onkeyup="filterTable()">
+        </div>
+
+        <div class="table-container">
+            <h3>振金物品列表</h3>
+            <table id="itemsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>物品名称</th>
+                        <th>附加值</th>
+                        <th>类型</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="id-cell">58</td>
+                        <td class="item-name">振金工作台</td>
+                        <td class="sub-value">sub=11</td>
+                        <td><span class="category-badge badge-block">方块</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">160</td>
+                        <td class="item-name">振金砧</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-block">方块</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">161</td>
+                        <td class="item-name">振金块</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-block">方块</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">162</td>
+                        <td class="item-name">振金熔炉</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-block">方块</span></td>
+                        <td>未激活状态</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">163</td>
+                        <td class="item-name">振金熔炉</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-block">方块</span></td>
+                        <td>激活状态</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">164</td>
+                        <td class="item-name">锻造台</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-block">方块</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2280</td>
+                        <td class="item-name">黑曜石棒</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-item">材料</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2281</td>
+                        <td class="item-name">振金锭</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-item">材料</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2282</td>
+                        <td class="item-name">振金粒</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-item">材料</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2283</td>
+                        <td class="item-name">振金头盔</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-armor">护甲</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2284</td>
+                        <td class="item-name">振金胸甲</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-armor">护甲</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2285</td>
+                        <td class="item-name">振金护腿</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-armor">护甲</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2286</td>
+                        <td class="item-name">振金靴子</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-armor">护甲</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2287</td>
+                        <td class="item-name">振金剑</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-tool">武器</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2288</td>
+                        <td class="item-name">振金锹</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-tool">工具</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2289</td>
+                        <td class="item-name">振金镐</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-tool">工具</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2290</td>
+                        <td class="item-name">振金斧</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-tool">工具</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2291</td>
+                        <td class="item-name">振金短剑</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-tool">武器</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2292</td>
+                        <td class="item-name">振金战锤</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-tool">武器</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2293</td>
+                        <td class="item-name">振金战斧</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-tool">武器</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2294</td>
+                        <td class="item-name">钻石碎块</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-item">材料</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2295</td>
+                        <td class="item-name">烈焰煤炭</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-item">燃料</span></td>
+                        <td>热值5，燃烧时间6800</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2296</td>
+                        <td class="item-name">振金弓</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-tool">武器</span></td>
+                        <td>提供75%额外箭矢速度</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">2297</td>
+                        <td class="item-name">强化石</td>
+                        <td>-</td>
+                        <td><span class="category-badge badge-item">材料</span></td>
+                        <td>用于装备强化</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            const icon = document.querySelector('.theme-icon');
+            icon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const icon = document.querySelector('.theme-icon');
+            if (icon) {
+                icon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+            }
+        });
+
+
+        function filterTable() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById('itemsTable');
+            const tr = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < tr.length; i++) {
+                const tdId = tr[i].getElementsByTagName('td')[0];
+                const tdName = tr[i].getElementsByTagName('td')[1];
+
+                if (tdId && tdName) {
+                    const idText = tdId.textContent || tdId.innerText;
+                    const nameText = tdName.textContent || tdName.innerText;
+
+                    if (idText.toLowerCase().indexOf(filter) > -1 ||
+                        nameText.toLowerCase().indexOf(filter) > -1) {
+                        tr[i].style.display = '';
+                    } else {
+                        tr[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

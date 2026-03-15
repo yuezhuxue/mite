@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物品ID表 - MITE魔法时代</title>
+    <link rel="stylesheet" href="../../css/modern_style.css">
+    <style>
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        .intro-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .intro-section h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .search-box {
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .category-section {
+            margin: 2rem 0;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background: var(--bg-primary);
+        }
+
+        .item-icon {
+            width: 32px;
+            height: 32px;
+            image-rendering: pixelated;
+            display: block;
+        }
+
+        .item-id {
+            font-family: 'Courier New', monospace;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .item-name {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg id="moonIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg id="sunIcon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回魔法时代主页</a>
+
+        <div class="intro-section">
+            <h1>物品ID表</h1>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="搜索物品名称或ID...">
+        </div>
+
+        <div class="category-section">
+            <h2 class="category-title">方块</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">ID</th>
+                            <th>物品名称</th>
+                            <th style="width: 80px;">图示</th>
+                        </tr>
+                    </thead>
+                    <tbody id="blocksTable">
+                        <tr>
+                            <td><span class="item-id">160</span></td>
+                            <td><span class="item-name">魔法源矿</span></td>
+                            <td><img src="../../ga/img/magicmod/magicstone_ore.png" alt="魔法源矿" class="item-icon"></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-id">161</span></td>
+                            <td><span class="item-name">古金属魔法块</span></td>
+                            <td><img src="../../ga/img/magicmod/magic_ancient_metal_block.png" alt="古金属魔法块"
+                                    class="item-icon"></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-id">162</span></td>
+                            <td><span class="item-name">高级附魔台</span></td>
+                            <td><img src="../../ga/img/magicmod/magic_enchanting_table_side.png" alt="高级附魔台"
+                                    class="item-icon"></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-id">163</span></td>
+                            <td><span class="item-name">魔法书架</span></td>
+                            <td><img src="../../ga/img/magicmod/magic_bookshelf_side.png" alt="魔法书架" class="item-icon">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-id">164</span></td>
+                            <td><span class="item-name">古金属魔法毡</span></td>
+                            <td><img src="../../ga/img/magicmod/magic_anvil.png" alt="古金属魔法毡" class="item-icon"></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-id">165</span></td>
+                            <td><span class="item-name">彼岸花</span></td>
+                            <td><img src="../../ga/img/magicmod/flower_manjusaka1.png" alt="彼岸花" class="item-icon"></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-id">166</span></td>
+                            <td><span class="item-name">魔法工作台</span></td>
+                            <td><img src="../../ga/img/magicmod/magic_table.png" alt="魔法工作台" class="item-icon"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <h2 class="category-title">物品</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">ID</th>
+                            <th>物品名称</th>
+                            <th style="width: 80px;">图示</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsTable">
+                        <tr>
+                            <td><span class="item-id">4000</span></td>
+                            <td><span class="item-name">魔法碎片</span></td>
+                            <td><img src="../../ga/img/magicmod/magicstone_shard.png" alt="魔法碎片" class="item-icon"></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-id">4001</span></td>
+                            <td><span class="item-name">魔法结晶</span></td>
+                            <td><img src="../../ga/img/magicmod/magicstone.png" alt="魔法结晶" class="item-icon"></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-id">4002</span></td>
+                            <td><span class="item-name">古金属魔法锭</span></td>
+                            <td><img src="../../ga/img/magicmod/magic_ancient_metal_ingot.png" alt="古金属魔法锭"
+                                    class="item-icon"></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-id">4003</span></td>
+                            <td><span class="item-name">魔法书</span></td>
+                            <td><img src="../../ga/img/magicmod/magic_book.png" alt="魔法书" class="item-icon"></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-id">4004</span></td>
+                            <td><span class="item-name">魔法皮革</span></td>
+                            <td><img src="../../ga/img/magicmod/magic_leather.png" alt="魔法皮革" class="item-icon"></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-id">4005</span></td>
+                            <td><span class="item-name">魔法纸</span></td>
+                            <td><img src="../../ga/img/magicmod/magic_paper.png" alt="魔法纸" class="item-icon"></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-id">4006</span></td>
+                            <td><span class="item-name">彼岸结晶</span></td>
+                            <td><img src="../../ga/img/magicmod/magicstone_manjusaka.png" alt="彼岸结晶" class="item-icon">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const searchInput = document.getElementById('searchInput');
+        const blocksTable = document.getElementById('blocksTable');
+        const itemsTable = document.getElementById('itemsTable');
+
+        searchInput.addEventListener('input', function () {
+            const searchTerm = this.value.toLowerCase();
+            filterTable(blocksTable, searchTerm);
+            filterTable(itemsTable, searchTerm);
+        });
+
+        function filterTable(tbody, searchTerm) {
+            const rows = tbody.getElementsByTagName('tr');
+            for (let row of rows) {
+                const id = row.cells[0].textContent.toLowerCase();
+                const name = row.cells[1].textContent.toLowerCase();
+                if (id.includes(searchTerm) || name.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        }
+
+
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            } else {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            htmlElement.setAttribute('data-theme', currentTheme);
+            updateThemeIcon(currentTheme);
+        });
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+    </script>
+</body>
+
+</html>

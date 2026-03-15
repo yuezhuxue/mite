@@ -876,7 +876,13 @@ createRecipeList = function(recipeList) {
 createRecipe = function(recipe) {
     var baseDiv = $('<div/>', {'class':'recipe'});
     var craftingDiv = $('<div/>', {'class':'crafting'});
-    craftingDiv.append($('<img/>').attr('src', 'img/craft.png'));
+    
+    var craftImgPath = 'img/craft.png';
+    if (window.location.pathname.indexOf('/new_ga/') !== -1) {
+        craftImgPath = '../ga/img/craft.png';
+    }
+    
+    craftingDiv.append($('<img/>').attr('src', craftImgPath));
     craftingDiv.append(crafting_layout(recipe));
     var craftingOutput = $('<div/>').addClass('crafting_output item');
     var outputItem = $('<div/>').addClass(recipe.output).html(recipe.outamt);
